@@ -33,9 +33,9 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/W377D0dy/media-organizer)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Media-Organizer-800622a0360b4de4ae85757f19769824)
 
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
