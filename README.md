@@ -40,31 +40,49 @@
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
 Media Organizer is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
+
 Media organizer also lets you invite collaborators to upload their photos, so you don't have to track down photos from event participants.
 
 
 ### 4️⃣ Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+### Basic Features
+- Ability to upload photos
+    - Metadata fields for photo (user input)
+        - Title
+        - Captions
+    - Default metadata fields as determined by user
+- Ability to tag/classify photos according a user-defined category; photos can belong to multiple categories)
+    - Categories could be things like:
+        - Event (Birthday, Holiday), location, People, year, subject (e.g. art or books)
+- Search/filter by category/categories
+- Ability to invite collaborators/have multiple authorized users for an album
+    - Ability to assign permissions to collaborators
+- Access control/view permissions can be set for some photos
+- Publishing photos as an front-facing album while maintaining an archive (user-facing as opposed to public-facing)
+- Ability to sign up and connect via OAuth
+
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
 - React 
 - Redux
+- Semantic UI
+- Reach
 
 #### _Front end framework goes here_
 
 🚫 Why did you choose this framework?
 
--    point one
--    point two
--    point three
--    point four
+1. What Framework are you using for your FE? (React, React Native, Angular, Vue, etc...)
+React (consider possibly using React Native for dedicated mobile app if time-frame allows?)
+2. What alternatives were considered?
+GatsbyJS, Vue, Next.js
+3. Why did you decide on this framework over the alternatives (what are the advantages?)
+We decided on this framework based on the knowledge base of the developers on the project. 
+4. What potential challenges can you foresee using this framework?
+State management, scalability, authentication, testing (React testing library)
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
@@ -88,11 +106,6 @@ Media organizer also lets you invite collaborators to upload their photos, so yo
 
 Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
 
-## 2️⃣ Payment API here
-
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
 
 ## 3️⃣ Misc API here
 
