@@ -4,6 +4,8 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
+[![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
+
 # 1️⃣ Media Organizer
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
@@ -11,8 +13,6 @@
 ## 4️⃣ Contributors
 
 🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-[![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
 
 |                                       [Arthur J. Lei](https://github.com/arturolei)                                        |                                       [Adrian Adames](https://github.com/adrianadames)                                        |                                       [Morgan Peterson](https://github.com/)                                        |                                       [Eric Sarragalugo](https://github.com/ericlugo)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
