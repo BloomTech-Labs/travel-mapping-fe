@@ -16,7 +16,7 @@ function App() {
       <Route exact path='/main' component={Main} />
       { 
         /* Used to verify Sentry integration (development only) */
-        environment === 'development' && <button onClick={() => new Error('Sentry Error') }>Break the world</button>
+        environment === 'development' && <button onClick={() => { throw new Error('Verify Sentry') }}>Break the world</button>
       }
     </Router>
   );
