@@ -4,9 +4,9 @@ node_js:
 before_install: cd piktorlog
 script:
   - npm test
-  notifications:
-  email:
-    - brandon.g.elzy@gmail.com
-    - e.sarragalugo@gmail.com
-  on_success: never
-  on_failure: always
+notifications:
+email:
+  - brandon.g.elzy@gmail.com
+  - e.sarragalugo@gmail.com
+on_success: never
+on_failure: always
