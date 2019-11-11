@@ -35,11 +35,11 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/W377D0dy/media-organizer)
+[Trello Board](https://trello.com/b/W377D0dy/media-organizer)
 
-1️⃣ [Product Canvas](https://www.notion.so/Media-Organizer-800622a0360b4de4ae85757f19769824)
+[Product Canvas](https://www.notion.so/Media-Organizer-800622a0360b4de4ae85757f19769824)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[UX Design files](https://www.figma.com/file/j8XG1mhNV4q9o8Y17aK9Dl/Travel-Mapping-User-Flow)
 
 Media Organizer is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
 
