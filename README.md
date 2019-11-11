@@ -6,9 +6,9 @@
 
 [![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
 
-# 1️⃣ Media Organizer
+# Piktorlog
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 ## 4️⃣ Contributors
 
