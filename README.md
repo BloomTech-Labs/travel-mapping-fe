@@ -6,9 +6,9 @@
 
 [![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
 
-# 1️⃣ Media Organizer
+# Piktorlog
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 ## 4️⃣ Contributors
 
@@ -35,11 +35,11 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/W377D0dy/media-organizer)
+[Trello Board](https://trello.com/b/W377D0dy/media-organizer)
 
-1️⃣ [Product Canvas](https://www.notion.so/Media-Organizer-800622a0360b4de4ae85757f19769824)
+[Product Canvas](https://www.notion.so/Media-Organizer-800622a0360b4de4ae85757f19769824)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[UX Design files](https://www.figma.com/file/j8XG1mhNV4q9o8Y17aK9Dl/Travel-Mapping-User-Flow)
 
 Media Organizer is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
 
