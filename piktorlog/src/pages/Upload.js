@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 import NavBar from '../components/organisms/NavBar';
 
 const UploadPage = () => {
