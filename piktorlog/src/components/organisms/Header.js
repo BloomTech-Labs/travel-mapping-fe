@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'semantic-ui-react';
 
-const NavBar = (props) => {
+const Header = (props) => {
   return (
     <Menu borderless size='mini' attached='top'>
-      <Menu.Item header>{props.header}</Menu.Item>
+      <Link to='/'>
+        <Menu.Item header>Piktorlog</Menu.Item>
+      </Link>
 
       <Menu.Menu position='right'>
         <Menu.Item
@@ -33,4 +36,4 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+export default Header;
