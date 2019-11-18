@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
 import NavBar from '../components/organisms/NavBar';
 import ActionButton from '../components/organisms/ActionButton';
+import AlbumsList from '../components/organisms/AlbumsList';
 
 const AlbumsOverview = () => {
     const [activeNavItem, setActiveNavItem] = useState('');
@@ -19,6 +20,7 @@ const AlbumsOverview = () => {
             handleClick={handleNavItemClick}
           />
           <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+          <AlbumsList albumData={}/>
         </React.Fragment>
       );
 
