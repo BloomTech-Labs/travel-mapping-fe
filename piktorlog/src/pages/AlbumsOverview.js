@@ -10,13 +10,17 @@ const AlbumsOverview = (props) => {
     //const history = useHistory();
 
     /*
-    Need to develop code for handling album changes or prmpting changes
+    Need to develop code for handling album changes or prmpting changes.
+    Question of course, is will this hook live here or would it go better somewhere else?
+
     const [albumData, getAlbumData] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
       function handleAlbumStatusChange(status){
         getAlbumData(status.albumData);
       }
+
+      someAPI.getAlbumData(props.albumData handleAlbumStatusChange)
 
     });
 
