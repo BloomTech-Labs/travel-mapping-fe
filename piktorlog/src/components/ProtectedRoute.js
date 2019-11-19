@@ -16,7 +16,7 @@ const ProtectedRoute = ({ isAuth, component: Component, ...rest }) => {
 
 const mapStateToProps = ({ currentUser }) => {
   return {
-    isAuth: !!Object.keys(currentUser).length
+    isAuth: !!currentUser
   }
 };
 
