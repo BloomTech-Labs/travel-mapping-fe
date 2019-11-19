@@ -1,12 +1,21 @@
-import address from '../../serverAddress';
 import axios from 'axios';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import ls from 'local-storage';
+
+import address from '../../serverAddress';
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE 
+} from './types';
 
 export default (email, password) => async dispatch => {
   dispatch({ type: LOGIN_REQUEST });
+
   try {
     const user = await loginHelper(email, password);
+    ls.set('user', user);
     dispatch({ type: LOGIN_SUCCESS, payload: user });
+
   } catch (err) {
     dispatch({ type: LOGIN_FAILURE, payload: err });
     console.error(err);
