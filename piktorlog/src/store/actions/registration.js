@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ls from 'local-storage';
 
-import address from '../serverAddress';
+import { address } from '../utils';
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
