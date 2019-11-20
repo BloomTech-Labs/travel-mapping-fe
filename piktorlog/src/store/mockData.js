@@ -163,7 +163,14 @@ const fetchAlbumZero = {
     updated_at: '2019-10-01',
     cover_url: 'https://via.placeholder.com/450x150',
     album_meta: ['rating', 'category', 'main ingredients'],
-    images: [fetchImageZero, fetchImageOne, fetchImageTwo],
+    images: [
+      fetchImageZero,
+      fetchImageOne,
+      fetchImageTwo,
+      fetchImageZero,
+      fetchImageOne,
+      fetchImageTwo,
+    ],
   },
 };
 const fetchAlbumOne = {

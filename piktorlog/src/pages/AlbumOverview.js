@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Card, Divider } from 'semantic-ui-react';
 
-import { getAlbum } from '../store/mockData.js';
 import ImageCardList from '../components/organisms/ImageCardList';
+
+//temporary import. once prop is being received delete this import.
+import { getAlbum } from '../store/mockData.js';
 
 /**
  * The AlbumOverview need to receive all of the album information. It can query for the images as it is loading
@@ -19,11 +21,10 @@ import ImageCardList from '../components/organisms/ImageCardList';
 const AlbumOverview = (/* { album } */) => {
   // temporary variable. once prop is being received delete variable and uncomment prop.
   const { album } = getAlbum(0);
-  console.log(album);
 
   return (
     <React.Fragment>
-      <Card.Group centered>
+      <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>
             <Button floated='right' icon='ellipsis vertical' />
@@ -34,7 +35,7 @@ const AlbumOverview = (/* { album } */) => {
             <Card.Description>{album.description}</Card.Description>
           </Card.Content>
         </Card>
-        <ImageCardList />
+        <ImageCardList images={album.images} />
       </Card.Group>
     </React.Fragment>
   );

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import ImageCard from '../molecules/imageCard.js';
 
-const ImageCardList = (props) => {
+const ImageCardList = ({ images }) => {
   return (
     <React.Fragment>
-      <Card>
-        <p>ImageCardList Goes Here!</p>
-      </Card>
+      {images.map((image, key) => (
+        <ImageCard image={image} key={key} />
+      ))}
     </React.Fragment>
   );
 };

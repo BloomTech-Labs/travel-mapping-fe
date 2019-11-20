@@ -1,28 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, Image } from 'semantic-ui-react';
+import { Button, Card, Image } from 'semantic-ui-react';
 
-const StyledImageCard = styled(Card)``;
+const ImageCard = styled(Card)``;
 
-return (
-  <StyledImageCard>
-    <Image
-      src='https://react.semantic-ui.com/images/avatar/large/daniel.jpg'
-      wrapped
-      ui={false}
-    />
-    <Card.Content>
-      <Card.Header>Daniel</Card.Header>
-      <Card.Meta>Joined in 2016</Card.Meta>
-      <Card.Description>
-        Daniel is a comedian living in Nashville.
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        10 Friends
-      </a>
-    </Card.Content>
-  </StyledImageCard>
-);
+const _ImageCard = ({ image }) => {
+  return (
+    <ImageCard>
+      <Image src={image.media_url} wrapped ui={false} />
+      <Card.Content>
+        <Button floated='right' icon='ellipsis vertical' />
+        <Card.Header>{image.title}</Card.Header>
+        <Card.Description>{image.caption}</Card.Description>
+        <Card.Meta>Created On: {image.created_at}</Card.Meta>
+        <Card.Meta>Last Updated: {image.updated_at}</Card.Meta>
+      </Card.Content>
+    </ImageCard>
+  );
+};
+
+export default _ImageCard;

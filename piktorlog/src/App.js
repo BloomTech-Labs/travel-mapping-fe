@@ -12,7 +12,7 @@ import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
 
 const PageContent = styled.main`
-  margin: 1rem;
+  margin: 1rem auto;
   max-width: 1200px;
 `;
 
@@ -58,7 +58,4 @@ const mapDispatchToProps = {
   // ...action creators go here
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
