@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createAlbum } from '../store/actions'
+import { createAlbumStart } from '../store/actions/createAlbum'
 
 const CreateAlbum = (props) => {
     console.log('props: ', props);
 
-    const createAlbum = () => {
-        props.createAlbum();
-    }
+    // const createAlbum = () => {
+    //     props.createAlbum();
+    // }
 
-    const [albumName, setAlbumName] = useState('');
+    const [albumTitle, setAlbumTitle] = useState('');
     const [albumDescription, setAlbumDescription] = useState('');
-    const [albumMetadata, setAlbumMetadata] = useState([]);
+    const [albumMetadata, setAlbumMetadata] = useState([{}]);
 
     return (
         <>
@@ -23,9 +23,9 @@ const CreateAlbum = (props) => {
                     Album Name:
                 <input 
                     type = 'text'
-                    name = 'albumName'
-                    value = {albumName}
-                    onChange = {e => setAlbumName(e.target.value)}
+                    name = 'albumTitle'
+                    value = {albumTitle}
+                    onChange = {e => setAlbumTitle(e.target.value)}
                 />
                 </label>
 
@@ -57,7 +57,7 @@ const CreateAlbum = (props) => {
 
                 <button
                     type = 'button'
-                    // onClick = {props.createAlbum()}
+                    onClick = {() => props.createAlbumStart({albumTitle:albumTitle,albumDescription:albumDescription, albumMetadata:albumMetadata})}
                 >
                     Create
                 </button>
@@ -76,11 +76,18 @@ const CreateAlbum = (props) => {
     )
 };
 
-const mapDispatchToProps = {
-    createAlbum
-};
+// const mapDispatchToProps = {
+//     createAlbum
+// };
 
-export default connect(
-    state => state,
-    mapDispatchToProps
-)(CreateAlbum);
+const mapStateToProps = state => {
+    return {
+      state:state
+    }
+  }
+
+// export default connect(
+//     state => state,
+//     mapDispatchToProps
+// )(CreateAlbum);
+export default connect(mapStateToProps, {createAlbumStart})(CreateAlbum);
