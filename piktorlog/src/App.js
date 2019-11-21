@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import Header from './components/organisms/Header.js';
 import ActionButton from './components/organisms/ActionButton.js';
@@ -38,8 +38,8 @@ function App() {
               <AlbumOverview />
             </Route>
             {/* <Route path='/images/:id'>
-              <ImageOverview />
-            </Route> */}
+                <ImageOverview />
+              </Route> */}
           </Switch>
         </PageContent>
 
