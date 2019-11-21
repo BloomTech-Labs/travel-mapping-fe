@@ -11,3 +11,9 @@ export const getToken = () => {
     return null;
   }
 };
+
+export const createAuthHeader = () => {
+  const token = getToken();
+
+  return token ? { Authorization: `Bearer ${token}` } : null;
+};
