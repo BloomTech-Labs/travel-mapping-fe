@@ -1,25 +1,61 @@
-import React from 'react';
-import * as Sentry from '@sentry/browser';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LandingPage from './pages/Landing';
-import Main from './pages/Main';
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-// Initialize Sentry.io for exception monitoring.
-Sentry.init({dsn: "https://2ec319603fba4c4aa4d8bc7f56b40e33@sentry.io/1811913"});
+import Header from './components/organisms/Header.js';
+import ActionButton from './components/organisms/ActionButton.js';
+import Footer from './components/organisms/Footer.js';
 
-const environment = process.env.NODE_ENV || 'development';
+import LandingPage from './pages/Landing.js';
+import AppOverview from './pages/AppOverview.js';
+import AlbumOverview from './pages/AlbumOverview.js';
+
+const PageContent = styled.main`
+  margin: 1rem auto;
+  max-width: 1200px;
+`;
 
 function App() {
-  return (
-    <Router>
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/main' component={Main} />
-      { 
-        /* Used to verify Sentry integration (development only) */
-        environment === 'development' && <button onClick={() => { throw new Error('Verify Sentry') }}>Break the world</button>
-      }
-    </Router>
-  );
+  const isLoggedIn = true;
+  const [activeNavItem, setActiveNavItem] = useState('');
+  const [actionToggle, setActionToggle] = useState(false);
+
+  const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
+  const handleButtonClick = () => setActionToggle(!actionToggle);
+
+  if (isLoggedIn) {
+    return (
+      <React.Fragment>
+        <Header activeItem={activeNavItem} handleClick={handleNavItemClick} />
+
+        <PageContent>
+          <Switch>
+            <Route exact path='/'>
+              <AppOverview />
+            </Route>
+            <Route path='/albums/:id'>
+              <AlbumOverview />
+            </Route>
+            {/* <Route path='/images/:id'>
+                <ImageOverview />
+              </Route> */}
+          </Switch>
+        </PageContent>
+
+        <Footer />
+        <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+      </React.Fragment>
+    );
+  } else return <LandingPage />;
 }
 
-export default App;
+const mapStateToProps = (state /* , ownProps */) => ({
+  // ...computed data from state
+  // ...optionally our own props
+});
+const mapDispatchToProps = {
+  // ...action creators go here
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
