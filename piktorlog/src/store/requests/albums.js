@@ -8,7 +8,7 @@ export const addAlbumMeta = async (album_id, metaData) => {
   const header = createAuthHeader();
   if (!header) return false;
 
-  const { data } = await axios.post(`${address}/albums/${album_id}/add`, metaData, header);
+  const { data } = await axios.post(`${address}/albums/${album_id}/meta/add`, metaData, header);
   return data;
 };
 
@@ -17,7 +17,7 @@ export const createAlbum = async (user_id, title, description, access = 'public'
   if (!header) return false;
 
   const { data } = await axios.post(
-    `${address}/users/${user_id}/album/create`,
+    `${address}/users/${user_id}/albums/create`,
     { title, description, access },
     header
   );
