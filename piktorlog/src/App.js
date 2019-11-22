@@ -1,55 +1,61 @@
-import React, { useEffect } from 'react';
-import * as Sentry from '@sentry/browser';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LandingPage from './pages/Landing';
-import Main from './pages/Main';
-import login from './store/actions/login';
-import logout from './store/actions/logout';
-import register from './store/actions/registration';
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import checkLogin from './store/actions/checkLogin';
-import RequestDebug from './store/requests/RequestDebug';
+import styled from 'styled-components';
 
-// Initialize Sentry.io for exception monitoring.
-Sentry.init({dsn: "https://2ec319603fba4c4aa4d8bc7f56b40e33@sentry.io/1811913"});
+import Header from './components/organisms/Header.js';
+import ActionButton from './components/organisms/ActionButton.js';
+import Footer from './components/organisms/Footer.js';
 
-const environment = process.env.NODE_ENV || 'development';
+import LandingPage from './pages/Landing.js';
+import AppOverview from './pages/AppOverview.js';
+import AlbumOverview from './pages/AlbumOverview.js';
 
-// All the login stuff is here for convenience during development/testing.
-// Anyone who wants to move or delete it, feel free.
+const PageContent = styled.main`
+  margin: 1rem auto;
+  max-width: 1200px;
+`;
 
-function App({ login, logout, checkLogin, register }) {
-  
-  useEffect(() => {
-    checkLogin();
-  }, [checkLogin]);
+function App() {
+  const isLoggedIn = true;
+  const [activeNavItem, setActiveNavItem] = useState('');
+  const [actionToggle, setActionToggle] = useState(false);
 
-  const handleLogin = () => {
-    const email = 'test@test.com';      // Replace both of these with the credentials of a
-    const password = 'ThisIsATest#1234';  // user in the database you're developing with
+  const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
+  const handleButtonClick = () => setActionToggle(!actionToggle);
 
-    login(email, password);
-  };
+  if (isLoggedIn) {
+    return (
+      <React.Fragment>
+        <Header activeItem={activeNavItem} handleClick={handleNavItemClick} />
 
-  return (
-    <Router>
-    <div>
-      <button onClick={() => register('test', 'test@test.com', 'ThisIsATest#1234')}>
-        register
-      </button>
-      <button onClick={handleLogin}>login</button>
-      <button onClick={logout}>logout</button>
-    </div>
-    <RequestDebug />
+        <PageContent>
+          <Switch>
+            <Route exact path='/'>
+              <AppOverview />
+            </Route>
+            <Route path='/albums/:id'>
+              <AlbumOverview />
+            </Route>
+            {/* <Route path='/images/:id'>
+                <ImageOverview />
+              </Route> */}
+          </Switch>
+        </PageContent>
 
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/main' component={Main} />
-      { 
-        /* Used to verify Sentry integration (development only) */
-        environment === 'development' && <button onClick={() => { throw new Error('Verify Sentry') }}>Break the world</button>
-      }
-    </Router>
-  );
+        <Footer />
+        <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+      </React.Fragment>
+    );
+  } else return <LandingPage />;
 }
 
-export default connect(() => ({}), { login, logout, checkLogin, register })(App);
+const mapStateToProps = (state /* , ownProps */) => ({
+  // ...computed data from state
+  // ...optionally our own props
+});
+const mapDispatchToProps = {
+  // ...action creators go here
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
