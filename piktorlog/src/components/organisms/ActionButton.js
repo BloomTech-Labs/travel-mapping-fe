@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
 
 const StyledActionButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   right: 1rem;
   z-index: 100;
