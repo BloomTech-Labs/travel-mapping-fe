@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import Header from './components/organisms/Header.js';
 import ActionButton from './components/organisms/ActionButton.js';
@@ -10,6 +11,9 @@ import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
+
+import checkLogin from './store/actions/checkLogin';
+import logout from './store/actions/logout';
 
 const AppWrapper = styled.div`
   min-height: 100vh;
@@ -24,9 +28,13 @@ const PageContent = styled.main`
   max-width: 1200px;
 `;
 
-function App() {
+function App({ checkLogin, logout }) {
   const [actionToggle, setActionToggle] = useState(false);
   const handleButtonClick = () => setActionToggle(!actionToggle);
+
+  useEffect(() => {
+    checkLogin();
+  }, [checkLogin]);
 
   return (
     <AppWrapper>
@@ -46,10 +54,15 @@ function App() {
         </Switch>
       </PageContent>
 
-      <Footer />
+      <div>
+        <Footer />
+        <button onClick={logout}>
+          Logout
+        </button>
+      </div>
       <ActionButton active={actionToggle} handleClick={handleButtonClick} />
     </AppWrapper>
   );
 };
 
-export default App;
+export default connect(null, { checkLogin, logout })(App);
