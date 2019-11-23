@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, Menu } from 'semantic-ui-react';
 
 const Header = (props) => {
+  const [activeNavItem, setActiveNavItem] = useState('');
+  const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
+
   return (
     <Menu borderless size='mini' attached='top'>
       <Link to='/'>
@@ -12,22 +15,22 @@ const Header = (props) => {
       <Menu.Menu position='right'>
         <Menu.Item
           name='search'
-          active={props.activeItem === 'search'}
-          onClick={props.handleClick}
+          active={activeNavItem === 'search'}
+          onClick={handleNavItemClick}
         >
           <Icon size='large' name='search' />
         </Menu.Item>
         <Menu.Item
           name='account'
-          active={props.activeItem === 'account'}
-          onClick={props.handleClick}
+          active={activeNavItem === 'account'}
+          onClick={handleNavItemClick}
         >
           <Icon size='large' name='cog' />
         </Menu.Item>
         <Menu.Item
           name='collab'
-          active={props.activeItem === 'collab'}
-          onClick={props.handleClick}
+          active={activeNavItem === 'collab'}
+          onClick={handleNavItemClick}
         >
           <Icon size='large' name='users' />
         </Menu.Item>
