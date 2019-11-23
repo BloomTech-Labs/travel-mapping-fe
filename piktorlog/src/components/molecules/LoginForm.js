@@ -5,6 +5,10 @@ const LoginForm = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const submit = () => {
+    login(email, password);
+  };
+
   return (
     <Form size="large">
       <Header as='h2' color='teal' textAlign='center'>
@@ -28,7 +32,7 @@ const LoginForm = ({ login }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Button color='teal' fluid size='large' onClick={() => console.log(email, password)}>
+        <Button color='teal' fluid size='large' onClick={submit}>
           Login
         </Button>
       </Segment>

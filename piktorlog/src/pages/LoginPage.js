@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button, Grid, Message, Container } from 'semantic-ui-react';
 
 import login from '../store/actions/login';
@@ -10,6 +10,13 @@ import RegisterForm from '../components/molecules/RegisterForm';
 
 const LoginPage = ({ isAuth, login, register }) => {
   const [hasAccount, setHasAccount] = useState(true);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isAuth) {
+      history.push('/');
+    }
+  }, [isAuth, history]);
 
   return (
     <Container>
@@ -17,7 +24,7 @@ const LoginPage = ({ isAuth, login, register }) => {
         <Grid.Column style={{ maxWidth: 450 }}>
           {hasAccount
             ? <LoginForm login={login} />
-            : <RegisterForm />}
+            : <RegisterForm register={register} />}
 
           <Message>
             {hasAccount ? 'New around here?' : 'Already a member?'}

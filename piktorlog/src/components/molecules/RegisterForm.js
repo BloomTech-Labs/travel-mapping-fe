@@ -6,6 +6,10 @@ const RegisterForm = ({ register }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const submit = () => {
+    register(displayName, email, password);
+  };
+
   return (
     <Form size="large">
       <Header as='h2' color='teal' textAlign='center'>
@@ -37,7 +41,7 @@ const RegisterForm = ({ register }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Button color='teal' fluid size='large' onClick={() => console.log(displayName, email, password)}>
+        <Button color='teal' fluid size='large' onClick={submit}>
           Register
         </Button>
       </Segment>
