@@ -15,7 +15,7 @@ const RegisterForm = ({ register }) => {
       <Header as='h2' color='teal' textAlign='center'>
         Create your account
       </Header>
-      <Segment stacked>
+      <Segment>
         <Form.Input
             fluid
             icon="user"

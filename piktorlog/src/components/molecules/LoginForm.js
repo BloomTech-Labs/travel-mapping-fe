@@ -14,7 +14,7 @@ const LoginForm = ({ login }) => {
       <Header as='h2' color='teal' textAlign='center'>
         Login to your account
       </Header>
-      <Segment stacked>
+      <Segment>
         <Form.Input
           fluid
           icon="user"
