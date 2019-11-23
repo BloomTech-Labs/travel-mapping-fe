@@ -10,6 +10,7 @@ import Footer from './components/organisms/Footer.js';
 import LandingPage from './pages/Landing.js';
 import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
+import LoginPage from './pages/LoginPage';
 
 const PageContent = styled.main`
   margin: 1rem auto;
@@ -34,6 +35,9 @@ function App() {
             <Route exact path='/'>
               <AppOverview />
             </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>/>
             <Route path='/albums/:id'>
               <AlbumOverview />
             </Route>
