@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const ProtectedRoute = ({ isAuth, children: Component, ...rest }) => {
+const ProtectedRoute = ({ isAuth, children, ...rest }) => {
   return (
     <Route {...rest}>
       {!isAuth
         ? <Redirect to="/login" />
-        : <Component />}
+        : children}
     </Route>
   );
 };
