@@ -37,7 +37,7 @@ const RegisterForm = ({ register }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <Button color='teal' fluid size='large' onClick={() => console.log(email, password)}>
+        <Button color='teal' fluid size='large' onClick={() => console.log(displayName, email, password)}>
           Register
         </Button>
       </Segment>

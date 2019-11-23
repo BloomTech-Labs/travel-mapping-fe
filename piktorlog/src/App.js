@@ -12,6 +12,14 @@ import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
 import LoginPage from './pages/LoginPage';
 
+const AppWrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const PageContent = styled.main`
   margin: 1rem auto;
   max-width: 1200px;
@@ -27,7 +35,7 @@ function App() {
 
   if (isLoggedIn) {
     return (
-      <React.Fragment>
+      <AppWrapper>
         <Header activeItem={activeNavItem} handleClick={handleNavItemClick} />
 
         <PageContent>
@@ -49,7 +57,7 @@ function App() {
 
         <Footer />
         <ActionButton active={actionToggle} handleClick={handleButtonClick} />
-      </React.Fragment>
+      </AppWrapper>
     );
   } else return <LandingPage />;
 }
