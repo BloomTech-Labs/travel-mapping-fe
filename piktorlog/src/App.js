@@ -10,6 +10,8 @@ import Footer from './components/organisms/Footer.js';
 import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
 import LoginPage from './pages/LoginPage';
+import Upload from './pages/Upload';
+
 import ProtectedRoute from './components/ProtectedRoute';
 
 import checkLogin from './store/actions/checkLogin';
@@ -32,9 +34,21 @@ function App({ checkLogin, logout }) {
   const [actionToggle, setActionToggle] = useState(false);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
+  const [checkingLogin, setCheckingLogin] = useState(true);
+
   useEffect(() => {
     checkLogin();
+    setCheckingLogin(false);
   }, [checkLogin]);
+
+  if (checkingLogin) {
+    // probably replace this with a spinner or some nicer looking loading indicator
+    return (
+      <div>
+        Loading
+      </div>
+    );
+  }
 
   return (
     <AppWrapper>
@@ -50,6 +64,9 @@ function App({ checkLogin, logout }) {
           </Route>
           <ProtectedRoute path='/albums/:id'>
             <AlbumOverview />
+          </ProtectedRoute>
+          <ProtectedRoute path="/upload">
+            <Upload />
           </ProtectedRoute>
         </Switch>
       </PageContent>
