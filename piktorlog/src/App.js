@@ -25,15 +25,12 @@ const PageContent = styled.main`
 `;
 
 function App() {
-  const [activeNavItem, setActiveNavItem] = useState('');
   const [actionToggle, setActionToggle] = useState(false);
-
-  const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
   return (
     <AppWrapper>
-      <Header activeItem={activeNavItem} handleClick={handleNavItemClick} />
+      <Header />
 
       <PageContent>
         <Switch>
