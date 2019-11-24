@@ -2,7 +2,7 @@ import React from 'react';
 
 const LandingPage = () => (
   <React.Fragment>
-    <h1>Hello World!</h1>
+    <h1>Landing Page</h1>
   </React.Fragment>
 );
 

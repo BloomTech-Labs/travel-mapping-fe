@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 // IMPORTS GO HERE
+<<<<<<< HEAD
 import {
   CREATE_ALBUM_START, 
   CREATE_ALBUM_SUCCESS, 
@@ -45,4 +46,11 @@ const reducer = (state = initialState, action) => {
 export default combineReducers({
   // EXPORTS GO IN HERE
   reducer
+=======
+import userReducer from './userReducer';
+
+export default combineReducers({
+  // EXPORTS GO IN HERE
+  currentUser: userReducer
+>>>>>>> f27cd84437ed88d54c59ec4e7536566e4b0080f3
 });

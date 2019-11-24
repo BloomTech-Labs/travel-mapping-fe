@@ -1,27 +1,85 @@
-import React from 'react';
-import * as Sentry from '@sentry/browser';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LandingPage from './pages/Landing';
-import Main from './pages/Main';
-import CreateAlbum from './pages/CreateAlbum';
+import React, { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-// Initialize Sentry.io for exception monitoring.
-Sentry.init({dsn: "https://2ec319603fba4c4aa4d8bc7f56b40e33@sentry.io/1811913"});
+import Header from './components/organisms/Header.js';
+import ActionButton from './components/organisms/ActionButton.js';
+import Footer from './components/organisms/Footer.js';
 
-const environment = process.env.NODE_ENV || 'development';
+import AppOverview from './pages/AppOverview.js';
+import AlbumOverview from './pages/AlbumOverview.js';
+import LoginPage from './pages/LoginPage';
+import Upload from './pages/Upload';
 
-function App() {
+import ProtectedRoute from './components/ProtectedRoute';
+
+import checkLogin from './store/actions/checkLogin';
+import logout from './store/actions/logout';
+
+const AppWrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const PageContent = styled.main`
+  margin: 1rem auto;
+  max-width: 1200px;
+`;
+
+function App({ checkLogin, logout }) {
+  const [actionToggle, setActionToggle] = useState(false);
+  const handleButtonClick = () => setActionToggle(!actionToggle);
+
+  const [checkingLogin, setCheckingLogin] = useState(true);
+
+  useEffect(() => {
+    checkLogin();
+    setCheckingLogin(false);
+  }, [checkLogin]);
+
+  if (checkingLogin) {
+    // probably replace this with a spinner or some nicer looking loading indicator
+    return (
+      <div>
+        Loading
+      </div>
+    );
+  }
+
   return (
-    <Router>
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/main' component={Main} />
-      <Route exact path = '/createAlbum' component = {CreateAlbum} />
-      { 
-        /* Used to verify Sentry integration (development only) */
-        environment === 'development' && <button onClick={() => { throw new Error('Verify Sentry') }}>Break the world</button>
-      }
-    </Router>
-  );
-}
+    <AppWrapper>
+      <Header />
 
-export default App;
+      <PageContent>
+        <Switch>
+          <ProtectedRoute exact path='/'>
+            <AppOverview />
+          </ProtectedRoute>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <ProtectedRoute path='/albums/:id'>
+            <AlbumOverview />
+          </ProtectedRoute>
+          <ProtectedRoute path="/upload">
+            <Upload />
+          </ProtectedRoute>
+        </Switch>
+      </PageContent>
+
+      <div>
+        <Footer />
+        <button onClick={logout}>
+          Logout
+        </button>
+      </div>
+      <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+    </AppWrapper>
+  );
+};
+
+export default connect(null, { checkLogin, logout })(App);
