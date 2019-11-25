@@ -4,15 +4,29 @@ import ls from 'local-storage';
 import {
     CREATE_ALBUM_REQUEST,
     CREATE_ALBUM_SUCCESS,
-    CREATE_ALBUM_FAILURE
+    CREATE_ALBUM_FAILURE, 
+
+    GET_ALBUMS_REQUEST,
+    GET_ALBUMS_SUCCESS,
+    GET_ALBUMS_FAILURE,
+
+    EDIT_ALBUM_REQUEST,
+    EDIT_ALBUM_SUCCESS,
+    EDIT_ALBUM_FAILURE,
+
+    DELETE_ALBUM_REQUEST,
+    DELETE_ALBUM_SUCCESS,
+    DELETE_ALBUM_FAILURE
 } from './types';
 
-import { createAlbum } from '../requests/albums';
+import { createAlbum, getUserAlbums, editAlbum, deleteAlbum } from '../requests/albums';
 
-export default (user_id, title, description, access = 'public') => async dispatch => {
+
+export const createAlbum = (user_id, title, description, access = 'public') => async dispatch => {
     dispatch({type:CREATE_ALBUM_REQUEST});
 
     try {
+        // re: next line ----- vscode says await has no effect on the type of expression. will leave as is for now. 
         const newlyCreatedAlbum = await createAlbum(user_id, title, description, access = 'public');
         ls.set('newlyCreatedAlbum', newlyCreatedAlbum);
         dispatch({ type: CREATE_ALBUM_SUCCESS, payload: newlyCreatedAlbum});
@@ -20,4 +34,45 @@ export default (user_id, title, description, access = 'public') => async dispatc
         dispatch({ type: CREATE_ALBUM_FAILURE, payload: err });
         console.error(err);
     }
-};
+}
+
+export const getUserAlbums = (user_id) => async dispatch => {
+    dispatch({type:GET_ALBUMS_REQUEST});
+
+    try {
+        const userAlbums = await getUserAlbums(user_id);
+        ls.set('userAlbums', userAlbums);
+        dispatch({type:GET_ALBUMS_SUCCESS, payload:userAlbums});
+    } catch(err) {
+        dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
+        console.error(err);
+    }
+}
+
+export const editAlbum = (album_id, changes) => async dispatch => {
+    dispatch({type:EDIT_ALBUM_REQUEST});
+
+    try {
+        const newlyUpdatedAlbumData = await editAlbum(album_id);
+        const userAlbums = await getUserAlbums(user_id);
+        ls.set('userAlbums', userAlbums);
+        dispatch({type:EDIT_ALBUM_SUCCESS, payload: newlyUpdatedAlbumData});
+    } catch(err) {
+        dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
+        console.error(err);
+    }
+}
+
+export const deleteAlbum = (album_id) => async dispatch => {
+    dispatch({type:DELETE_ALBUM_REQUEST});
+
+    try {
+        const deletedAlbumId = await deleteAlbum(album_id);
+        const userAlbums = await getUserAlbums(user_id);
+        ls.set('userAlbums', userAlbums);
+        dispatch({type:DELETE_ALBUM_SUCCESS, payload: deletedAlbumId});
+    } catch(err) {
+        dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
+        console.error(err);
+    }
+}
