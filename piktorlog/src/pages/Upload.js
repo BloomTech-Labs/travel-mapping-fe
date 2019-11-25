@@ -2,22 +2,22 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 
-import { Container, Grid, Header, Segment, Form } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 
-import { getUserAlbums } from '../store/requests/albums';
+import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
 
 const Upload = ({ currentUser }) => {
   const [media, setMedia] = useState([]);
   const [selectedAlbums, setSelectedAlbums] = useState([]);
-  const [availableAlbums, setAvailableAlbums] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const data = await getUserAlbums(currentUser.user_id);
-      console.log(data);
-      setAvailableAlbums(data);
-    })();
-  }, [currentUser]);
+  // const [availableAlbums, setAvailableAlbums] = useState([]);
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getUserAlbums(currentUser.user_id);
+  //     console.log(data);
+  //     setAvailableAlbums(data);
+  //   })();
+  // }, [currentUser]);
 
   const onDrop = useCallback(acceptedFiles => {
     setMedia(prev => [...prev, ...acceptedFiles.map(e => ({ file: e }))]);
@@ -44,16 +44,11 @@ const Upload = ({ currentUser }) => {
                     : <p>Drag 'n' drop some files here, or click to select files</p>}
               </div>
             </Segment>
-            <Segment>
-              <Form>
-                <Header as='h3' color='teal' textAlign='center'>
-                  Your Albums
-                </Header>
-                {availableAlbums.map(e => (
-                  <Form.Checkbox label={e.title} key={e.album_id} />
-                ))}
-              </Form>
-            </Segment>
+            <AlbumChecklist 
+              user_id={currentUser.user_id}
+              selectedAlbums={selectedAlbums}
+              setSelectedAlbums={setSelectedAlbums}
+            />
           </Segment.Group>
         </Grid.Column>
       </Grid>
