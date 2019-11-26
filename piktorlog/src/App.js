@@ -16,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import checkLogin from './store/actions/checkLogin';
 import logout from './store/actions/logout';
+import RequestDebug from './store/requests/RequestDebug';
 
 const AppWrapper = styled.div`
   min-height: 100vh;
@@ -76,6 +77,7 @@ function App({ checkLogin, logout }) {
         <button onClick={logout}>
           Logout
         </button>
+        <RequestDebug />
       </div>
       <ActionButton active={actionToggle} handleClick={handleButtonClick} />
     </AppWrapper>
