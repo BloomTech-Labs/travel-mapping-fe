@@ -22,7 +22,7 @@ const mediaReducer = (state, action) => {
       return {
         ...state,
         [action.payload.id]: {
-          ...[action.payload.id],
+          ...state[action.payload.id],
           ...action.payload.changes
         }
       };
@@ -42,7 +42,10 @@ const Upload = ({ currentUser }) => {
         const id = uuid();
         obj[id] = {
           id,
-          file: e
+          file: e,
+          title: '',
+          caption: '',
+          keywords: ''
         };
         return obj;
       }, {})
