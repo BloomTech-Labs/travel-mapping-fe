@@ -98,7 +98,6 @@ import {
 
 // ok cool. I have an idea of what the state will look like. 
 const initialState = {
-  currentUser: {}, 
   entities: {
     userAlbums: {
       byId: {}, 
