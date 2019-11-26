@@ -1,26 +1,52 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useReducer } from 'react';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
+import { v4 as uuid } from 'uuid';
 
 import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 
 import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
+import UploadFormList from '../components/organisms/UploadFormList';
+
+const mediaReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_MEDIA':
+      return {
+        ...state,
+        ...action.payload
+      };
+    case 'REMOVE_MEDIA':
+      const { [action.payload]: removed, ...rest } = state;
+      return rest;
+    case 'EDIT_MEDIA':
+      return {
+        ...state,
+        [action.payload.id]: {
+          ...[action.payload.id],
+          ...action.payload.changes
+        }
+      };
+    default:
+      return state;
+  }
+};
 
 const Upload = ({ currentUser }) => {
-  const [media, setMedia] = useState([]);
   const [selectedAlbums, setSelectedAlbums] = useState([]);
 
-  // const [availableAlbums, setAvailableAlbums] = useState([]);
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await getUserAlbums(currentUser.user_id);
-  //     console.log(data);
-  //     setAvailableAlbums(data);
-  //   })();
-  // }, [currentUser]);
-
+  const [media, dispatch] = useReducer(mediaReducer, {});
   const onDrop = useCallback(acceptedFiles => {
-    setMedia(prev => [...prev, ...acceptedFiles.map(e => ({ file: e }))]);
+    dispatch({
+      type: 'ADD_MEDIA',
+      payload: acceptedFiles.reduce((obj, e) => {
+        const id = uuid();
+        obj[id] = {
+          id,
+          file: e
+        };
+        return obj;
+      }, {})
+    });
   }, []);
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
@@ -50,6 +76,13 @@ const Upload = ({ currentUser }) => {
               setSelectedAlbums={setSelectedAlbums}
             />
           </Segment.Group>
+          <UploadFormList
+            media={media} 
+            setMedia={(id, changes) => dispatch({
+              type: 'EDIT_MEDIA',
+              payload: { id, changes }}
+            )}
+          />
         </Grid.Column>
       </Grid>
     </Container>
