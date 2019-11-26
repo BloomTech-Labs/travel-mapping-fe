@@ -1,18 +1,13 @@
 import React, {useState} from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createAlbumStart } from '../store/actions/createAlbum'
+import { createAlbum } from '../store/actions/albums.js';
 
 const CreateAlbum = (props) => {
     console.log('props: ', props);
 
-    // const createAlbum = () => {
-    //     props.createAlbum();
-    // }
-
-    const [albumTitle, setAlbumTitle] = useState('');
-    const [albumDescription, setAlbumDescription] = useState('');
-    const [albumMetadata, setAlbumMetadata] = useState([{}]);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
 
     return (
         <>
@@ -23,9 +18,9 @@ const CreateAlbum = (props) => {
                     Album Name:
                 <input 
                     type = 'text'
-                    name = 'albumTitle'
-                    value = {albumTitle}
-                    onChange = {e => setAlbumTitle(e.target.value)}
+                    name = 'title'
+                    value = {title}
+                    onChange = {e => setTitle(e.target.value)}
                 />
                 </label>
 
@@ -35,15 +30,16 @@ const CreateAlbum = (props) => {
                     Album Description:
                 <input 
                     type = 'text'
-                    name = 'albumDescription'
-                    value = {albumDescription}
-                    onChange = {e => setAlbumDescription(e.target.value)}
+                    name = 'description'
+                    value = {description}
+                    onChange = {e => setDescription(e.target.value)}
                 />
                 </label>
 
                 <br />
-            
-                <label>
+                {/* Holding off on implementing add album metadata functionality... */}
+
+                {/* <label>
                     Album Metadata:
                 <input 
                     type = 'text'
@@ -53,11 +49,11 @@ const CreateAlbum = (props) => {
                 />
                 </label>
 
-                <br />
+                <br /> */}
 
                 <button
                     type = 'button'
-                    onClick = {() => props.createAlbumStart({albumTitle:albumTitle,albumDescription:albumDescription, albumMetadata:albumMetadata})}
+                    onClick = {() => props.createAlbum({title:title, description:description, access: 'public'})}
                 >
                     Create
                 </button>
@@ -76,9 +72,6 @@ const CreateAlbum = (props) => {
     )
 };
 
-// const mapDispatchToProps = {
-//     createAlbum
-// };
 
 const mapStateToProps = state => {
     return {
@@ -86,8 +79,4 @@ const mapStateToProps = state => {
     }
   }
 
-// export default connect(
-//     state => state,
-//     mapDispatchToProps
-// )(CreateAlbum);
 export default connect(mapStateToProps, {createAlbumStart})(CreateAlbum);
