@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import ls from 'local-storage';
 
 import {
@@ -19,7 +18,7 @@ import {
     DELETE_ALBUM_FAILURE
 } from './types';
 
-import { createAlbum, getUserAlbums, editAlbum, deleteAlbum } from '../requests/albums';
+import { createAlbumReq, getUserAlbumsReq, editAlbumReq, deleteAlbumReq } from '../requests/albums';
 
 
 export const createAlbum = (user_id, title, description, access = 'public') => async dispatch => {
@@ -27,7 +26,7 @@ export const createAlbum = (user_id, title, description, access = 'public') => a
 
     try {
         // re: next line ----- vscode says await has no effect on the type of expression. will leave as is for now. 
-        const newlyCreatedAlbum = await createAlbum(user_id, title, description, access = 'public');
+        const newlyCreatedAlbum = await createAlbumReq(user_id, title, description, access = 'public');
         ls.set('newlyCreatedAlbum', newlyCreatedAlbum);
         dispatch({ type: CREATE_ALBUM_SUCCESS, payload: newlyCreatedAlbum});
     } catch (err) {
@@ -40,7 +39,7 @@ export const getUserAlbums = (user_id) => async dispatch => {
     dispatch({type:GET_ALBUMS_REQUEST});
 
     try {
-        const userAlbums = await getUserAlbums(user_id);
+        const userAlbums = await getUserAlbumsReq(user_id);
         ls.set('userAlbums', userAlbums);
         dispatch({type:GET_ALBUMS_SUCCESS, payload:userAlbums});
     } catch(err) {
@@ -53,7 +52,7 @@ export const editAlbum = (album_id, changes) => async dispatch => {
     dispatch({type:EDIT_ALBUM_REQUEST});
 
     try {
-        const newlyUpdatedAlbumData = await editAlbum(album_id);
+        const newlyUpdatedAlbumData = await editAlbumReq(album_id);
         const userAlbums = await getUserAlbums(user_id);
         ls.set('userAlbums', userAlbums);
         dispatch({type:EDIT_ALBUM_SUCCESS, payload: newlyUpdatedAlbumData});
@@ -67,7 +66,7 @@ export const deleteAlbum = (album_id) => async dispatch => {
     dispatch({type:DELETE_ALBUM_REQUEST});
 
     try {
-        const deletedAlbumId = await deleteAlbum(album_id);
+        const deletedAlbumId = await deleteAlbumReq(album_id);
         const userAlbums = await getUserAlbums(user_id);
         ls.set('userAlbums', userAlbums);
         dispatch({type:DELETE_ALBUM_SUCCESS, payload: deletedAlbumId});
