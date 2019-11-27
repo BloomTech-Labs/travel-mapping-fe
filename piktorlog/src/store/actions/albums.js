@@ -25,7 +25,6 @@ export const createAlbum = (user_id, title, description, access = 'public') => a
     dispatch({type:CREATE_ALBUM_REQUEST});
 
     try {
-        // re: next line ----- vscode says await has no effect on the type of expression. will leave as is for now. 
         const newlyCreatedAlbum = await createAlbumReq(user_id, title, description, access = 'public');
         ls.set('newlyCreatedAlbum', newlyCreatedAlbum);
         dispatch({ type: CREATE_ALBUM_SUCCESS, payload: newlyCreatedAlbum});
@@ -53,8 +52,6 @@ export const editAlbum = (album_id, changes) => async dispatch => {
 
     try {
         const newlyUpdatedAlbumData = await editAlbumReq(album_id);
-        const userAlbums = await getUserAlbums(user_id);
-        ls.set('userAlbums', userAlbums);
         dispatch({type:EDIT_ALBUM_SUCCESS, payload: newlyUpdatedAlbumData});
     } catch(err) {
         dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
@@ -67,8 +64,6 @@ export const deleteAlbum = (album_id) => async dispatch => {
 
     try {
         const deletedAlbumId = await deleteAlbumReq(album_id);
-        const userAlbums = await getUserAlbums(user_id);
-        ls.set('userAlbums', userAlbums);
         dispatch({type:DELETE_ALBUM_SUCCESS, payload: deletedAlbumId});
     } catch(err) {
         dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
