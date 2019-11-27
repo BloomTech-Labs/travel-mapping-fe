@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createAlbum } from '../store/actions/albums.js';
 
+// NOTE: Need to access option so user could choose between making album private or public
 const CreateAlbum = (props) => {
     console.log('props: ', props);
 
@@ -53,7 +54,7 @@ const CreateAlbum = (props) => {
 
                 <button
                     type = 'button'
-                    onClick = {() => props.createAlbum({title:title, description:description, access: 'public'})}
+                    onClick = {() => props.createAlbum(props.state.currentUser.user_id, title, description, 'public')}
                 >
                     Create
                 </button>
@@ -79,4 +80,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps, {createAlbumStart})(CreateAlbum);
+export default connect(mapStateToProps, {createAlbum})(CreateAlbum);
