@@ -1,89 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import Header from './components/organisms/Header.js';
 import ActionButton from './components/organisms/ActionButton.js';
 import Footer from './components/organisms/Footer.js';
 
+import LandingPage from './pages/Landing.js';
 import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
-import LoginPage from './pages/LoginPage';
-import Upload from './pages/Upload';
-import CreateAlbum from './pages/CreateAlbum';
-
-import ProtectedRoute from './components/ProtectedRoute';
-
-import checkLogin from './store/actions/checkLogin';
-import logout from './store/actions/logout';
-
-const AppWrapper = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const PageContent = styled.main`
   margin: 1rem auto;
   max-width: 1200px;
 `;
 
-function App({ checkLogin, logout }) {
+function App() {
+  const isLoggedIn = true;
+  const [activeNavItem, setActiveNavItem] = useState('');
   const [actionToggle, setActionToggle] = useState(false);
+
+  const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
-  const [checkingLogin, setCheckingLogin] = useState(true);
-
-  useEffect(() => {
-    checkLogin();
-    setCheckingLogin(false);
-  }, [checkLogin]);
-
-  if (checkingLogin) {
-    // probably replace this with a spinner or some nicer looking loading indicator
+  if (isLoggedIn) {
     return (
-      <div>
-        Loading
-      </div>
-    );
-  }
+      <React.Fragment>
+        <Header activeItem={activeNavItem} handleClick={handleNavItemClick} />
 
-  return (
-    <AppWrapper>
-      <Header />
+        <PageContent>
+          <Switch>
+            <Route exact path='/'>
+              <AppOverview />
+            </Route>
+            <Route path='/albums/:id'>
+              <AlbumOverview />
+            </Route>
+            {/* <Route path='/images/:id'>
+                <ImageOverview />
+              </Route> */}
+          </Switch>
+        </PageContent>
 
-      <PageContent>
-        <Switch>
-          <ProtectedRoute exact path='/'>
-            <AppOverview />
-          </ProtectedRoute>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <ProtectedRoute path='/albums/:id'>
-            <AlbumOverview />
-          </ProtectedRoute>
-          <ProtectedRoute path="/upload">
-            <Upload />
-          </ProtectedRoute>
-          <ProtectedRoute path="/createAlbum">
-            <CreateAlbum />
-          </ProtectedRoute>
-        </Switch>
-      </PageContent>
-
-      <div>
         <Footer />
-        <button onClick={logout}>
-          Logout
-        </button>
-      </div>
-      <ActionButton active={actionToggle} handleClick={handleButtonClick} />
-    </AppWrapper>
-  );
+        <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+      </React.Fragment>
+    );
+  } else return <LandingPage />;
+}
+
+const mapStateToProps = (state /* , ownProps */) => ({
+  // ...computed data from state
+  // ...optionally our own props
+});
+const mapDispatchToProps = {
+  // ...action creators go here
 };
 
-export default connect(null, { checkLogin, logout })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
