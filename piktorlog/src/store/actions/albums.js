@@ -18,14 +18,18 @@ import {
     DELETE_ALBUM_FAILURE
 } from './types';
 
-import { createAlbumReq, getUserAlbumsReq, editAlbumReq, deleteAlbumReq } from '../requests/albums';
+import { createAlbumReq, getUserAlbumsReq, editAlbumReq, deleteAlbumReq, addAlbumMetaReq } from '../requests/albums';
 
 
-export const createAlbum = (user_id, title, description, access = 'public') => async dispatch => {
+export const createAlbum = (user_id, title, description, access = 'public', metadata = {}) => async dispatch => {
     dispatch({type:CREATE_ALBUM_REQUEST});
 
     try {
         const newlyCreatedAlbum = await createAlbumReq(user_id, title, description, access = 'public');
+        const metadataForNewAlbum = await addAlbumMetaReq(newlyCreatedAlbum.album_id, metadata);
+
+        newlyCreatedAlbum.meta = metadataForNewAlbum.meta;
+        
         ls.set('newlyCreatedAlbum', newlyCreatedAlbum);
         dispatch({ type: CREATE_ALBUM_SUCCESS, payload: newlyCreatedAlbum});
     } catch (err) {
