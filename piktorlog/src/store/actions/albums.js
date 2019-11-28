@@ -21,7 +21,7 @@ import {
 import { createAlbumReq, getUserAlbumsReq, editAlbumReq, deleteAlbumReq, addAlbumMetaReq } from '../requests/albums';
 
 
-export const createAlbum = (user_id, title, description, access = 'public', metadata = {}) => async dispatch => {
+export const createAlbum = (user_id, title, description, access = 'public', metadata = []) => async dispatch => {
     dispatch({type:CREATE_ALBUM_REQUEST});
 
     try {
