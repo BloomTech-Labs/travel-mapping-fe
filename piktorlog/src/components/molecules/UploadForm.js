@@ -29,7 +29,7 @@ const UploadForm = ({ media, setMedia, removeMedia }) => {
         <Grid.Column width="6">
           <Image src={URL.createObjectURL(media.file)} rounded />
         </Grid.Column>
-        <Grid.Column width="9">
+        <Grid.Column width="10">
           <Form>
             <Form.Input
               fluid
