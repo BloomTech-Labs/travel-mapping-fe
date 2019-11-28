@@ -85,6 +85,10 @@ const Upload = ({ currentUser }) => {
               type: 'EDIT_MEDIA',
               payload: { id, changes }}
             )}
+            removeMedia={id => dispatch({
+              type: 'REMOVE_MEDIA',
+              payload: id
+            })}
           />
         </Grid.Column>
       </Grid>

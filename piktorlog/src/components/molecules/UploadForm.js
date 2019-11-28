@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Segment, Image, Grid, Form, Button } from 'semantic-ui-react';
 
-const UploadForm = ({ media, setMedia }) => {
+const UploadForm = ({ media, setMedia, removeMedia }) => {
 
   useEffect(() => {
     console.log('UF', media);
@@ -17,6 +17,10 @@ const UploadForm = ({ media, setMedia }) => {
       caption: '',
       keywords: ''
     });
+  };
+
+  const remove = () => {
+    removeMedia(media.id);
   };
 
   return (
@@ -53,7 +57,7 @@ const UploadForm = ({ media, setMedia }) => {
             <Button onClick={clear}>
               Clear
             </Button>
-            <Button>
+            <Button onClick={remove}>
               Remove
             </Button>
           </div>
