@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 
 import { Container, Grid, Header, Segment, Form } from 'semantic-ui-react';
 
-import { getUserAlbums } from '../store/requests/albums';
+import { getUserAlbumsReq } from '../store/requests/albums';
 
 const Upload = ({ currentUser }) => {
   const [media, setMedia] = useState([]);
@@ -13,7 +13,7 @@ const Upload = ({ currentUser }) => {
 
   useEffect(() => {
     (async () => {
-      const data = await getUserAlbums(currentUser.user_id);
+      const data = await getUserAlbumsReq(currentUser.user_id);
       console.log(data);
       setAvailableAlbums(data);
     })();

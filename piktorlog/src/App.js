@@ -11,6 +11,7 @@ import AppOverview from './pages/AppOverview.js';
 import AlbumOverview from './pages/AlbumOverview.js';
 import LoginPage from './pages/LoginPage';
 import Upload from './pages/Upload';
+import CreateAlbum from './pages/CreateAlbum';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -67,6 +68,9 @@ function App({ checkLogin, logout }) {
           </ProtectedRoute>
           <ProtectedRoute path="/upload">
             <Upload />
+          </ProtectedRoute>
+          <ProtectedRoute path="/createAlbum">
+            <CreateAlbum />
           </ProtectedRoute>
         </Switch>
       </PageContent>
