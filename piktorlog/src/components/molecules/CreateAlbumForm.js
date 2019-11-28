@@ -12,14 +12,14 @@ const CreateAlbumForm = (props) => {
     const [metadata, setMetaData] = useState([]);
 
     const addMeta = (metaFieldName, metaFieldValue) => {
-        metadata.push({[metaFieldName]: metaFieldValue});
+        metadata.push({name: metaFieldName, value: metaFieldValue});
         setMetaFieldName('');
         setMetaFieldValue('');
         console.log('metadata: ', metadata)
     }
     
     const createAlbum = () => {
-        props.createAlbum(props.user_id, title, description, access);
+        props.createAlbum(props.user_id, title, description, access, metadata);
     };
 
     return (
@@ -91,10 +91,10 @@ const CreateAlbumForm = (props) => {
                                         <Grid>
                                         <Grid.Row columns = {2}>
                                             <GridColumn>
-                                                {Object.keys(metadataObject)[0]}
+                                                {metadataObject.name}
                                             </GridColumn>
                                             <GridColumn>
-                                                {Object.values(metadataObject)[0]}
+                                                {metadataObject.value}
                                             </GridColumn>
                                         </Grid.Row>
                                         </Grid>
