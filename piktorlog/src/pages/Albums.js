@@ -7,24 +7,7 @@ import AlbumsList from '../components/organisms/AlbumsList';
 const Albums = (props) => {
     const [activeNavItem, setActiveNavItem] = useState('');
     const [actionToggle, setActionToggle] = useState(false);
-    //const history = useHistory();
-
-    /*
-    Need to develop code for handling album changes or prmpting changes.
-    Question of course, is will this hook live here or would it go better somewhere else?
-
-    const [albumData, getAlbumData] = useState([]);
-
-    useEffect(() => {
-      function handleAlbumStatusChange(status){
-        getAlbumData(status.albumData);
-      }
-
-      someAPI.getAlbumData(props.albumData handleAlbumStatusChange)
-
-    });
-
-    */
+  
   
     const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
     const handleButtonClick = () => setActionToggle(!actionToggle);
