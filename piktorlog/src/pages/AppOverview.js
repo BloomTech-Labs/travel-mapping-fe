@@ -1,5 +1,5 @@
 import React from 'react';
-import AlbumsOverview from './Albums';
+import Albums from './Albums';
 
 const AppOverview = () => {
   return (
