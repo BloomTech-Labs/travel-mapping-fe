@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
-import NavBar from '../components/organisms/NavBar';
+import Header from '../components/organisms/Header';
 import ActionButton from '../components/organisms/ActionButton';
 import AlbumsList from '../components/organisms/AlbumsList';
 
-const AlbumsOverview = (props) => {
+const Albums = (props) => {
     const [activeNavItem, setActiveNavItem] = useState('');
     const [actionToggle, setActionToggle] = useState(false);
     //const history = useHistory();
@@ -31,16 +31,16 @@ const AlbumsOverview = (props) => {
     
     return (
         <React.Fragment>
-          <NavBar
+          <Header
             header='Piktorlog'
             activeItem={activeNavItem}
             handleClick={handleNavItemClick}
           />
           <ActionButton active={actionToggle} handleClick={handleButtonClick} />
-          <AlbumsList albumData={}/>
+          <AlbumsList />
         </React.Fragment>
       );
 
 }
 
-export default AlbumsOverview;
+export default Albums;

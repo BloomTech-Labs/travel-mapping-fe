@@ -1,9 +1,11 @@
 import React from 'react';
+import AlbumsOverview from './Albums';
 
 const AppOverview = () => {
   return (
     <React.Fragment>
-      <h1>App Overview</h1>
+      <h1>My Albums</h1>
+      <Albums/>
     </React.Fragment>
   );
 };
