@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { Container, Grid, Header, Segment, Button } from 'semantic-ui-react';
 
 import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
-import UploadFormList from '../components/organisms/UploadFormList';
+import UploadForm from '../components/molecules/UploadForm';
 import { uploadMedia } from '../store/requests/media';
 
 // I didn't think that this info needed to be in top-level state, so it's here
@@ -96,17 +96,20 @@ const Upload = ({ currentUser }) => {
               </Button>
             </Segment>}
           </Segment.Group>
-          <UploadFormList
-            media={media} 
-            setMedia={(id, changes) => dispatch({
-              type: 'EDIT_MEDIA',
-              payload: { id, changes }}
-            )}
-            removeMedia={id => dispatch({
-              type: 'REMOVE_MEDIA',
-              payload: id
-            })}
-          />
+          {Object.values(media).map(e => (
+            <UploadForm
+              key={e.id}
+              media={e}
+              setMedia={(id, changes) => dispatch({
+                type: 'EDIT_MEDIA',
+                payload: { id, changes }}
+              )}
+              removeMedia={id => dispatch({
+                type: 'REMOVE_MEDIA',
+                payload: id
+              })}
+            />
+          ))}
           {!!Object.values(media).length && 
           <Segment>
             <Button color="teal" size="large" onClick={submit}>
