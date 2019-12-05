@@ -39,6 +39,13 @@ export const uploadMedia = async (media, albums, user_id) => {
   const submission = new FormData();
 
   submission.append('albums', JSON.stringify(albums));
+
+  media.forEach(e => {
+    if (e.keywords) {
+      const keywords = e.keywords.split(',').map(e => e.trim());
+      e.keywords = keywords;
+    }
+  });
   submission.append('media', JSON.stringify(media.map(({ file, id, ...rest }) => rest)));
 
   media.forEach(e => {
