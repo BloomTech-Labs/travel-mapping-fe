@@ -1,12 +1,13 @@
-import React, { useState, useCallback, useEffect, useReducer } from 'react';
+import React, { useState, useCallback, useReducer } from 'react';
 import { connect } from 'react-redux';
 import { useDropzone } from 'react-dropzone';
 import { v4 as uuid } from 'uuid';
 
-import { Container, Grid, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment, Button } from 'semantic-ui-react';
 
 import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
 import UploadFormList from '../components/organisms/UploadFormList';
+import { uploadMedia } from '../store/requests/media';
 
 const mediaReducer = (state, action) => {
   switch (action.type) {
@@ -53,9 +54,10 @@ const Upload = ({ currentUser }) => {
   }, []);
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
-  useEffect(() => {
-    console.log(media);
-  }, [media]);
+  const submit = async () => {
+    const data = await uploadMedia(Object.values(media), selectedAlbums, currentUser.user_id);
+    console.log(data);
+  };
 
   return (
     <Container>
@@ -78,6 +80,12 @@ const Upload = ({ currentUser }) => {
               selectedAlbums={selectedAlbums}
               setSelectedAlbums={setSelectedAlbums}
             />
+            {!!Object.values(media).length && 
+            <Segment>
+              <Button color="teal" size="large" onClick={submit}>
+                Submit
+              </Button>
+            </Segment>}
           </Segment.Group>
           <UploadFormList
             media={media} 
@@ -90,6 +98,12 @@ const Upload = ({ currentUser }) => {
               payload: id
             })}
           />
+          {!!Object.values(media).length && 
+          <Segment>
+            <Button color="teal" size="large" onClick={submit}>
+              Submit
+            </Button>
+          </Segment>}
         </Grid.Column>
       </Grid>
     </Container>
