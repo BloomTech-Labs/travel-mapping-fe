@@ -9,6 +9,8 @@ import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
 import UploadFormList from '../components/organisms/UploadFormList';
 import { uploadMedia } from '../store/requests/media';
 
+// I didn't think that this info needed to be in top-level state, so it's here
+// it works almost exactly like redux though, nothing magical or complicated
 const mediaReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_MEDIA':
@@ -27,6 +29,8 @@ const mediaReducer = (state, action) => {
           ...action.payload.changes
         }
       };
+    case 'CLEAR_MEDIA':
+      return {};
     default:
       return state;
   }
@@ -57,6 +61,11 @@ const Upload = ({ currentUser }) => {
   const submit = async () => {
     const data = await uploadMedia(Object.values(media), selectedAlbums, currentUser.user_id);
     console.log(data);
+
+    dispatch({ type: 'CLEAR_MEDIA' });
+    setSelectedAlbums([]);
+
+    // maybe add a confirmation/error message for the user, or redirect to main page from here
   };
 
   return (
