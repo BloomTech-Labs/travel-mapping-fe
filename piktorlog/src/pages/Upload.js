@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useReducer } from 'react';
 import { connect } from 'react-redux';
-import { useDropzone } from 'react-dropzone';
 import { v4 as uuid } from 'uuid';
 
 import { Container, Grid, Header, Segment, Button } from 'semantic-ui-react';
 
 import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
 import UploadForm from '../components/molecules/UploadForm';
+import Dropzone from '../components/molecules/Dropzone';
 import { uploadMedia } from '../store/requests/media';
 
 // I didn't think that this info needed to be in top-level state, so it's here
@@ -56,7 +56,6 @@ const Upload = ({ currentUser }) => {
       }, {})
     });
   }, []);
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
   const submit = async () => {
     const data = await uploadMedia(Object.values(media), selectedAlbums, currentUser.user_id);
@@ -76,14 +75,7 @@ const Upload = ({ currentUser }) => {
             Upload Photos
           </Header>
           <Segment.Group>
-            <Segment>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                {isDragActive
-                    ? <p>Drop the files here ...</p>
-                    : <p>Drag 'n' drop some files here, or click to select files</p>}
-              </div>
-            </Segment>
+            <Dropzone onDrop={onDrop} />
             <AlbumChecklist 
               user_id={currentUser.user_id}
               selectedAlbums={selectedAlbums}
