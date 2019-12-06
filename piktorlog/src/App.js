@@ -33,7 +33,7 @@ const PageContent = styled.main`
   max-width: 1200px;
 `;
 
-function App({ checkLogin, logout }) {
+function App({ checkLogin, logout, getUserAlbums }) {
   const [actionToggle, setActionToggle] = useState(false);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
