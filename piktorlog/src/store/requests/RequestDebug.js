@@ -1,25 +1,25 @@
 import React from 'react';
 
-import { createAlbum, addAlbumMeta, editAlbum, getUserAlbums, deleteAlbum } from './albums';
+import { createAlbumReq, addAlbumMetaReq, editAlbumReq, getUserAlbumsReq, deleteAlbumReq } from './albums';
 import { editUser, getAllUsers, getUser, deleteUser } from './users';
 
 const RequestDebug = () => {
   return (
     <div>
       <div>
-        <button onClick={() => createAlbum(2, 'title2', 'desc').then(res => console.log(res))}>
+        <button onClick={() => createAlbumReq(2, 'title2', 'desc').then(res => console.log(res))}>
           createAlbum
         </button>
-        <button onClick={() => editAlbum(3, { title: 'titleChange' }).then(res => console.log(res))}>
+        <button onClick={() => editAlbumReq(3, { title: 'titleChange' }).then(res => console.log(res))}>
           editAlbum
         </button>
-        <button onClick={() => getUserAlbums(2).then(res => console.log(res))}>
+        <button onClick={() => getUserAlbumsReq(2).then(res => console.log(res))}>
           getUserAlbums
         </button>
-        <button onClick={() => deleteAlbum(5).then(res => console.log(res))}>
+        <button onClick={() => deleteAlbumReq(5).then(res => console.log(res))}>
           deleteAlbum
         </button>
-        <button onClick={() => addAlbumMeta(3, [{ name: 'meta1', value: 'value1' }, { name: 'meta2', value: 'value2' }]).then(res => console.log(res))}>
+        <button onClick={() => addAlbumMetaReq(3, [{ name: 'meta1', value: 'value1' }, { name: 'meta2', value: 'value2' }]).then(res => console.log(res))}>
           addAlbumMeta
         </button>
       </div>
