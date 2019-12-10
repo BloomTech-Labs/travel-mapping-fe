@@ -6,7 +6,7 @@ const AlbumCard = (props) => (
         <Card.Content>
             {/* <Image src ={props.src}/> */}
             <Card.Header>{props.albumData.title}</Card.Header>
-            <Card.Descripton>{props.albumData.description+'...'}</Card.Descripton>
+            <p>{props.albumData.description+'...'}</p>
         </Card.Content>
         <Card.Content extra>
             <Button>View Album</Button>
