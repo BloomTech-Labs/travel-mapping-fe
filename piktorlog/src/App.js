@@ -39,7 +39,8 @@ function App({ checkLogin, logout, getUserAlbums }) {
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
   const [checkingLogin, setCheckingLogin] = useState(true);
-
+ 
+  //Where do I make the get request? How do I make the get request?
   useEffect(() => {
     checkLogin();
     setCheckingLogin(false);
@@ -90,4 +91,6 @@ function App({ checkLogin, logout, getUserAlbums }) {
   );
 };
 
+
+//Missing map state to props bit
 export default connect(null, { checkLogin, logout, getUserAlbums })(App);

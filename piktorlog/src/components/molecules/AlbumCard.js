@@ -4,12 +4,12 @@ import {Button, Card, Image} from 'semantic-ui-react';
 const AlbumCard = (props) => (
     <Card>
         <Card.Content>
-            <Image src ={props.src}/>
+            {/* <Image src ={props.src}/> */}
             <Card.Header>{props.title}</Card.Header>
             <Card.Descripton>{props.description.slice(150)+'...'}</Card.Descripton>
         </Card.Content>
         <Card.Content extra>
-            <Button>Details</Button>
+            <Button>View Album</Button>
         </Card.Content>
     </Card>
 )
