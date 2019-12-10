@@ -5,8 +5,8 @@ const AlbumCard = (props) => (
     <Card>
         <Card.Content>
             {/* <Image src ={props.src}/> */}
-            <Card.Header>{props.title}</Card.Header>
-            <Card.Descripton>{props.description.slice(150)+'...'}</Card.Descripton>
+            <Card.Header>{props.albumData.title}</Card.Header>
+            <Card.Descripton>{props.albumData.description+'...'}</Card.Descripton>
         </Card.Content>
         <Card.Content extra>
             <Button>View Album</Button>
