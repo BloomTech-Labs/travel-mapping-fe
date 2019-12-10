@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Divider } from 'semantic-ui-react';
+import SearchBar from '../components/molecules/SearchBar'
 
 import ImageCardList from '../components/organisms/ImageCardList';
 
@@ -24,9 +25,17 @@ const AlbumOverview = (/* { album } */) => {
 
   return (
     <React.Fragment>
+
+<div>
+
+<SearchBar/>
+</div>
+
+
       <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>
+           
             <Button floated='right' icon='ellipsis vertical' />
             <Card.Header>{album.title}</Card.Header>
             <Card.Meta>Date Created: {album.created_at}</Card.Meta>
