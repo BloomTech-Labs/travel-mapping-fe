@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Card, Image} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 const AlbumCard = (props) => (
     <Card>
@@ -9,7 +10,7 @@ const AlbumCard = (props) => (
             <p>{props.albumData.description+'...'}</p>
         </Card.Content>
         <Card.Content extra>
-            <Button>View Album</Button>
+            <Link to={`/albums/${props.albumData.album_id}`}><Button>View Album</Button></Link>
         </Card.Content>
     </Card>
 )
