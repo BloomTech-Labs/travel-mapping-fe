@@ -38,15 +38,21 @@ export const uploadMedia = async (media, albums, user_id) => {
 
   const submission = new FormData();
 
-  submission.append('albums', albums);
-  submission.append('media', JSON.stringify(media.map(({ file, ...rest }) => rest)));
+  submission.append('albums', JSON.stringify(albums));
 
   media.forEach(e => {
-    submission.append('files', e.file, e.title);
-  })
+    if (e.keywords) {
+      const keywords = e.keywords.split(',').map(e => e.trim());
+      e.keywords = keywords;
+    }
+  });
+  submission.append('media', JSON.stringify(media.map(({ file, id, ...rest }) => rest)));
 
-  // route will probably change
-  const { data } = axios.post(
+  media.forEach(e => {
+    submission.append('files', e.file, e.id);
+  });
+
+  const { data } = await axios.post(
     `${address}/users/${user_id}/media/add`,
     submission,
     header

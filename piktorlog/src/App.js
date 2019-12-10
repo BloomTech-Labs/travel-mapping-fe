@@ -17,6 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import checkLogin from './store/actions/checkLogin';
 import logout from './store/actions/logout';
+import RequestDebug from './store/requests/RequestDebug';
 
 import {getUserAlbums} from './store/actions/albums';
 
@@ -82,6 +83,7 @@ function App({ checkLogin, logout, getUserAlbums }) {
         <button onClick={logout}>
           Logout
         </button>
+        <RequestDebug />
       </div>
       <ActionButton active={actionToggle} handleClick={handleButtonClick} />
     </AppWrapper>
