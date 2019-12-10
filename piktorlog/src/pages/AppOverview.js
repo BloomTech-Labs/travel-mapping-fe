@@ -1,9 +1,6 @@
 import React, {useEffect, useState}from 'react';
 import {connect} from 'react-redux';
 import {Card} from 'semantic-ui-react';
-
-//import Albums from './Albums';
-
 import AlbumCard from '../components/molecules/AlbumCard';
 import {getUserAlbumsReq} from '../store/requests/albums';
 
