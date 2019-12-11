@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
-import { Form, Segment, Dropdown, Button, Header, Grid, Container, GridColumn, Icon, Divider, List } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Form, Segment, Button, Header, Grid, GridColumn, Icon, List } from 'semantic-ui-react';
 
 const CreateAlbumForm = (props) => {
+
+    useEffect(() => {
+        // populate form values for editing if component receives an album prop
+        // should not have any effect when used for album creation
+        if (props.album && Object.keys(props.album).length) {
+            setTitle(props.album.title);
+            setDescription(props.album.description);
+            setAccess(props.album.access);
+            setMetaData(Object.entries(props.album.meta).map(e => ({
+                name: e[0],
+                value: e[1]
+            })));
+        }
+    }, [props]);
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
