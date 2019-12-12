@@ -10,6 +10,8 @@ const CreateAlbumForm = (props) => {
             setTitle(props.album.title);
             setDescription(props.album.description);
             setAccess(props.album.access);
+            // the incoming server data, and the form structure meta completely differently
+            // I'd like to resolve this later, but this bandaid works right now.
             setMetaData(Object.entries(props.album.meta).map(e => ({
                 name: e[0],
                 value: e[1]
