@@ -7,7 +7,7 @@ import { editAlbumReq, getUserAlbumsReq } from '../store/requests/albums';
 
 
 const EditAlbum = ({ currentUser, match }) => {
-  const [album, setAlbum] = useState({});
+  const [album, setAlbum] = useState(null);
   useEffect(() => {
     (async () => {
       const data = await getUserAlbumsReq(currentUser.user_id);

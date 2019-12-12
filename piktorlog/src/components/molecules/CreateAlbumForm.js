@@ -6,7 +6,7 @@ const CreateAlbumForm = (props) => {
     useEffect(() => {
         // populate form values for editing if component receives an album prop
         // should not have any effect when used for album creation
-        if (props.album && Object.keys(props.album).length) {
+        if (props.album) {
             setTitle(props.album.title);
             setDescription(props.album.description);
             setAccess(props.album.access);
