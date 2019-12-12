@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
 
 import CreateAlbumForm from '../components/molecules/CreateAlbumForm';
@@ -7,6 +8,7 @@ import { editAlbumReq, getUserAlbumsReq, addAlbumMetaReq } from '../store/reques
 
 
 const EditAlbum = ({ currentUser, match }) => {
+  const [redirect, setRedirect] = useState(false);
   const [album, setAlbum] = useState(null);
   useEffect(() => {
     (async () => {
@@ -42,12 +44,16 @@ const EditAlbum = ({ currentUser, match }) => {
     Promise.all([detailEdit, metaEdit])
       .then(res => {
         console.log('edit results:', res);
-        // do some redirection stuff from here?
+        setRedirect(true);
       })
       .catch(err => {
         console.log({ ...err });
       });
   };
+
+  if (redirect) {
+    return <Redirect to="/" />
+  }
 
   return (
     <Container>
