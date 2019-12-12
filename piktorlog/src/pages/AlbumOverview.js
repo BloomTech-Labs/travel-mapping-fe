@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { Button, Card, Divider } from 'semantic-ui-react';
 
-import ImageCardList from '../components/organisms/ImageCardList';
+import MediaCardList from '../components/organisms/MediaCardList';
 
-//temporary import. once prop is being received delete this import.
-import { getAlbum } from '../store/mockData.js';
 
 /**
  * The AlbumOverview need to receive all of the album information. It can query for the images as it is loading
@@ -18,9 +18,7 @@ import { getAlbum } from '../store/mockData.js';
  * }
  */
 
-const AlbumOverview = (/* { album } */) => {
-  // temporary variable. once prop is being received delete variable and uncomment prop.
-  const { album } = getAlbum(0);
+const AlbumOverview = (props) => {
 
   return (
     <React.Fragment>
@@ -28,17 +26,27 @@ const AlbumOverview = (/* { album } */) => {
         <Card raised fluid>
           <Card.Content>
             <Button floated='right' icon='ellipsis vertical' />
-            <Card.Header>{album.title}</Card.Header>
-            <Card.Meta>Date Created: {album.created_at}</Card.Meta>
-            <Card.Meta>Last Updated: {album.updated_at}</Card.Meta>
+            <Card.Header>{props.album.title}</Card.Header>
+            <Card.Meta>Date Created: {props.album.created_at}</Card.Meta>
+            <Card.Meta>Last Updated: {props.album.updated_at}</Card.Meta>
             <Divider horizontal>Album Description</Divider>
-            <Card.Description>{album.description}</Card.Description>
+            <Card.Description>{props.album.description}</Card.Description>
           </Card.Content>
         </Card>
-        <ImageCardList images={album.images} />
+
+
+        <MediaCardList albumMedia={props.albumMedia} />
+
       </Card.Group>
     </React.Fragment>
   );
 };
 
-export default AlbumOverview;
+
+const mapStateToProps = state => {
+  return {
+    state:state
+  }
+}
+
+export default connect(mapStateToProps, {})(AlbumOverview);
