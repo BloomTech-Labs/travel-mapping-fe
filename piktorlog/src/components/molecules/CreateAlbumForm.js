@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Segment, Button, Header, Grid, GridColumn, Icon, List } from 'semantic-ui-react';
+import { Form, Segment, Button, Header, Grid, GridColumn, Icon } from 'semantic-ui-react';
+
+import AlbumMetaList from './AlbumMetaList';
 
 const CreateAlbumForm = (props) => {
 
@@ -28,14 +30,18 @@ const CreateAlbumForm = (props) => {
     const [metadata, setMetaData] = useState([]);
 
     const addMeta = (metaFieldName, metaFieldValue) => {
-        metadata.push({name: metaFieldName, value: metaFieldValue});
+        setMetaData(prev => [...prev, { name: metaFieldName, value: metaFieldValue }]);
         setMetaFieldName('');
         setMetaFieldValue('');
         console.log('metadata: ', metadata)
-    }
+    };
     
     const createAlbum = () => {
         props.createAlbum(props.user_id, title, description, access, metadata);
+    };
+
+    const removeMeta = (name) => {
+        setMetaData(prev => prev.filter(e => e.name !== name));
     };
 
     return (
@@ -91,34 +97,21 @@ const CreateAlbumForm = (props) => {
                                 onChange = {e => setMetaFieldValue(e.target.value)}
                             />
                         </GridColumn>
-                        <GridColumn>
-                            <Button icon onClick = {e => addMeta(metaFieldName, metaFieldValue)}>
-                                <Icon name = 'plus circle' />
-                            </Button>
+                        <GridColumn style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Icon 
+                                name="plus circle"
+                                color="teal"
+                                size="big"
+                                onClick={e => addMeta(metaFieldName, metaFieldValue)}
+                            />
                         </GridColumn>
                     </Grid.Row>
                     <Grid.Row colums = {1}>
                         <GridColumn width = {16}>
-                            <List>
-                            {metadata.map((metadataObject, i) => {
-                                return (
-                                <List.Item key = {i}>
-                                    <List.Content>
-                                        <Grid>
-                                        <Grid.Row columns = {2}>
-                                            <GridColumn>
-                                                {metadataObject.name}
-                                            </GridColumn>
-                                            <GridColumn>
-                                                {metadataObject.value}
-                                            </GridColumn>
-                                        </Grid.Row>
-                                        </Grid>
-                                    </List.Content>
-                                </List.Item>
-                                )
-                            })}
-                            </List>
+                            <AlbumMetaList 
+                                meta={metadata}
+                                remove={removeMeta}
+                            />
                         </GridColumn>
                     </Grid.Row>
 
@@ -128,7 +121,7 @@ const CreateAlbumForm = (props) => {
                 
                 
                 <Button color = 'teal' onClick  = {createAlbum}>
-                    Create
+                    {props.editing ? 'Submit Edit' : 'Create'}
                 </Button>
                 <Button>
                     Cancel
