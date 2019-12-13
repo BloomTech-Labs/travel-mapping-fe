@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Segment, Button, Header, Grid, GridColumn, Icon } from 'semantic-ui-react';
 
-import AlbumMetaList from './AlbumMetaList';
+import MetaList from './MetaList';
 
 const CreateAlbumForm = (props) => {
 
@@ -108,7 +108,7 @@ const CreateAlbumForm = (props) => {
                     </Grid.Row>
                     <Grid.Row colums = {1}>
                         <GridColumn width = {16}>
-                            <AlbumMetaList 
+                            <MetaList 
                                 meta={metadata}
                                 remove={removeMeta}
                             />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Icon, Grid, GridColumn } from 'semantic-ui-react';
 
-import AlbumMetaList from './AlbumMetaList';
+import MetaList from './MetaList';
 
 const UploadMeta = ({ meta, addMeta, removeMeta }) => {
   const [metaName, setMetaName] = useState('');
@@ -42,7 +42,7 @@ const UploadMeta = ({ meta, addMeta, removeMeta }) => {
       </Grid.Row>
       <Grid.Row colums = {1}>
         <GridColumn width = {16}>
-            <AlbumMetaList 
+            <MetaList 
                 meta={meta}
                 remove={removeMeta}
             />
