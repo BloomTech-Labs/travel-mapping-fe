@@ -50,7 +50,8 @@ const Upload = ({ currentUser }) => {
           file: e,
           title: '',
           caption: '',
-          keywords: ''
+          keywords: '',
+          meta: []
         };
         return obj;
       }, {})
@@ -90,7 +91,7 @@ const Upload = ({ currentUser }) => {
                 Submit
               </Button>
             </Segment>}
-            
+
           </Segment.Group>
 
           {!Object.values(media).length &&

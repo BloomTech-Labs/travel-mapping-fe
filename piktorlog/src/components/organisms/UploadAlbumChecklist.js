@@ -58,7 +58,7 @@ const UploadAlbumCheckList = ({ user_id, selectedAlbums, setSelectedAlbums }) =>
   useEffect(() => {
     (async () => {
       const data = await getUserAlbumsReq(user_id);
-      console.log('UAC', data);
+      // console.log('UAC', data);
       setAvailableAlbums(data);
     })();
   }, [user_id]);
