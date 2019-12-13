@@ -47,7 +47,7 @@ const CreateAlbumForm = (props) => {
     return (
         <Form size = 'large'>
             <Header as = 'h2' color = 'teal' textAlign = 'center'>
-                Create Album
+                {props.editing ? 'Edit Album' : 'Create Album'}
             </Header>
             <Segment>
                 <Segment>
