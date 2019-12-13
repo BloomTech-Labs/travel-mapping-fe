@@ -75,19 +75,29 @@ const Upload = ({ currentUser }) => {
             Upload Photos
           </Header>
           <Segment.Group>
+
             <Dropzone onDrop={onDrop} />
-            <AlbumChecklist 
+
+            <AlbumChecklist
               user_id={currentUser.user_id}
               selectedAlbums={selectedAlbums}
               setSelectedAlbums={setSelectedAlbums}
             />
+
             {!!Object.values(media).length && 
             <Segment>
               <Button color="teal" size="large" onClick={submit}>
                 Submit
               </Button>
             </Segment>}
+            
           </Segment.Group>
+
+          {!Object.values(media).length &&
+          <Header as="h3" color="teal" textAlign="center">
+            Add some images up top
+          </Header>}
+
           {Object.values(media).map(e => (
             <UploadForm
               key={e.id}
@@ -102,12 +112,14 @@ const Upload = ({ currentUser }) => {
               })}
             />
           ))}
-          {!!Object.values(media).length && 
+
+          {Object.values(media).length > 3 && 
           <Segment>
             <Button color="teal" size="large" onClick={submit}>
               Submit
             </Button>
           </Segment>}
+
         </Grid.Column>
       </Grid>
     </Container>
