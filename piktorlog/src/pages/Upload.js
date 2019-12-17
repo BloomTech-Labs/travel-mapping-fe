@@ -1,32 +1,71 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useReducer } from 'react';
 import { connect } from 'react-redux';
-import { useDropzone } from 'react-dropzone';
+import { v4 as uuid } from 'uuid';
 
-import { Container, Grid, Header, Segment, Form } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment, Button } from 'semantic-ui-react';
 
-import { getUserAlbumsReq } from '../store/requests/albums';
+import AlbumChecklist from '../components/organisms/UploadAlbumChecklist';
+import UploadForm from '../components/molecules/UploadForm';
+import Dropzone from '../components/molecules/Dropzone';
+import { uploadMedia } from '../store/requests/media';
+
+// I didn't think that this info needed to be in top-level state, so it's here
+// it works almost exactly like redux though, nothing magical or complicated
+const mediaReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_MEDIA':
+      return {
+        ...state,
+        ...action.payload
+      };
+    case 'REMOVE_MEDIA':
+      const { [action.payload]: removed, ...rest } = state;
+      return rest;
+    case 'EDIT_MEDIA':
+      return {
+        ...state,
+        [action.payload.id]: {
+          ...state[action.payload.id],
+          ...action.payload.changes
+        }
+      };
+    case 'CLEAR_MEDIA':
+      return {};
+    default:
+      return state;
+  }
+};
 
 const Upload = ({ currentUser }) => {
-  const [media, setMedia] = useState([]);
   const [selectedAlbums, setSelectedAlbums] = useState([]);
-  const [availableAlbums, setAvailableAlbums] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const data = await getUserAlbumsReq(currentUser.user_id);
-      console.log(data);
-      setAvailableAlbums(data);
-    })();
-  }, [currentUser]);
-
+  const [media, dispatch] = useReducer(mediaReducer, {});
   const onDrop = useCallback(acceptedFiles => {
-    setMedia(prev => [...prev, ...acceptedFiles.map(e => ({ file: e }))]);
+    dispatch({
+      type: 'ADD_MEDIA',
+      payload: acceptedFiles.reduce((obj, e) => {
+        const id = uuid();
+        obj[id] = {
+          id,
+          file: e,
+          title: '',
+          caption: '',
+          keywords: ''
+        };
+        return obj;
+      }, {})
+    });
   }, []);
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
 
-  useEffect(() => {
-    console.log(media);
-  }, [media]);
+  const submit = async () => {
+    const data = await uploadMedia(Object.values(media), selectedAlbums, currentUser.user_id);
+    console.log(data);
+
+    dispatch({ type: 'CLEAR_MEDIA' });
+    setSelectedAlbums([]);
+
+    // maybe add a confirmation/error message for the user, or redirect to main page from here
+  };
 
   return (
     <Container>
@@ -36,25 +75,39 @@ const Upload = ({ currentUser }) => {
             Upload Photos
           </Header>
           <Segment.Group>
+            <Dropzone onDrop={onDrop} />
+            <AlbumChecklist 
+              user_id={currentUser.user_id}
+              selectedAlbums={selectedAlbums}
+              setSelectedAlbums={setSelectedAlbums}
+            />
+            {!!Object.values(media).length && 
             <Segment>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                {isDragActive
-                    ? <p>Drop the files here ...</p>
-                    : <p>Drag 'n' drop some files here, or click to select files</p>}
-              </div>
-            </Segment>
-            <Segment>
-              <Form>
-                <Header as='h3' color='teal' textAlign='center'>
-                  Your Albums
-                </Header>
-                {availableAlbums.map(e => (
-                  <Form.Checkbox label={e.title} key={e.album_id} />
-                ))}
-              </Form>
-            </Segment>
+              <Button color="teal" size="large" onClick={submit}>
+                Submit
+              </Button>
+            </Segment>}
           </Segment.Group>
+          {Object.values(media).map(e => (
+            <UploadForm
+              key={e.id}
+              media={e}
+              setMedia={(id, changes) => dispatch({
+                type: 'EDIT_MEDIA',
+                payload: { id, changes }}
+              )}
+              removeMedia={id => dispatch({
+                type: 'REMOVE_MEDIA',
+                payload: id
+              })}
+            />
+          ))}
+          {!!Object.values(media).length && 
+          <Segment>
+            <Button color="teal" size="large" onClick={submit}>
+              Submit
+            </Button>
+          </Segment>}
         </Grid.Column>
       </Grid>
     </Container>
