@@ -58,7 +58,7 @@ export const editAlbum = (album_id, changes) => async dispatch => {
         const newlyUpdatedAlbumData = await editAlbumReq(album_id);
         dispatch({type:EDIT_ALBUM_SUCCESS, payload: newlyUpdatedAlbumData});
     } catch(err) {
-        dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
+        dispatch({ type: EDIT_ALBUM_FAILURE, payload: err });
         console.error(err);
     }
 }
@@ -70,7 +70,7 @@ export const deleteAlbum = (album_id) => async dispatch => {
         const deletedAlbumId = await deleteAlbumReq(album_id);
         dispatch({type:DELETE_ALBUM_SUCCESS, payload: deletedAlbumId});
     } catch(err) {
-        dispatch({ type: GET_ALBUMS_FAILURE, payload: err });
+        dispatch({ type: DELETE_ALBUM_FAILURE, payload: err });
         console.error(err);
     }
 }

@@ -1,7 +1,25 @@
-import React, { useState } from 'react';
-import { Form, Segment, Dropdown, Button, Header, Grid, Container, GridColumn, Icon, Divider, List } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Form, Segment, Button, Header, Grid, GridColumn, Icon } from 'semantic-ui-react';
+
+import MetaList from './MetaList';
 
 const CreateAlbumForm = (props) => {
+
+    useEffect(() => {
+        // populate form values for editing if component receives an album prop
+        // should not have any effect when used for album creation
+        if (props.album) {
+            setTitle(props.album.title);
+            setDescription(props.album.description);
+            setAccess(props.album.access);
+            // the incoming server data, and the form structure meta completely differently
+            // I'd like to resolve this later, but this bandaid works right now.
+            setMetaData(Object.entries(props.album.meta).map(e => ({
+                name: e[0],
+                value: e[1]
+            })));
+        }
+    }, [props]);
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -12,20 +30,24 @@ const CreateAlbumForm = (props) => {
     const [metadata, setMetaData] = useState([]);
 
     const addMeta = (metaFieldName, metaFieldValue) => {
-        metadata.push({name: metaFieldName, value: metaFieldValue});
+        setMetaData(prev => [...prev, { name: metaFieldName, value: metaFieldValue }]);
         setMetaFieldName('');
         setMetaFieldValue('');
         console.log('metadata: ', metadata)
-    }
+    };
     
     const createAlbum = () => {
         props.createAlbum(props.user_id, title, description, access, metadata);
     };
 
+    const removeMeta = (name) => {
+        setMetaData(prev => prev.filter(e => e.name !== name));
+    };
+
     return (
         <Form size = 'large'>
             <Header as = 'h2' color = 'teal' textAlign = 'center'>
-                Create Album
+                {props.editing ? 'Edit Album' : 'Create Album'}
             </Header>
             <Segment>
                 <Segment>
@@ -75,34 +97,21 @@ const CreateAlbumForm = (props) => {
                                 onChange = {e => setMetaFieldValue(e.target.value)}
                             />
                         </GridColumn>
-                        <GridColumn>
-                            <Button icon onClick = {e => addMeta(metaFieldName, metaFieldValue)}>
-                                <Icon name = 'plus circle' />
-                            </Button>
+                        <GridColumn style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Icon 
+                                name="plus circle"
+                                color="teal"
+                                size="big"
+                                onClick={e => addMeta(metaFieldName, metaFieldValue)}
+                            />
                         </GridColumn>
                     </Grid.Row>
                     <Grid.Row colums = {1}>
                         <GridColumn width = {16}>
-                            <List>
-                            {metadata.map((metadataObject, i) => {
-                                return (
-                                <List.Item key = {i}>
-                                    <List.Content>
-                                        <Grid>
-                                        <Grid.Row columns = {2}>
-                                            <GridColumn>
-                                                {metadataObject.name}
-                                            </GridColumn>
-                                            <GridColumn>
-                                                {metadataObject.value}
-                                            </GridColumn>
-                                        </Grid.Row>
-                                        </Grid>
-                                    </List.Content>
-                                </List.Item>
-                                )
-                            })}
-                            </List>
+                            <MetaList 
+                                meta={metadata}
+                                remove={removeMeta}
+                            />
                         </GridColumn>
                     </Grid.Row>
 
@@ -112,7 +121,7 @@ const CreateAlbumForm = (props) => {
                 
                 
                 <Button color = 'teal' onClick  = {createAlbum}>
-                    Create
+                    {props.editing ? 'Submit Edit' : 'Create'}
                 </Button>
                 <Button>
                     Cancel
