@@ -72,9 +72,10 @@ function App({ checkLogin, logout, getUserAlbums }) {
             path='/albums/:id/edit'
             component={EditAlbum}
           />
-          <ProtectedRoute path='/albums/:id'>
-            <AlbumOverview />
-          </ProtectedRoute>
+          <ProtectedRoute 
+            path='/albums/:id'
+            component = {AlbumOverview} 
+          />
           <ProtectedRoute path="/upload">
             <Upload />
           </ProtectedRoute>

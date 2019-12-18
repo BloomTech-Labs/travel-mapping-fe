@@ -1,16 +1,19 @@
 import React from 'react';
 import {Card, Image} from 'semantic-ui-react';
 
+// const MediaCard = ({mediaItem}) => {
 const MediaCard = ({mediaItem}) => {
+    console.log('mediaItem: ', mediaItem);
+    console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
     return (
         <Card>
             <Image src = {mediaItem.media_url} />
             <Card.Content>
-                <div>
-                    {Object.entries(mediaItem).map(keyValPair => (
-                        <h3> {keyValPair[0]}: {keyValPair[1]} </h3>
+                <ul>
+                    {Object.entries(mediaItem).map((keyValPair, index) => (
+                        <li key = {index}> {String(keyValPair[0])}: {String(keyValPair[1])} </li>
                     ))}
-                </div>
+                </ul>
             </Card.Content>
             
         </Card>
