@@ -1,15 +1,18 @@
 import React from 'react';
 import {Button, Card, Image} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 const AlbumCard = (props) => (
     <Card>
         <Card.Content>
-            <Image src ={props.src}/>
-            <Card.Header>{props.title}</Card.Header>
-            <Card.Descripton>{props.caption.slice(150)+'...'}</Card.Descripton>
+            <Image src = {props.albumData.cover_url}/>
+            <Card.Header>{props.albumData.title}</Card.Header>
+            <Card.Content>
+                <p>{props.albumData.description+'...'}</p>
+            </Card.Content>
         </Card.Content>
         <Card.Content extra>
-            <Button>Details</Button>
+            <Link to={`/albums/${props.albumData.album_id}`}><Button>View Album</Button></Link>
         </Card.Content>
     </Card>
 )

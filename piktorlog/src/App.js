@@ -12,12 +12,15 @@ import AlbumOverview from './pages/AlbumOverview.js';
 import LoginPage from './pages/LoginPage';
 import Upload from './pages/Upload';
 import CreateAlbum from './pages/CreateAlbum';
+import EditAlbum from './pages/EditAlbum';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
 import checkLogin from './store/actions/checkLogin';
 import logout from './store/actions/logout';
 import RequestDebug from './store/requests/RequestDebug';
+
+import {getUserAlbums} from './store/actions/albums';
 
 const AppWrapper = styled.div`
   min-height: 100vh;
@@ -32,12 +35,13 @@ const PageContent = styled.main`
   max-width: 1200px;
 `;
 
-function App({ checkLogin, logout }) {
+function App({ checkLogin, logout, getUserAlbums }) {
   const [actionToggle, setActionToggle] = useState(false);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
   const [checkingLogin, setCheckingLogin] = useState(true);
-
+ 
+  //Where do I make the get request? How do I make the get request?
   useEffect(() => {
     checkLogin();
     setCheckingLogin(false);
@@ -64,6 +68,10 @@ function App({ checkLogin, logout }) {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <ProtectedRoute
+            path='/albums/:id/edit'
+            component={EditAlbum}
+          />
           <ProtectedRoute path='/albums/:id'>
             <AlbumOverview />
           </ProtectedRoute>
@@ -88,4 +96,6 @@ function App({ checkLogin, logout }) {
   );
 };
 
-export default connect(null, { checkLogin, logout })(App);
+
+//Missing map state to props bit
+export default connect(null, { checkLogin, logout, getUserAlbums })(App);

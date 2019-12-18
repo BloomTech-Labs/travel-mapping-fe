@@ -7,10 +7,10 @@ const RequestDebug = () => {
   return (
     <div>
       <div>
-        <button onClick={() => createAlbumReq(2, 'title2', 'desc').then(res => console.log(res))}>
+        <button onClick={() => createAlbumReq(4, 'Test Album', 'This is a description. A Very descriptive description').then(res => console.log(res))}>
           createAlbum
         </button>
-        <button onClick={() => editAlbumReq(3, { title: 'titleChange' }).then(res => console.log(res))}>
+        <button onClick={() => editAlbumReq(1, { title: 'Test Album with Cooler Title' }).then(res => console.log(res))}>
           editAlbum
         </button>
         <button onClick={() => getUserAlbumsReq(2).then(res => console.log(res))}>
