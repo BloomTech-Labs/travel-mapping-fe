@@ -4,8 +4,8 @@ import MediaCard from '../molecules/MediaCard'
 const MediaCardList = ({albumMedia}) => {
     return (
         <>
-        {albumMedia.map((media, index) => (
-            <MediaCard media = {media} index = {index} />
+        {albumMedia.map((mediaItem, index) => (
+            <MediaCard mediaItem = {mediaItem} index = {index} />
         ))}
         </>
     );

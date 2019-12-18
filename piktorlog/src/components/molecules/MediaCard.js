@@ -1,13 +1,13 @@
 import React from 'react';
 import {Card, Image} from 'semantic-ui-react';
 
-const MediaCard = ({media}) => {
+const MediaCard = ({mediaItem}) => {
     return (
         <Card>
-            <Image src = {media.media_url} />
+            <Image src = {mediaItem.media_url} />
             <Card.Content>
                 <div>
-                    {Object.entries(media).map(keyValPair => (
+                    {Object.entries(mediaItem).map(keyValPair => (
                         <h3> {keyValPair[0]}: {keyValPair[1]} </h3>
                     ))}
                 </div>
