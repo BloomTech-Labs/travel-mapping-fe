@@ -12,19 +12,19 @@ const AlbumsOverview = (props) => {
     /*
     Need to develop code for handling album changes or prmpting changes.
     Question of course, is will this hook live here or would it go better somewhere else?
+*/
+    // const [albumData, getAlbumData] = useState([]);
 
-    const [albumData, getAlbumData] = useState([]);
+    // useEffect(() => {
+    //   function handleAlbumStatusChange(status){
+    //     getAlbumData(status.albumData);
+    //   }
 
-    useEffect(() => {
-      function handleAlbumStatusChange(status){
-        getAlbumData(status.albumData);
-      }
+    //   'https://piktorlog.herokuapp.com/users/:user_id/albums'.getAlbumData(albumData.handleAlbumStatusChange)
 
-      someAPI.getAlbumData(props.albumData handleAlbumStatusChange)
+    // });
 
-    });
-
-    */
+  
   
     const handleNavItemClick = (e, { name }) => setActiveNavItem(name);
     const handleButtonClick = () => setActionToggle(!actionToggle);

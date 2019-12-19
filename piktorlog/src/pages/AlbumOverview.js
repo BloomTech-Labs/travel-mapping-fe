@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Divider } from 'semantic-ui-react';
+ import { Button, Card, Divider } from 'semantic-ui-react';
 import SearchBar from '../components/molecules/SearchBar'
 
 import ImageCardList from '../components/organisms/ImageCardList';
@@ -51,3 +51,5 @@ const AlbumOverview = (/* { album } */) => {
 };
 
 export default AlbumOverview;
+
+
