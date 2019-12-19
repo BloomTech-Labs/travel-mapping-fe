@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Card, Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-// import MediaCardList from '../components/organisms/MediaCardList';
 import {getAlbumMediaReq} from '../../store/requests/media';
 
 const AlbumCard = (props) => {

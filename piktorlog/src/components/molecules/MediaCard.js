@@ -1,10 +1,10 @@
 import React from 'react';
 import {Card, Image} from 'semantic-ui-react';
 
-// const MediaCard = ({mediaItem}) => {
+
 const MediaCard = ({mediaItem}) => {
-    console.log('mediaItem: ', mediaItem);
-    console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
+    // console.log('mediaItem: ', mediaItem);
+    // console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
     return (
         <Card>
             <Image src = {mediaItem.media_url} />
