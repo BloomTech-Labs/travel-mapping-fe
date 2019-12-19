@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Button } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 
 import { createAlbum } from '../store/actions/albums.js';
 import CreateAlbumForm from '../components/molecules/CreateAlbumForm';

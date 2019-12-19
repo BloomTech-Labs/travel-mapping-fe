@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Segment, Image, Grid, Form, Button } from 'semantic-ui-react';
+import UploadMeta from './UploadMeta';
 
 const UploadForm = ({ media, setMedia, removeMedia }) => {
 
@@ -11,11 +12,20 @@ const UploadForm = ({ media, setMedia, removeMedia }) => {
     setMedia(media.id, { [name]: value });
   };
 
+  const handleAddMeta = (name, value) => {
+    setMedia(media.id, { meta: [...media.meta, { name, value }] });
+  };
+
+  const handleRemoveMeta = (delName) => {
+    setMedia(media.id, { meta: media.meta.filter(e => e.name !== delName) });
+  }
+
   const clear = () => {
     setMedia(media.id, {
       title: '',
       caption: '',
-      keywords: ''
+      keywords: '',
+      meta: []
     });
   };
 
@@ -51,6 +61,11 @@ const UploadForm = ({ media, setMedia, removeMedia }) => {
               placeholder="keywords (comma-separated, e.g. one, two, three)"
               value={media.keywords}
               onChange={handleChange}
+            />
+            <UploadMeta 
+              meta={media.meta}
+              addMeta={handleAddMeta}
+              removeMeta={handleRemoveMeta}
             />
           </Form>
           <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>
