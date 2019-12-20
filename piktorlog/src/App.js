@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -92,7 +92,7 @@ function App({ checkLogin, logout, getUserAlbums }) {
         </button>
         <RequestDebug />
       </div>
-      <ActionButton active={actionToggle} handleClick={handleButtonClick} />
+      <Link to={`/createAlbum`}><ActionButton active={actionToggle} handleClick={handleButtonClick} /></Link>
     </AppWrapper>
   );
 };
