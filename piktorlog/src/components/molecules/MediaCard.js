@@ -1,18 +1,44 @@
 import React from 'react';
-import {Card, Image} from 'semantic-ui-react';
+import {Button, Card, Image, Dropdown, DropdownItem, Modal} from 'semantic-ui-react';
 
+
+// clicking on media info opens the modal where media info can be seen, as well as edit and delete buttons
+// clicking on edit button takes you to edit media page
 
 const MediaCard = ({mediaItem}) => {
-    // console.log('mediaItem: ', mediaItem);
-    // console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
+    console.log('mediaItem: ', mediaItem);
+    console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
     return (
         <Card>
+            <Dropdown
+                icon = 'ellipsis vertical'
+                floating
+            >
+                <Dropdown.Menu>
+                    <Dropdown.Item text = 'info' />
+                    <Dropdown.Item text = 'edit' /> 
+                    <Dropdown.Item text = 'delete' />
+                </Dropdown.Menu>
+            </Dropdown>
+
+            <Modal trigger = {<Button></Button>}>
+                <Modal.Content image>
+                    <Image wrapped size = 'medium' src = {mediaItem.media_url} /> 
+                </Modal.Content>
+            </Modal>
+
             <Image src = {mediaItem.media_url} />
             <Card.Content>
-                <ul>
+                {/* <ul>
                     {Object.entries(mediaItem).map((keyValPair, index) => (
                         <li key = {index}> {String(keyValPair[0])}: {String(keyValPair[1])} </li>
                     ))}
+                </ul> */}
+                <ul>
+                    <li> Title: {mediaItem.title}  </li>
+                    <li> Caption: {mediaItem.caption}</li>
+                    <li> Keywords: {mediaItem.keywords}</li>
+                    <li> Created At: {mediaItem.created_at}</li>
                 </ul>
             </Card.Content>
             
