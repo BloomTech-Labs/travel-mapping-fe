@@ -35,17 +35,20 @@ const PageContent = styled.main`
   max-width: 1200px;
 `;
 
-function App({ checkLogin, logout, getUserAlbums }) {
+function App({ checkLogin, logout, showButton }) {
   const [actionToggle, setActionToggle] = useState(false);
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
   const [checkingLogin, setCheckingLogin] = useState(true);
- 
-  //Where do I make the get request? How do I make the get request?
+  
   useEffect(() => {
     checkLogin();
     setCheckingLogin(false);
+    
+  
   }, [checkLogin]);
+
+
 
   if (checkingLogin) {
     // probably replace this with a spinner or some nicer looking loading indicator
@@ -92,11 +95,21 @@ function App({ checkLogin, logout, getUserAlbums }) {
         </button>
         <RequestDebug />
       </div>
-      <Link to={`/createAlbum`}><ActionButton active={actionToggle} handleClick={handleButtonClick} /></Link>
+      {
+        showButton && (<Link to={`/createAlbum`}>
+        <ActionButton active={actionToggle} handleClick={handleButtonClick} disabled ={showButton ? true:false} />
+      </Link>)
+      }
+      
+  
     </AppWrapper>
   );
 };
 
-
+const mapStateToProps = ({ currentUser }) => {
+  return {
+    showButton: !!currentUser
+  }
+};
 //Missing map state to props bit
-export default connect(null, { checkLogin, logout, getUserAlbums })(App);
+export default connect(mapStateToProps, { checkLogin, logout, getUserAlbums})(App);
