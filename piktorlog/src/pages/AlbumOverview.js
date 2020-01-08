@@ -72,7 +72,7 @@ const AlbumOverview = (props) => {
 
       let filteredPhoto = albumMedia.filter(
         photos => {
-         if ( photos.title.includes(inputState)) {
+         if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
           console.log('filteredphoto from Album Overview', photos);
           //title.includes(props.searchInput)
          //album.title.indexOf(inputState[0]) !== -1;

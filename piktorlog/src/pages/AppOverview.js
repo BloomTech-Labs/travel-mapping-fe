@@ -35,7 +35,7 @@ const AppOverview = (props) => {
       const data = await getUserAlbumsReq(props.currentUser.user_id)
       let filteredAlbums = data.filter(
         album => {
-         if ( album.title.includes(inputState)) {
+         if ( album.title.includes(inputState) || album.description.includes(inputState)) {
           console.log('Album app overview', album);
           //title.includes(props.searchInput)
          //album.title.indexOf(inputState[0]) !== -1;
@@ -105,6 +105,7 @@ const AppOverview = (props) => {
                 <AlbumCard key={index} albumData={albumData} />
             ))}
       </Card.Group>
+      
     </React.Fragment>
   );
 };
