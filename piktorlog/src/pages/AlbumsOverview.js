@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/organisms/NavBar';
 import ActionButton from '../components/organisms/ActionButton';
 import AlbumsList from '../components/organisms/AlbumsList';
-
+import SearchBar from '../components/molecules/SearchBar'
 const AlbumsOverview = (props) => {
     const [activeNavItem, setActiveNavItem] = useState('');
     const [actionToggle, setActionToggle] = useState(false);
@@ -31,6 +31,8 @@ const AlbumsOverview = (props) => {
     
     return (
         <React.Fragment>
+
+          <SearchBar/>
           <NavBar
             header='Piktorlog'
             activeItem={activeNavItem}

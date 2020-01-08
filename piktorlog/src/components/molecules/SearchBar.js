@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
               searchInput: ''
 
             }
-            // this.onSearchChange = props.onSearchChange;
+            //this.onSearchChange = props.onSearchChange;
 
             this.changeHandler = (e)=> {
             
@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
               console.log("state in searchbar", this.state)
             }
            
-    }
+     }
 
 
 
@@ -38,7 +38,7 @@ render(){
                                             placeholder="searh for Album"
                                             name="searchInput"
                                             className="form-control"
-                                            onChange={this.changeHandler}
+                                            onChange={this.props.changeHandler}
 
                                             value ={this.state.searchInput}
                                             />
@@ -59,7 +59,8 @@ render(){
 
 const mapStateToProps = state => {
   return {
-    state:state
+    state: state,
+    //searchInput: state.searchInput
   }
 }
 

@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
- import { Button, Card, Divider } from 'semantic-ui-react';
-import SearchBar from '../components/molecules/SearchBar'
-=======
 import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
-import { Button, Card, Divider } from 'semantic-ui-react';
->>>>>>> 99652fa3022281d279fb9c7a8b7666c50b1bc4a7
+import { Button, Card, Divider, Search } from 'semantic-ui-react';
 
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
@@ -35,6 +29,14 @@ const AlbumOverview = (props) => {
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
+  const   [inputState, setInputState] = useState('');
+  
+
+  const filteredPhotosHandler = filteredPhoto => {
+    console.log('filteredPhoto', filteredPhoto)
+    setInputState(filteredPhoto)
+  }
+
 
   useEffect(() => {
     (async () => {
@@ -46,12 +48,19 @@ const AlbumOverview = (props) => {
           setAlbumData(data[i]);
         }
       }
+
+   
+
     })();
   }, [props.state.currentUser.user_id]);
 
-  useEffect(() => {
-    // console.log('albumData: ', albumData)
-  }, [albumData]);
+  // useEffect(() => {
+  //   // console.log('albumData: ', albumData)
+
+   
+      
+
+  // }, [albumData]);
 
   useEffect(() => {
     (async () => {
@@ -60,28 +69,40 @@ const AlbumOverview = (props) => {
       // console.log('AlbumMedia Data: ', data)
       setAlbumMedia(data.data);
       
-    })();
-  }, [albumData]);
 
-  useEffect(() => {
-    // console.log('albumMedia: ', albumMedia)
-  }, [albumMedia]);
+      let filteredPhoto = albumMedia.filter(
+        photos => {
+         if ( photos.title.includes(inputState)) {
+          console.log('filteredphoto from Album Overview', photos);
+          //title.includes(props.searchInput)
+         //album.title.indexOf(inputState[0]) !== -1;
+         return photos
+         }
+             
+        })
+  
+      
+
+    })();
+  }, [albumData, inputState]);
+
+  // useEffect(() => {
+  //   // console.log('albumMedia: ', albumMedia)
+  // }, [albumMedia]);
 
 
 
   return (
     <React.Fragment>
-
-<div>
-
-<SearchBar/>
-</div>
-
-
+      <Search 
+      
+      isLoading = 'false' 
+      results = {albumMedia}       
+      onSearchChange = {(event) => { setInputState( event.target.value)}}
+      ></Search>
       <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>
-           
             <Button floated='right' icon='ellipsis vertical' />
             <Card.Header>{albumData.title}</Card.Header>
             <Card.Meta>Date Created: {albumData.created_at}</Card.Meta>
@@ -104,11 +125,6 @@ const AlbumOverview = (props) => {
   );
 };
 
-<<<<<<< HEAD
-export default AlbumOverview;
-
-
-=======
 
 const mapStateToProps = state => {
   return {
@@ -117,4 +133,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {})(AlbumOverview);
->>>>>>> 99652fa3022281d279fb9c7a8b7666c50b1bc4a7
