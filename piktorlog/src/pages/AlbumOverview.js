@@ -32,6 +32,8 @@ const AlbumOverview = (props) => {
 
   useEffect(() => {
     (async () => {
+      // instead of requesting all user albums from backend, use endpoint 
+      // to get single album here
       const data = await getUserAlbumsReq(props.state.currentUser.user_id);
       console.log('UAC', data);
       setAvailableAlbums(data);

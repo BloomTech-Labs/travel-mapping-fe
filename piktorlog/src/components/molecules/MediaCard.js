@@ -1,47 +1,43 @@
 import React from 'react';
 import {Button, Card, Image, Dropdown, DropdownItem, Modal} from 'semantic-ui-react';
+import { Redirect, Link } from 'react-router-dom';
+
+import styled from 'styled-components';
 
 
 // clicking on media info opens the modal where media info can be seen, as well as edit and delete buttons
 // clicking on edit button takes you to edit media page
 
+const StyledCardContent = styled(Card.Content)({
+    border: '1px solid black',
+})
+
 const MediaCard = ({mediaItem}) => {
     console.log('mediaItem: ', mediaItem);
     console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
+
     return (
         <Card>
-            <Dropdown
-                icon = 'ellipsis vertical'
-                floating
-            >
-                <Dropdown.Menu>
-                    <Dropdown.Item text = 'info' />
-                    <Dropdown.Item text = 'edit' /> 
-                    <Dropdown.Item text = 'delete' />
-                </Dropdown.Menu>
-            </Dropdown>
-
-            <Modal trigger = {<Button></Button>}>
-                <Modal.Content image>
-                    <Image wrapped size = 'medium' src = {mediaItem.media_url} /> 
-                </Modal.Content>
-            </Modal>
-
-            <Image src = {mediaItem.media_url} />
             <Card.Content>
-                {/* <ul>
-                    {Object.entries(mediaItem).map((keyValPair, index) => (
-                        <li key = {index}> {String(keyValPair[0])}: {String(keyValPair[1])} </li>
-                    ))}
-                </ul> */}
-                <ul>
-                    <li> Title: {mediaItem.title}  </li>
-                    <li> Caption: {mediaItem.caption}</li>
-                    <li> Keywords: {mediaItem.keywords}</li>
-                    <li> Created At: {mediaItem.created_at}</li>
-                </ul>
+                
+                    <StyledCardContent>
+                        {/* Dropdown Menu */}
+                        <Dropdown
+                            button
+                            icon = 'ellipsis vertical' 
+                        >
+                            <Dropdown.Menu>
+                                <Dropdown.Item text = 'info' />
+                                <Dropdown.Item text = 'edit' /> 
+                                <Dropdown.Item text = 'delete' />
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        {/* Image */}
+                        <Image src = {mediaItem.media_url} />
+                    </StyledCardContent>
+                                    
             </Card.Content>
-            
         </Card>
     )
 }
@@ -49,6 +45,36 @@ const MediaCard = ({mediaItem}) => {
 export default MediaCard;
 
 
+
+
+// {/* Dropdown Menu */}
+// <Card.Content>
+// {/* <ul>
+//     {Object.entries(mediaItem).map((keyValPair, index) => (
+//         <li key = {index}> {String(keyValPair[0])}: {String(keyValPair[1])} </li>
+//     ))}
+// </ul> */}
+// <ul>
+//     <li> Title: {mediaItem.title}  </li>
+//     <li> Caption: {mediaItem.caption}</li>
+//     <li> Keywords: {mediaItem.keywords}</li>
+//     <li> Created At: {mediaItem.created_at}</li>
+// </ul>
+// </Card.Content>
+
+
+
+
+
+            
+
+
+            
+// {/* <Modal trigger = {<Button></Button>}>
+//     <Modal.Content image>
+//         <Image wrapped size = 'medium' src = {mediaItem.media_url} /> 
+//     </Modal.Content>
+// </Modal> */}
 
 
 
