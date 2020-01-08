@@ -81,14 +81,14 @@ const AlbumOverview = (props) => {
              
         })
   
-      
+      setAlbumMedia(filteredPhoto)
 
     })();
-  }, [albumData, inputState]);
+  }, [albumData, inputState,albumMedia]);
 
-  // useEffect(() => {
-  //   // console.log('albumMedia: ', albumMedia)
-  // }, [albumMedia]);
+  useEffect(() => {
+    // console.log('albumMedia: ', albumMedia)
+  }, [albumMedia]);
 
 
 
