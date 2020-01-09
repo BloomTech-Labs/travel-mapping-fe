@@ -31,9 +31,24 @@ const MediaCard = ({mediaItem}) => {
     return (
         <Card>
             <Card.Content>
-                
-                    <StyledCardContent>
-                        {/* Dropdown Menu */}
+                <Modal trigger = {
+                <StyledCardContent>
+                    {/* Dropdown Menu */}
+                    <StyledDropdown
+                        button
+                        icon = 'ellipsis vertical' 
+                    >
+                        <Dropdown.Menu>
+                            <Dropdown.Item text = 'edit' /> 
+                            <Dropdown.Item text = 'delete' />
+                        </Dropdown.Menu>
+                    </StyledDropdown>
+
+                    {/* Image */}
+                    <Image src = {mediaItem.media_url} />
+                </StyledCardContent>}>
+
+                    <Modal.Content image>
                         <StyledDropdown
                             button
                             icon = 'ellipsis vertical' 
@@ -43,11 +58,9 @@ const MediaCard = ({mediaItem}) => {
                                 <Dropdown.Item text = 'delete' />
                             </Dropdown.Menu>
                         </StyledDropdown>
-
-                        {/* Image */}
-                        <Image src = {mediaItem.media_url} />
-                    </StyledCardContent>
-                                    
+                        <Image wrapped size = 'fullscreen' src = {mediaItem.media_url} /> 
+                    </Modal.Content>
+                </Modal>              
             </Card.Content>
         </Card>
     )
@@ -81,11 +94,7 @@ export default MediaCard;
 
 
             
-// {/* <Modal trigger = {<Button></Button>}>
-//     <Modal.Content image>
-//         <Image wrapped size = 'medium' src = {mediaItem.media_url} /> 
-//     </Modal.Content>
-// </Modal> */}
+
 
 
 
