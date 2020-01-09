@@ -10,7 +10,19 @@ import styled from 'styled-components';
 
 const StyledCardContent = styled(Card.Content)({
     border: '1px solid black',
-})
+    position:'relative',
+    'z-index':'0!important',
+});
+
+const StyledDropdown = styled(Dropdown)({
+    position: 'absolute!important',
+    top:'0',
+    right:'0',
+    'z-index':'1!important',
+    background:'rgba(224,225,226,.4)!important'
+});
+
+
 
 const MediaCard = ({mediaItem}) => {
     console.log('mediaItem: ', mediaItem);
@@ -22,16 +34,15 @@ const MediaCard = ({mediaItem}) => {
                 
                     <StyledCardContent>
                         {/* Dropdown Menu */}
-                        <Dropdown
+                        <StyledDropdown
                             button
                             icon = 'ellipsis vertical' 
                         >
                             <Dropdown.Menu>
-                                <Dropdown.Item text = 'info' />
                                 <Dropdown.Item text = 'edit' /> 
                                 <Dropdown.Item text = 'delete' />
                             </Dropdown.Menu>
-                        </Dropdown>
+                        </StyledDropdown>
 
                         {/* Image */}
                         <Image src = {mediaItem.media_url} />
