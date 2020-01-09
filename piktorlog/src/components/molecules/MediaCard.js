@@ -5,9 +5,6 @@ import { Redirect, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-// clicking on media info opens the modal where media info can be seen, as well as edit and delete buttons
-// clicking on edit button takes you to edit media page
-
 const StyledCardContent = styled(Card.Content)({
     border: '1px solid black',
     position:'relative',
