@@ -28,23 +28,10 @@ const StyledDropdownOpaque = styled(Dropdown)({
 });
 
 const StyledModalContent = styled(Modal.Content)({
-    // border: '1px solid red',
     position:'relative',
-    'z-index':'0!important',
+    'z-index':'0',
     background:'rgba(38,38,38,0.15)!important',
-    // background:'rgba(0,0,0,0.1)!important'
 });
-
-const StyledPopup = styled(Popup)({
-    // position: 'absolute!important',
-    // top:'0',
-    // left:'0',
-    // 'z-index':'2!important',
-    // border:'2px solid red!important'
-    // background:'rgba(224,225,226,.4)!important'
-
-});
-
 
 const MediaCard = ({mediaItem}) => {
     console.log('mediaItem: ', mediaItem);
@@ -77,6 +64,7 @@ const MediaCard = ({mediaItem}) => {
 
                     <StyledModalContent image>
                         <div style={{position:'relative', margin:'auto',}}>
+                            {/* Dropdown Menu */}
                             <StyledDropdownOpaque
                                 button
                                 icon = 'ellipsis vertical' 
@@ -87,17 +75,30 @@ const MediaCard = ({mediaItem}) => {
                                 </Dropdown.Menu>
                             </StyledDropdownOpaque>
                             
+                            {/* Image */}
                             <Image wrapped size = 'fullscreen' src = {mediaItem.media_url} />
-                            <StyledPopup 
+
+                            {/* Popup button */}
+                            <Popup 
                                 position='bottom left'
                                 trigger={
                                     <Button icon='info circle' style={{position:'absolute', left:0, top:0, background:'rgba(224,225,226,.6)'}}/>
                                 }
                             >
                                 <Popup.Content>
-                                    Media Info:  
+                                    <Card>
+                                        <Card.Content>
+                                            <Card.Header>{mediaItem.title}</Card.Header>
+                                            <Card.Description>{mediaItem.caption}</Card.Description>
+                                            <Card.Meta>Created On: {mediaItem.created_at}</Card.Meta>
+                                            <Card.Meta>Last Updated: {mediaItem.updated_at}</Card.Meta>
+                                            <Card.Meta>Keywords: {mediaItem.keywords.map((keyword,index) => (
+                                                    <span key = {index}>{keyword},</span>                                            
+                                            ))}</Card.Meta>
+                                        </Card.Content>
+                                    </Card>
                                 </Popup.Content>
-                            </StyledPopup>
+                            </Popup>
                         </div>                       
                     </StyledModalContent>
 
@@ -108,78 +109,3 @@ const MediaCard = ({mediaItem}) => {
 }
 
 export default MediaCard;
-
-
-
-
-// {/* Dropdown Menu */}
-// <Card.Content>
-// {/* <ul>
-//     {Object.entries(mediaItem).map((keyValPair, index) => (
-//         <li key = {index}> {String(keyValPair[0])}: {String(keyValPair[1])} </li>
-//     ))}
-// </ul> */}
-// <ul>
-//     <li> Title: {mediaItem.title}  </li>
-//     <li> Caption: {mediaItem.caption}</li>
-//     <li> Keywords: {mediaItem.keywords}</li>
-//     <li> Created At: {mediaItem.created_at}</li>
-// </ul>
-// </Card.Content>
-
-
-
-
-
-            
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Eric's code for same component
-
-// import React from 'react';
-// import styled from 'styled-components';
-// import { Button, Card, Image } from 'semantic-ui-react';
-
-// const ImageCard = styled(Card)``;
-
-// const _ImageCard = ({ image }) => {
-//   return (
-//     <ImageCard>
-//       <Image src={image.media_url} wrapped ui={false} />
-//       <Card.Content>
-//         <Button floated='right' icon='ellipsis vertical' />
-//         <Card.Header>{image.title}</Card.Header>
-//         <Card.Description>{image.caption}</Card.Description>
-//         <Card.Meta>Created On: {image.created_at}</Card.Meta>
-//         <Card.Meta>Last Updated: {image.updated_at}</Card.Meta>
-//       </Card.Content>
-//     </ImageCard>
-//   );
-// };
-
-// export default _ImageCard;
