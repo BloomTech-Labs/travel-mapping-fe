@@ -93,7 +93,7 @@ function App({ checkLogin, logout, showButton }) {
             <CreateAlbum />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path = "/collaborators">
+          <ProtectedRoute path = "/collaborators">
             <CollaboratorsOverview />
           </ProtectedRoute>
         
