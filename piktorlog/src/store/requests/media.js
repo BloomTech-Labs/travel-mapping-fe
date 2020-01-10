@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { address, createAuthHeader } from '../utils';
+import { address, createAuthHeader, errors } from '../utils';
 
 // NOTE: Need backend endpoints set up for editing an album's media item, and deleting an album's media item. 
 
@@ -63,15 +63,26 @@ export const uploadMedia = async (media, albums, user_id) => {
   return data;
 };
 
-export const getAlbumMediaReq = async(album_id) => {
-  const header = createAuthHeader();
-  if (!header) return false;
+export const getAlbumMediaReq = async (album_id) => {
 
-  // request returns an array of objects; each object containing an individual media item's data 
-  const data = await axios.get(
-    `${address}/albums/${album_id}/media`, 
-    header
-  );
-  return data
+  const header = createAuthHeader();
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+
+    try {
+
+      // request returns an array of objects; each object containing an individual media item's data 
+      const { data } = await axios.get(
+        `${address}/albums/${album_id}/media`, 
+        header
+      );
+      return data;
+
+    } catch(err) {
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+
+  }
+
 }
 

@@ -15,14 +15,21 @@ export const createAlbumReq = async (user_id, title, description, access = 'publ
 };
 
 export const getUserAlbumsReq = async (user_id) => {
-  const header = createAuthHeader();
-  if (!header) return false;
 
-  const { data } = await axios.get(
-    `${address}/users/${user_id}/albums`,
-    header
-  );
-  return data;
+  const header = createAuthHeader();
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+
+    try {
+
+      const { data } = await axios.get(`${address}/users/${user_id}/albums`, header);
+      return data;
+
+    } catch(err) {
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+
+  }
 };
 
 // changes is an object with the optional String properties: 'title', 'description', and 'access'

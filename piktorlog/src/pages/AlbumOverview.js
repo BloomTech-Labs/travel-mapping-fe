@@ -1,17 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-// import {withRouter} from 'react-router-dom';
-import { useGetAlbumReq } from '../store/requests/hooks';
 
+import { useGetAlbum, useGetAlbumMedia } from '../store/requests/hooks';
 import { Button, Card, Divider, Search } from 'semantic-ui-react';
-
 import MediaCard from '../components/molecules/MediaCard';
-import {getAlbumMediaReq} from '../store/requests/media';
-import {getUserAlbumsReq} from '../store/requests/albums';
-
-
-
-
 
 /**
  * The AlbumOverview need to receive all of the album information. It can query for the images as it is loading
@@ -27,39 +19,37 @@ import {getUserAlbumsReq} from '../store/requests/albums';
 
 const AlbumOverview = (props) => {
   
-  const [availableAlbums, setAvailableAlbums] = useState([]);
-  const [albumData, setAlbumData] = useState({});
-  const [albumMedia, setAlbumMedia] = useState([]);
-  const   [inputState, setInputState] = useState('');
+  // const [availableAlbums, setAvailableAlbums] = useState([]);
+  // const [albumData, setAlbumData] = useState({});
+  // const [albumMedia, setAlbumMedia] = useState([]);
+  // const   [inputState, setInputState] = useState('');
 
-  const { album, isLoading, errorMessage } = useGetAlbumReq(22);
+  const [albumData] = useGetAlbum(props.match.params.id);
+  const [albumMedia] = useGetAlbumMedia(props.match.params.id);
   
-  useEffect(() => {
-    console.log('album', album);
-    console.log('isLoading', isLoading);
-    console.log('errorMessage', errorMessage);
-  }, [album, isLoading, errorMessage]);
+  // useEffect(() => {
+  //   console.log('album', albumData);
+  //   console.log('isLoading', loadingAlbum);
+  //   console.log('errorMessage', getAlbumErr);
+  // }, [albumData, loadingAlbum, getAlbumErr]);
   // const filteredPhotosHandler = filteredPhoto => {
   //   console.log('filteredPhoto', filteredPhoto)
   //   setInputState(filteredPhoto)
   // }
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getUserAlbumsReq(props.state.currentUser.user_id);
+  //     console.log('UAC', data);
+  //     setAvailableAlbums(data);
+  //     for (let i = 0; i < data.length; i++) {
+  //       if (data[i].album_id === Number(props.match.params.id)) {
+  //         setAlbumData(data[i]);
+  //       }
+  //     }
 
-  useEffect(() => {
-    (async () => {
-      const data = await getUserAlbumsReq(props.state.currentUser.user_id);
-      console.log('UAC', data);
-      setAvailableAlbums(data);
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].album_id === Number(props.match.params.id)) {
-          setAlbumData(data[i]);
-        }
-      }
-
-   
-
-    })();
-  }, [props.state.currentUser.user_id, props.match.params.id]);
+  //   })();
+  // }, [props.state.currentUser.user_id, props.match.params.id]);
 
   // useEffect(() => {
   //   // console.log('albumData: ', albumData)
@@ -69,38 +59,43 @@ const AlbumOverview = (props) => {
 
   // }, [albumData]);
 
-  useEffect(() => {
-    console.log('availableAlbums: ', availableAlbums)
-  }, [availableAlbums]);
+  // useEffect(() => {
+  //   console.log('availableAlbums: ', availableAlbums)
+  // }, [availableAlbums]);
 
-  useEffect(() => {
-    (async () => {
-      if (!albumMedia.length) {
-      // console.log('albumData.album_id: ', albumData.album_id)
-      const data = await getAlbumMediaReq(albumData.album_id);
-      // console.log('AlbumMedia Data: ', data)
-      setAlbumMedia(data.data);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (!albumMedia.length) {
+  //     // console.log('albumData.album_id: ', albumData.album_id)
+  //     try {
+  //       const data = await getAlbumMediaReq(albumData.album_id);
+  //       // console.log('AlbumMedia Data: ', data)
+  //       setAlbumMedia(data);
+  //     } catch(err) {
+  //       console.error({ err });
+  //     }
+      
       
 
-      // let filteredPhoto = albumMedia.filter(
-      //   photos => {
-      //    if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
-      //     console.log('filteredphoto from Album Overview', photos);
-      //     //title.includes(props.searchInput)
-      //    //album.title.indexOf(inputState[0]) !== -1;
-      //    return photos
-      //    }
-      //    return false;
-      //   })
+  //     // let filteredPhoto = albumMedia.filter(
+  //     //   photos => {
+  //     //    if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
+  //     //     console.log('filteredphoto from Album Overview', photos);
+  //     //     //title.includes(props.searchInput)
+  //     //    //album.title.indexOf(inputState[0]) !== -1;
+  //     //    return photos
+  //     //    }
+  //     //    return false;
+  //     //   })
   
-      // setAlbumMedia(filteredPhoto)
-      }
-    })()
-  }, [albumData, inputState, albumMedia]);
+  //     // setAlbumMedia(filteredPhoto)
+  //     }
+  //   })()
+  // }, [albumData, inputState, albumMedia]);
 
-  useEffect(() => {
-    console.log('albumMedia: ', albumMedia)
-  }, [albumMedia]);
+  // useEffect(() => {
+  //   console.log('albumMedia: ', albumMedia)
+  // }, [albumMedia]);
 
 
 
@@ -109,7 +104,7 @@ const AlbumOverview = (props) => {
       <Search 
     
       results = {albumMedia}       
-      onSearchChange = {(event) => { setInputState( event.target.value)}}
+      onSearchChange = {(event) => { /*setInputState( event.target.value)*/}}
       ></Search>
       <Card.Group centered stackable doubling>
         <Card raised fluid>
