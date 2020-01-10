@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
+// import {withRouter} from 'react-router-dom';
+import { useGetAlbumReq } from '../store/requests/hooks';
 
 import { Button, Card, Divider, Search } from 'semantic-ui-react';
 
@@ -30,12 +31,18 @@ const AlbumOverview = (props) => {
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
   const   [inputState, setInputState] = useState('');
-  
 
-  const filteredPhotosHandler = filteredPhoto => {
-    console.log('filteredPhoto', filteredPhoto)
-    setInputState(filteredPhoto)
-  }
+  const { album, isLoading, errorMessage } = useGetAlbumReq(22);
+  
+  useEffect(() => {
+    console.log('album', album);
+    console.log('isLoading', isLoading);
+    console.log('errorMessage', errorMessage);
+  }, [album, isLoading, errorMessage]);
+  // const filteredPhotosHandler = filteredPhoto => {
+  //   console.log('filteredPhoto', filteredPhoto)
+  //   setInputState(filteredPhoto)
+  // }
 
 
   useEffect(() => {
@@ -52,7 +59,7 @@ const AlbumOverview = (props) => {
    
 
     })();
-  }, [props.state.currentUser.user_id]);
+  }, [props.state.currentUser.user_id, props.match.params.id]);
 
   // useEffect(() => {
   //   // console.log('albumData: ', albumData)
@@ -63,31 +70,36 @@ const AlbumOverview = (props) => {
   // }, [albumData]);
 
   useEffect(() => {
+    console.log('availableAlbums: ', availableAlbums)
+  }, [availableAlbums]);
+
+  useEffect(() => {
     (async () => {
+      if (!albumMedia.length) {
       // console.log('albumData.album_id: ', albumData.album_id)
       const data = await getAlbumMediaReq(albumData.album_id);
       // console.log('AlbumMedia Data: ', data)
       setAlbumMedia(data.data);
       
 
-      let filteredPhoto = albumMedia.filter(
-        photos => {
-         if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
-          console.log('filteredphoto from Album Overview', photos);
-          //title.includes(props.searchInput)
-         //album.title.indexOf(inputState[0]) !== -1;
-         return photos
-         }
-             
-        })
+      // let filteredPhoto = albumMedia.filter(
+      //   photos => {
+      //    if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
+      //     console.log('filteredphoto from Album Overview', photos);
+      //     //title.includes(props.searchInput)
+      //    //album.title.indexOf(inputState[0]) !== -1;
+      //    return photos
+      //    }
+      //    return false;
+      //   })
   
-      setAlbumMedia(filteredPhoto)
-
-    })();
-  }, [albumData, inputState,albumMedia]);
+      // setAlbumMedia(filteredPhoto)
+      }
+    })()
+  }, [albumData, inputState, albumMedia]);
 
   useEffect(() => {
-    // console.log('albumMedia: ', albumMedia)
+    console.log('albumMedia: ', albumMedia)
   }, [albumMedia]);
 
 
@@ -95,8 +107,7 @@ const AlbumOverview = (props) => {
   return (
     <React.Fragment>
       <Search 
-      
-      isLoading = 'false' 
+    
       results = {albumMedia}       
       onSearchChange = {(event) => { setInputState( event.target.value)}}
       ></Search>
