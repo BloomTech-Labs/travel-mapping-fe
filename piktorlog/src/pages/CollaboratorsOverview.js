@@ -22,6 +22,19 @@ const collaborators = [
       }
 ]
 
+/*
+Component Structure/Flow 
+
+- Dropdown menu populated by known albums 
+- Form where you can entire email of collaborator 
+- 
+
+- When album is selected it will populate a list 
+of names/emails of collaborators for that album
+  - Each collaborator will have their name along with an X button next to that name. (tab)
+  - Clicking 
+
+*/
 
 
 const CollaboratorsOverview = (collaborators) => {
