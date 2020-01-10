@@ -28,10 +28,14 @@ const AlbumOverview = (props) => {
   const [albumMedia] = useGetAlbumMedia(props.match.params.id);
   
   // useEffect(() => {
-  //   console.log('album', albumData);
-  //   console.log('isLoading', loadingAlbum);
-  //   console.log('errorMessage', getAlbumErr);
-  // }, [albumData, loadingAlbum, getAlbumErr]);
+  //   console.log('album', albumMedia);
+  // }, [albumMedia]);
+  // useEffect(() => {
+  //   console.log('isLoading', loadingMedia);
+  // }, [loadingMedia]);
+  // useEffect(() => {
+  //   console.log('errorMessage', getMediaErr);
+  // }, [getMediaErr]);
   // const filteredPhotosHandler = filteredPhoto => {
   //   console.log('filteredPhoto', filteredPhoto)
   //   setInputState(filteredPhoto)

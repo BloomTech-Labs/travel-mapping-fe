@@ -1,22 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { getAlbumReq, getUserAlbumsReq } from './albums';
 import { getCollabAlbumReq } from './collaboratorReqs';
 import { getInvitesByAlbumReq, getInvitesFromUserReq, getInvitesToUserReq } from './inviteReqs';
 import { getAlbumMediaReq } from './media';
 
-// this should would with any of the simple request functions
-// must be a request that accepts one or no args
-export const useFetchData = (reqParam, reqFn, defaultData) => {
+// reqParams is an array of the arguments needed for the request function, IN THE SAME ORDER AS THE REQUEST FUNCTION ACCEPTS THEM
+// reqFn is any of the "request" functions found elsewhere in this folder
+// defaultData is whatever starting output you'd like the hook to default to while waiting for the request to return
+export const useImmediateFetch = (reqParams, reqFn, defaultData) => {
   const [data, setData] = useState(defaultData);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
+  const paramRef = useRef(reqParams);
 
+  const fireRequest = useCallback(() => {
+    console.log('fire');
     setIsLoading(true);
 
-    reqFn(reqParam)
+    reqFn(...paramRef.current)
       .then(res => {
 
         setIsLoading(false);
@@ -29,36 +32,41 @@ export const useFetchData = (reqParam, reqFn, defaultData) => {
         setErrorMessage(err);
 
       });
+  }, [paramRef, reqFn]);
+  
+  useEffect(() => {
 
-  }, [reqParam, reqFn]);
+    fireRequest();
 
-  return [data, isLoading, errorMessage];
+  }, [fireRequest]);
+
+  return [data, isLoading, errorMessage, fireRequest];
 };
 
 export const useGetAlbum = (album_id) => {
-  return useFetchData(album_id, getAlbumReq, {});
+  return useImmediateFetch([album_id], getAlbumReq, {});
 };
 
 export const useGetUserAlbums = (user_id) => {
-  return useFetchData(user_id, getUserAlbumsReq, []);
+  return useImmediateFetch([user_id], getUserAlbumsReq, []);
 };
 
 export const useGetCollabAlbum = (album_id) => {
-  return useFetchData(album_id, getCollabAlbumReq, []);
+  return useImmediateFetch([album_id], getCollabAlbumReq, []);
 };
 
 export const useGetInvitesFromUser = (user_id) => {
-  return useFetchData(user_id, getInvitesFromUserReq, []);
+  return useImmediateFetch([user_id], getInvitesFromUserReq, []);
 };
 
 export const useGetInvitesByAlbum = (album_id) => {
-  return useFetchData(album_id, getInvitesByAlbumReq, []);
+  return useImmediateFetch([album_id], getInvitesByAlbumReq, []);
 };
 
 export const useGetInvitesToUser = (user_id) => {
-  return useFetchData(user_id, getInvitesToUserReq, []);
+  return useImmediateFetch([user_id], getInvitesToUserReq, []);
 };
 
 export const useGetAlbumMedia = (album_id) => {
-  return useFetchData(album_id, getAlbumMediaReq, []);
+  return useImmediateFetch([album_id], getAlbumMediaReq, []);
 };
