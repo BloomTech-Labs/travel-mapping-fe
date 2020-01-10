@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-const CollaboratorsOverview = (props) => {
+import { Switch, Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import AddCollaborators from '../components/molecules/AddCollaboratorsForm'
+
+import { Dropdown } from 'semantic-ui-react'
+
+const collaborators = [
+    {
+        key: 'album',
+        text: 'Album 1',
+        value: 'Album 1',
+        image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/justen.jpg' },
+      }
+]
+
+
+
+const CollaboratorsOverview = (collaborators) => {
 
 
     return (
         <React.fragment>
-            <div>
-                <p>Coming Soon</p>
-            </div>
+            <Dropdown
+            placeholder='Select Album'
+            fluid
+            selection
+            options={collaborators}
+            />
+            <h1>COMING SOON!</h1>
+            <AddCollaborators/>
         </React.fragment>
     )
 };
