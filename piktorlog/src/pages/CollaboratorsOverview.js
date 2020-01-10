@@ -8,6 +8,11 @@ import AddCollaborators from '../components/molecules/AddCollaboratorsForm'
 
 import { Dropdown } from 'semantic-ui-react'
 
+/*
+Mock Data based on React Semantic UI example:
+See: https://codesandbox.io/s/semantic-ui-example-7tkob
+
+*/
 const collaborators = [
     {
         key: 'album',
@@ -36,4 +41,4 @@ const CollaboratorsOverview = (collaborators) => {
     )
 };
 
-export default CollaboratorsOverview;
+export default CollaboratorsOverview (collaborators);
