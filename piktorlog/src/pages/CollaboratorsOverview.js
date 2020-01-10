@@ -25,9 +25,13 @@ const collaborators = [
 /*
 Component Structure/Flow 
 
-- Dropdown menu populated by known albums (use filter to show only the albums where album.user_id == currentuser.user_id)
-- Form where you can entire email of collaborator 
-- "Display area" which lists the collaborators of a selected album 
+- 1) Dropdown menu populated by known albums (use filter to show only the albums where album.user_id == currentuser.user_id)
+   - I tried using Dropdoown from Semantic UI (documentation for that bit sketchy)
+- 2) Form where you can entire email of collaborator see /molecules/AddCollaboratorsForm.js
+
+- 3) "Display area" which lists the collaborators of a selected album 
+  - This might require another component, e.g. "CollaboratorsDisplayArea" 
+  or it could be done at this level (iterate over a list)
 
 - When album is selected it will populate a list 
 of names/emails of collaborators for that album
@@ -37,7 +41,12 @@ of names/emails of collaborators for that album
 
 
 const CollaboratorsOverview = () => {
-
+   
+    //SelectedAlbum--what album has been selected/in Focus
+   const [selectedAlbum, setSelectedAlbum] = React.useState('')
+   
+   //Albums--> list/array of albums/album objects that will be used to populate dropdown menu
+   const [albums, setAlbums] = React.useState([]);
 
     return (
         <div>
