@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { address, createAuthHeader } from '../utils';
+import { address, createAuthHeader, errors } from '../utils';
 
 export const createAlbumReq = async (user_id, title, description, access = 'public') => {
   const header = createAuthHeader();
@@ -55,6 +55,31 @@ export const addAlbumMetaReq = async (album_id, metaData) => {
   const header = createAuthHeader();
   if (!header) return false;
 
+  try {
+
   const { data } = await axios.post(`${address}/albums/${album_id}/meta/add`, metaData, header);
   return data;
+
+  } catch(err) {
+    throw new Error(Object.values(err.response.data)[0]);
+  } 
+};
+
+export const getAlbumReq = async (album_id) => {
+
+  const header = createAuthHeader();
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+
+    try {
+
+      const { data } = await axios.get(`${address}/albums/${album_id}`, header);
+      return data;
+
+    } catch(err) {
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+
+  }
+
 };
