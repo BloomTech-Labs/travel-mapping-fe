@@ -84,14 +84,15 @@ export const useGetAlbumMedia = (album_id) => {
   return useImmediateFetch([album_id], getAlbumMediaReq, []);
 };
 
-export const useCreateInvite = () => {
+// onSuccess and onFailure are optional callbacks for signalling or performing some further behavior after the request completes
+export const useCreateInvite = (onSuccess, onFailure) => {
 
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const fireRequest = useCallback((album_id, invited_email) => {
-
+  const fireRequest = (album_id, invited_email) => {
+    console.log('fire request');
     setIsLoading(true);
 
     createInviteReq(album_id, invited_email)
@@ -100,16 +101,26 @@ export const useCreateInvite = () => {
         setIsLoading(false);
         setData(res);
 
+        if (typeof onSuccess === 'function') {
+          onSuccess();
+          console.log('success');
+        }
+
       })
       .catch(err => {
 
         setIsLoading(false);
         setErrorMessage(err);
 
+        if (typeof onFailure === 'function') {
+          onFailure();
+          console.log('failure');
+        }
+
       });
 
-  }, []);
+  };
 
-  return [fireRequest, isLoading, errorMessage, data]; 
+  return [fireRequest, isLoading, errorMessage, data];
 
 };

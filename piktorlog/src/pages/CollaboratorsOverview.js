@@ -6,7 +6,6 @@ import { useGetUserAlbums, useLogOnChange } from '../store/requests/hooks';
 // import { Switch, Route, Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
-import AddCollaboratorsForm from '../components/molecules/AddCollaboratorsForm';
 import CollaboratorsList from '../components/organisms/CollaboratorsList';
 import AlbumInvites from '../components/organisms/AlbumInvites';
 
@@ -79,8 +78,6 @@ const CollaboratorsOverview = ({ currentUser }) => {
         onChange={(e, data) => setSelectedAlbum(data.value)}
         value={selectedAlbum}
       />
-
-      {selectedAlbum && <AddCollaboratorsForm album_id={selectedAlbum} />}
 
       {selectedAlbum && <CollaboratorsList album_id={selectedAlbum} />}
 

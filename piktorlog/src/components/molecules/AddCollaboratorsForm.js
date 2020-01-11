@@ -1,4 +1,4 @@
-import React, { useState/*, useEffect*/ } from 'react';
+import React, { useState } from 'react';
 import { Form, /*Segment,*/ Button, Header/*, Grid, GridColumn, Icon*/ } from 'semantic-ui-react';
 
 import { useCreateInvite, useLogOnChange } from '../../store/requests/hooks';
@@ -10,12 +10,11 @@ Form will have really 1 field: takes email address as input --> Make a call that
 
 */
 
-const AddCollaboratorsForm = ({ album_id }) =>  {
+const AddCollaboratorsForm = ({ album_id, refresh }) =>  {
 
   const [email, setEmail] = useState('');
-  const [createInvite, , error, response] = useCreateInvite();
+  const [createInvite, , error] = useCreateInvite(refresh);
   useLogOnChange('invite error:', error);
-  useLogOnChange('invite res:', response);
 
   const handleSubmit = () => {
 
