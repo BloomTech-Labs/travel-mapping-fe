@@ -20,6 +20,7 @@ const AddCollaboratorsForm = ({ album_id }) =>  {
   const handleSubmit = () => {
 
     createInvite(album_id, email);
+    setEmail('');
 
   };
 
