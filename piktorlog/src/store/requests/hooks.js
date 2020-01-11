@@ -2,7 +2,12 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { getAlbumReq, getUserAlbumsReq } from './albums';
 import { getCollabAlbumReq } from './collaboratorReqs';
-import { getInvitesByAlbumReq, getInvitesFromUserReq, getInvitesToUserReq } from './inviteReqs';
+import { 
+  getInvitesByAlbumReq,
+  getInvitesFromUserReq,
+  getInvitesToUserReq,
+  createInviteReq
+} from './inviteReqs';
 import { getAlbumMediaReq } from './media';
 
 // This is a very dumb hook for logging a value whenever it changes
@@ -77,4 +82,34 @@ export const useGetInvitesToUser = (user_id) => {
 
 export const useGetAlbumMedia = (album_id) => {
   return useImmediateFetch([album_id], getAlbumMediaReq, []);
+};
+
+export const useCreateInvite = () => {
+
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const fireRequest = useCallback((album_id, invited_email) => {
+
+    setIsLoading(true);
+
+    createInviteReq(album_id, invited_email)
+      .then(res => {
+
+        setIsLoading(false);
+        setData(res);
+
+      })
+      .catch(err => {
+
+        setIsLoading(false);
+        setErrorMessage(err);
+
+      });
+
+  }, []);
+
+  return [fireRequest, isLoading, errorMessage, data]; 
+
 };

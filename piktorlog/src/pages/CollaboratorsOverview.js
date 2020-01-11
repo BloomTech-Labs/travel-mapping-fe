@@ -8,6 +8,7 @@ import { useGetUserAlbums, useLogOnChange } from '../store/requests/hooks';
 
 import AddCollaboratorsForm from '../components/molecules/AddCollaboratorsForm';
 import CollaboratorsList from '../components/organisms/CollaboratorsList';
+import AlbumInvites from '../components/organisms/AlbumInvites';
 
 import { Dropdown } from 'semantic-ui-react'
 
@@ -79,9 +80,11 @@ const CollaboratorsOverview = ({ currentUser }) => {
         value={selectedAlbum}
       />
 
-      {selectedAlbum && <AddCollaboratorsForm />}
+      {selectedAlbum && <AddCollaboratorsForm album_id={selectedAlbum} />}
 
       {selectedAlbum && <CollaboratorsList album_id={selectedAlbum} />}
+
+      {selectedAlbum && <AlbumInvites album_id={selectedAlbum} />}
     </div>
   );
 };
