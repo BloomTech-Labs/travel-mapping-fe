@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { useGetAlbum, useGetAlbumMedia } from '../store/requests/hooks';
+import { useGetAlbum, useGetAlbumMedia } from '../store/hooks/useImmediateFetch';
 import { Button, Card, Divider, Search } from 'semantic-ui-react';
 import MediaCard from '../components/molecules/MediaCard';
 
@@ -106,10 +106,9 @@ const AlbumOverview = (props) => {
   return (
     <React.Fragment>
       <Search 
-    
-      results = {albumMedia}       
-      onSearchChange = {(event) => { /*setInputState( event.target.value)*/}}
-      ></Search>
+        results = {albumMedia}       
+        onSearchChange = {(event) => { /*setInputState( event.target.value)*/}}
+      />
       <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from 'semantic-ui-react';
 
-import { useCancelInvite } from '../../store/requests/hooks';
+import { useCancelInvite } from '../../store/hooks/useFetchOnRequest';
 
 const AlbumInvitesList = ({ invites, refresh }) => {
 

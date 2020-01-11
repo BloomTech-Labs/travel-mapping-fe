@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, /*Segment,*/ Button, Header/*, Grid, GridColumn, Icon*/ } from 'semantic-ui-react';
 
-import { useCreateInvite, useLogOnChange } from '../../store/requests/hooks';
+import { useCreateInvite } from '../../store/hooks/useFetchOnRequest';
+import { useLogOnChange } from '../../store/hooks/misc';
 
 /* 
 Rough Thoughts for Future Self/Future Coders 

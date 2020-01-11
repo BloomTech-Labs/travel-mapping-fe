@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 
-import { useGetUserAlbums, useLogOnChange } from '../store/requests/hooks';
+import { useGetUserAlbums } from '../store/hooks/useImmediateFetch';
+import { useLogOnChange } from '../store/hooks/misc';
 
 // import { Switch, Route, Link } from 'react-router-dom';
 // import styled from 'styled-components';

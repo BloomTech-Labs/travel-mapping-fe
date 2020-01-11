@@ -2,7 +2,8 @@ import React from 'react';
 
 import AddCollaboratorsForm from '../molecules/AddCollaboratorsForm';
 import AlbumInvitesList from '../molecules/AlbumInvitesList';
-import { useGetInvitesByAlbum, useLogOnChange } from '../../store/requests/hooks';
+import { useGetInvitesByAlbum } from '../../store/hooks/useImmediateFetch';
+import { useLogOnChange } from '../../store/hooks/misc';
 
 const AlbumInvites = ({ album_id }) => {
 

@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Button, Modal } from 'semantic-ui-react';
 
-import { useGetCollabAlbum, useLogOnChange, useRemoveCollab } from '../../store/requests/hooks';
+import { useGetCollabAlbum } from '../../store/hooks/useImmediateFetch';
+import { useRemoveCollab } from '../../store/hooks/useFetchOnRequest';
+import { useLogOnChange } from '../../store/hooks/misc';
 
 const CollaboratorsList = ({ album_id }) => {
 
