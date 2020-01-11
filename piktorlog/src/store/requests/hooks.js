@@ -84,18 +84,19 @@ export const useGetAlbumMedia = (album_id) => {
   return useImmediateFetch([album_id], getAlbumMediaReq, []);
 };
 
+// reqFn is any of the 'request functions', fold elsewhere in this folder
 // onSuccess and onFailure are optional callbacks for signalling or performing some further behavior after the request completes
-export const useCreateInvite = (onSuccess, onFailure) => {
+export const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const fireRequest = (album_id, invited_email) => {
-    console.log('fire request');
+  const fireRequest = (...reqParams) => {
+
     setIsLoading(true);
 
-    createInviteReq(album_id, invited_email)
+    reqFn(...reqParams)
       .then(res => {
 
         setIsLoading(false);
@@ -117,10 +118,53 @@ export const useCreateInvite = (onSuccess, onFailure) => {
           console.log('failure');
         }
 
-      });
+      })
 
   };
 
   return [fireRequest, isLoading, errorMessage, data];
-
 };
+
+export const useCreateInvite = (onSuccess, onFailure) => {
+  return useFetchOnRequest(createInviteReq, onSuccess, onFailure);
+};
+
+// export const useCreateInvite = (onSuccess, onFailure) => {
+
+//   const [data, setData] = useState({});
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState('');
+
+//   const fireRequest = (album_id, invited_email) => {
+//     console.log('fire request');
+//     setIsLoading(true);
+
+//     createInviteReq(album_id, invited_email)
+//       .then(res => {
+
+//         setIsLoading(false);
+//         setData(res);
+
+//         if (typeof onSuccess === 'function') {
+//           onSuccess();
+//           console.log('success');
+//         }
+
+//       })
+//       .catch(err => {
+
+//         setIsLoading(false);
+//         setErrorMessage(err);
+
+//         if (typeof onFailure === 'function') {
+//           onFailure();
+//           console.log('failure');
+//         }
+
+//       });
+
+//   };
+
+//   return [fireRequest, isLoading, errorMessage, data];
+
+// };

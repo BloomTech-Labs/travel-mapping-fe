@@ -1,12 +1,16 @@
 import React from 'react';
 
-const AlbumInvitesList = ({ invites }) => {
+const AlbumInvitesList = ({ invites, refresh }) => {
 
   return (
     <div>
       AlbumInvitesList
       <ul>
-        {invites.map(e => (<li key={e.invitation_id}>{e.invited_user_id}</li>))}
+        {invites.map(e => (
+          <li key={e.invitation_id}>
+            {e.invited_user_id}
+          </li>
+        ))}
       </ul>
     </div>
   );
