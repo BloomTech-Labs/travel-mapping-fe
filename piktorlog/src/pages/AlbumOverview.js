@@ -7,6 +7,7 @@ import { Button, Card, Divider } from 'semantic-ui-react';
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
 import {getUserAlbumsReq} from '../store/requests/albums';
+import {getLocalDateAndTime} from '../store/utils.js';
 
 
 
@@ -72,8 +73,8 @@ const AlbumOverview = (props) => {
           <Card.Content>
             <Button floated='right' icon='ellipsis vertical' />
             <Card.Header>{albumData.title}</Card.Header>
-            <Card.Meta>Date Created: {albumData.created_at}</Card.Meta>
-            <Card.Meta>Last Updated: {albumData.updated_at}</Card.Meta>
+            <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
+            <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
             <Divider horizontal>Album Description</Divider>
             <Card.Description>{albumData.description}</Card.Description>
           </Card.Content>

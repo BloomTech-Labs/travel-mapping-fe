@@ -1,12 +1,13 @@
 import React from 'react';
 import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup} from 'semantic-ui-react';
 import { Redirect, Link } from 'react-router-dom';
+import {getLocalDateAndTime} from '../../store/utils.js';
 
 import styled from 'styled-components';
 
 
 const StyledCardContent = styled(Card.Content)({
-    border: '1px solid black',
+    // border: '1px solid black',
     position:'relative',
     'z-index':'0!important',
 });
@@ -90,8 +91,8 @@ const MediaCard = ({mediaItem}) => {
                                         <Card.Content>
                                             <Card.Header>{mediaItem.title}</Card.Header>
                                             <Card.Description>{mediaItem.caption}</Card.Description>
-                                            <Card.Meta>Created On: {mediaItem.created_at}</Card.Meta>
-                                            <Card.Meta>Last Updated: {mediaItem.updated_at}</Card.Meta>
+                                            <Card.Meta>Created On: {getLocalDateAndTime(mediaItem.created_at)}</Card.Meta>
+                                            <Card.Meta>Last Updated: {getLocalDateAndTime(mediaItem.updated_at)}</Card.Meta>
                                             <Card.Meta>Keywords: {mediaItem.keywords.map((keyword,index) => (
                                                     <span key = {index}>{keyword},</span>                                            
                                             ))}</Card.Meta>
