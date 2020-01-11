@@ -57,14 +57,14 @@ const useFilteredAlbums = (user_id, filterFn) => {
   return [filteredAlbums, loading, error, refire];
 };
 
-const CollaboratorsOverview = ({ currentUser }) => {
+const CollaboratorsOverview = ({ currentUser, location }) => {
 
   const filterFn = useCallback((e) => e.user_id === currentUser.user_id, [currentUser.user_id]);
   const [filteredAlbums] = useFilteredAlbums(currentUser.user_id, filterFn);
   useLogOnChange('filtered', filteredAlbums);
    
   // SelectedAlbum--what album has been selected/in Focus
-  const [selectedAlbum, setSelectedAlbum] = React.useState(null);
+  const [selectedAlbum, setSelectedAlbum] = React.useState(location && location.state && location.state.album ? location.state.album : null);
   useLogOnChange('selected', selectedAlbum);
 
   return (
