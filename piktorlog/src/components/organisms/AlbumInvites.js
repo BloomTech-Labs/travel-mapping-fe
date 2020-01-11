@@ -13,7 +13,7 @@ const AlbumInvites = ({ album_id }) => {
     <div>
       AlbumInvites
       <AddCollaboratorsForm album_id={album_id} refresh={refreshInvites} />
-      <AlbumInvitesList invites={invites} />
+      <AlbumInvitesList invites={invites} refresh={refreshInvites} />
     </div>
   );
 
