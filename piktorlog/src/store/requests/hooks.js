@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { getAlbumReq, getUserAlbumsReq } from './albums';
-import { getCollabAlbumReq } from './collaboratorReqs';
+import { 
+  getCollabAlbumReq,
+  removeCollabReq
+} from './collaboratorReqs';
 import { 
   getInvitesByAlbumReq,
   getInvitesFromUserReq,
   getInvitesToUserReq,
-  createInviteReq
+  createInviteReq,
+  deleteInviteReq
 } from './inviteReqs';
 import { getAlbumMediaReq } from './media';
 
@@ -37,6 +41,7 @@ export const useImmediateFetch = (reqParams, reqFn, defaultData) => {
 
         setIsLoading(false);
         setData(res);
+        setErrorMessage('');
 
       })
       .catch(err => {
@@ -84,7 +89,7 @@ export const useGetAlbumMedia = (album_id) => {
   return useImmediateFetch([album_id], getAlbumMediaReq, []);
 };
 
-// reqFn is any of the 'request functions', fold elsewhere in this folder
+// reqFn is any of the 'request functions', found elsewhere in this folder
 // onSuccess and onFailure are optional callbacks for signalling or performing some further behavior after the request completes
 export const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
@@ -101,6 +106,7 @@ export const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
         setIsLoading(false);
         setData(res);
+        setErrorMessage('');
 
         if (typeof onSuccess === 'function') {
           onSuccess();
@@ -127,6 +133,14 @@ export const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
 export const useCreateInvite = (onSuccess, onFailure) => {
   return useFetchOnRequest(createInviteReq, onSuccess, onFailure);
+};
+
+export const useCancelInvite = (onSuccess, onFailure) => {
+  return useFetchOnRequest(deleteInviteReq, onSuccess, onFailure);
+};
+
+export const useRemoveCollab = (onSuccess, onFailure) => {
+  return useFetchOnRequest(removeCollabReq, onSuccess, onFailure);
 };
 
 // export const useCreateInvite = (onSuccess, onFailure) => {
