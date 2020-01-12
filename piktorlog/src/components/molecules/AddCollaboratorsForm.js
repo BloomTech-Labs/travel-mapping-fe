@@ -14,7 +14,7 @@ Form will have really 1 field: takes email address as input --> Make a call that
 const AddCollaboratorsForm = ({ album_id, refresh }) =>  {
 
   const [email, setEmail] = useState('');
-  const [createInvite, , error] = useCreateInvite(refresh);
+  const [createInvite, , , error] = useCreateInvite(refresh);
   useLogOnChange('invite error:', error);
 
   const handleSubmit = () => {

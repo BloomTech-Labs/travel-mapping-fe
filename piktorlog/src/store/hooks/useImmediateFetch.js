@@ -56,7 +56,7 @@ const useImmediateFetch = (reqFn, defaultData, filterFn, ...reqParams) => {
 
   }, [fireRequest]);
 
-  return [data, isLoading, errorMessage, fireRequest];
+  return [data, fireRequest, isLoading, errorMessage];
 };
 
 export default useImmediateFetch;

@@ -50,7 +50,7 @@ const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
   };
 
-  return [fireRequest, isLoading, errorMessage, data];
+  return [fireRequest, data, isLoading, errorMessage ];
 };
 
 export default useFetchOnRequest;

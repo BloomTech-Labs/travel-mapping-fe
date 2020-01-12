@@ -11,12 +11,12 @@ import UserMemberships from '../components/organisms/UserMemberships';
 const UserMembershipManagement = ({ currentUser }) => {
 
   const [filterAlbumsFn] = useState(() => (data) => data.filter(e => e.user_id !== currentUser.user_id));
-  const [albums, , , refreshAlbums] = useGetUserAlbums(currentUser.user_id, filterAlbumsFn);
+  const [albums, refreshAlbums] = useGetUserAlbums(currentUser.user_id, filterAlbumsFn);
   useLogOnChange('albums', albums);
 
   const [removeCollab] = useRemoveCollab(refreshAlbums);
 
-  const [invites, , , refreshInvites] = useGetInvitesToUser(currentUser.user_id);
+  const [invites, refreshInvites] = useGetInvitesToUser(currentUser.user_id);
   useLogOnChange('invites', invites);
 
   const [cancelInvite] = useCancelInvite(refreshInvites);

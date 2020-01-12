@@ -8,7 +8,7 @@ import { useLogOnChange } from '../../store/hooks/misc';
 
 const CollaboratorsList = ({ album_id }) => {
 
-  const [collaborators, , , refresh] = useGetCollabAlbum(album_id);
+  const [collaborators, refresh] = useGetCollabAlbum(album_id);
   useLogOnChange(`album ${album_id} collabs:`, collaborators);
 
   const [removeCollab] = useRemoveCollab(refresh);

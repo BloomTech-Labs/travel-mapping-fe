@@ -7,7 +7,7 @@ import { useLogOnChange } from '../../store/hooks/misc';
 
 const AlbumInvites = ({ album_id }) => {
 
-  const [invites, , , refreshInvites] = useGetInvitesByAlbum(album_id);
+  const [invites, refreshInvites] = useGetInvitesByAlbum(album_id);
   useLogOnChange('invites:', invites);
 
   return (
