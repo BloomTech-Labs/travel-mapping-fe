@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import Upload from './pages/Upload';
 import CreateAlbum from './pages/CreateAlbum';
 import EditAlbum from './pages/EditAlbum';
+import EditMedia from './pages/EditMedia';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -75,6 +76,10 @@ function App({ checkLogin, logout, getUserAlbums }) {
           <ProtectedRoute 
             path='/albums/:id'
             component = {AlbumOverview} 
+          />
+          <ProtectedRoute 
+            path = '/media/:id/edit'
+            component = {EditMedia}
           />
           <ProtectedRoute path="/upload">
             <Upload />
