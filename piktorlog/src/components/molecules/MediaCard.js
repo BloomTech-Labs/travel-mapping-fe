@@ -35,16 +35,15 @@ const StyledModalContent = styled(Modal.Content)({
 });
 
 const MediaCard = ({mediaItem}) => {
-    console.log('mediaItem: ', mediaItem);
-    console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
- 
+    // console.log('mediaItem: ', mediaItem);
+    // console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
     return (
         <Card>
             <Card.Content>
                 <Modal
                     style = {{background: 'rgba(13, 13, 13)'}}
                     size = 'large'
-                    // the trigger for this modal is each media item card
+                    // the trigger for this modal is the media item card
                     trigger = {
                         <StyledCardContent>
                             {/* Dropdown */}
@@ -79,7 +78,7 @@ const MediaCard = ({mediaItem}) => {
                             </StyledDropdownOpaque>
                             
                             {/* Image */}
-                            <Image wrapped size = 'fullscreen' src = {mediaItem.media_url} />
+                            <Image wrapped size = 'huge' src = {mediaItem.media_url} />
 
                             {/* Popup button */}
                             <Popup 
