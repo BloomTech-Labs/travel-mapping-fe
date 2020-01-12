@@ -35,8 +35,6 @@ const StyledModalContent = styled(Modal.Content)({
 });
 
 const MediaCard = ({mediaItem}) => {
-    // console.log('mediaItem: ', mediaItem);
-    // console.log('Object.entries(mediaItem): ', Object.entries(mediaItem));
     return (
         <Card>
             <Card.Content>
