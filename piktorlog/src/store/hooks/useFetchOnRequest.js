@@ -9,7 +9,7 @@ import {
 } from '../requests/inviteReqs';
 
 // reqFn is any of the 'request functions', found elsewhere in this folder
-// onSuccess and onFailure are optional callbacks for signalling or performing some further behavior after the request completes
+// onSuccess and onFailure are optional callbacks or arrays of callbacks for signalling or performing some further behavior after the request completes
 const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
   const [data, setData] = useState({});
@@ -29,6 +29,8 @@ const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
         if (typeof onSuccess === 'function') {
           onSuccess();
+        } else if (Array.isArray(onSuccess)) {
+          onSuccess.forEach(e => e());
         }
 
       })
@@ -39,6 +41,8 @@ const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
         if (typeof onFailure === 'function') {
           onFailure();
+        } else if (Array.isArray(onFailure)) {
+          onFailure.forEach(e => e());
         }
 
       })
