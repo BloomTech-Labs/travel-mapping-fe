@@ -48,9 +48,12 @@ const MediaCard = ({mediaItem}) => {
                             <StyledDropdownTransparent
                                 button
                                 icon = 'ellipsis vertical' 
-                            >
-                                <Dropdown.Menu>
-                                    <Dropdown.Item text = 'edit' /> 
+                            >                                
+                                <Dropdown.Menu>                                    
+                                    <Dropdown.Item text = 'edit'>
+                                        <Link to= {'/editMedia'} style = {{'text-decoration': 'none', color:'black'}}>edit</Link>
+                                    </Dropdown.Item> 
+                                    
                                     <Dropdown.Item text = 'delete' />
                                 </Dropdown.Menu>
                             </StyledDropdownTransparent>
