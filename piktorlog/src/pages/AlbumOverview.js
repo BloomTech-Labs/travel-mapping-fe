@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
+<<<<<<< HEAD
 import { Button, Card, Divider, Container } from 'semantic-ui-react';
+=======
+import { Button, Card, Divider, Search } from 'semantic-ui-react';
+>>>>>>> 457da9e0f91cba3564e7672adfbb2d61daa273c2
 
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
@@ -31,6 +35,14 @@ const AlbumOverview = (props) => {
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
+  const   [inputState, setInputState] = useState('');
+  
+
+  const filteredPhotosHandler = filteredPhoto => {
+    console.log('filteredPhoto', filteredPhoto)
+    setInputState(filteredPhoto)
+  }
+
 
   useEffect(() => {
     (async () => {
@@ -44,12 +56,19 @@ const AlbumOverview = (props) => {
           setAlbumData(data[i]);
         }
       }
+
+   
+
     })();
   }, [props.state.currentUser.user_id]);
 
-  useEffect(() => {
-    // console.log('albumData: ', albumData)
-  }, [albumData]);
+  // useEffect(() => {
+  //   // console.log('albumData: ', albumData)
+
+   
+      
+
+  // }, [albumData]);
 
   useEffect(() => {
     (async () => {
@@ -58,8 +77,22 @@ const AlbumOverview = (props) => {
       // console.log('AlbumMedia Data: ', data)
       setAlbumMedia(data.data);
       
+
+      let filteredPhoto = albumMedia.filter(
+        photos => {
+         if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
+          console.log('filteredphoto from Album Overview', photos);
+          //title.includes(props.searchInput)
+         //album.title.indexOf(inputState[0]) !== -1;
+         return photos
+         }
+             
+        })
+  
+      setAlbumMedia(filteredPhoto)
+
     })();
-  }, [albumData]);
+  }, [albumData, inputState,albumMedia]);
 
   useEffect(() => {
     // console.log('albumMedia: ', albumMedia)
@@ -69,24 +102,33 @@ const AlbumOverview = (props) => {
 
   return (
     <React.Fragment>
-        <Card.Group centered stackable doubling>
-          <Card raised fluid>
-            <Card.Content>
-              <Button floated='right' icon='ellipsis vertical' />
-              <Card.Header>{albumData.title}</Card.Header>
-              <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
-              <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
-              <Divider horizontal>Album Description</Divider>
-              <Card.Description>{albumData.description}</Card.Description>
-            </Card.Content>
-          </Card>
-        </Card.Group>
         
-        <Card.Group centered stackable doubling>
-            {albumMedia.map((albumMediaItem, index) => (
-                <MediaCard key={index} mediaItem={albumMediaItem}/>
-            ))}
-        </Card.Group>
+        
+        
+      <Search 
+      
+      isLoading = 'false' 
+      results = {albumMedia}       
+      onSearchChange = {(event) => { setInputState( event.target.value)}}
+      ></Search>
+      <Card.Group centered stackable doubling>
+        <Card raised fluid>
+          <Card.Content>
+            <Button floated='right' icon='ellipsis vertical' />
+            <Card.Header>{albumData.title}</Card.Header>
+            <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
+            <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
+            <Divider horizontal>Album Description</Divider>
+            <Card.Description>{albumData.description}</Card.Description>
+          </Card.Content>
+        </Card>
+      </Card.Group>
+
+      <Card.Group centered stackable doubling>
+          {albumMedia.map((albumMediaItem, index) => (
+              <MediaCard key={index} mediaItem={albumMediaItem}/>
+          ))}
+      </Card.Group>
     </React.Fragment>
   );
 };
