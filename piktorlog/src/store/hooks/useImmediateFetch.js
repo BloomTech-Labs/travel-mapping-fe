@@ -11,10 +11,13 @@ import {
 } from '../requests/inviteReqs';
 import { getAlbumMediaReq } from '../requests/media';
 
-// reqParams is an array of the arguments needed for the request function, IN THE SAME ORDER AS THE REQUEST FUNCTION ACCEPTS THEM
+// this is the generic hook that all the other "immediate fetch" hooks are based around.
+// you can use it in components directly if you like, though I'd suggest wrapping it in a function for a specific reqFunction, such as found below.
+// reqParams is any arguments needed for the request function, IN THE SAME ORDER AS THE REQUEST FUNCTION ACCEPTS THEM
 // reqFn is any of the 'request' functions found in the 'requests' folder
 // defaultData is whatever starting output you'd like the hook to default to while waiting for the request to return
-const useImmediateFetch = (reqParams, reqFn, defaultData) => {
+// filterFn is optional, MUST be either declared outside of a component, or memoized/stored in state within it.
+const useImmediateFetch = (reqFn, defaultData, filterFn, ...reqParams) => {
   const [data, setData] = useState(defaultData);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -29,8 +32,14 @@ const useImmediateFetch = (reqParams, reqFn, defaultData) => {
       .then(res => {
 
         setIsLoading(false);
-        setData(res);
         setErrorMessage('');
+
+        if (typeof filterFn === 'function') {
+
+          setData(filterFn(res));
+
+        } else setData(res);
+      
 
       })
       .catch(err => {
@@ -39,7 +48,7 @@ const useImmediateFetch = (reqParams, reqFn, defaultData) => {
         setErrorMessage(err);
 
       });
-  }, [paramRef, reqFn]);
+  }, [paramRef, reqFn, filterFn]);
   
   useEffect(() => {
 
@@ -52,30 +61,30 @@ const useImmediateFetch = (reqParams, reqFn, defaultData) => {
 
 export default useImmediateFetch;
 
-export const useGetAlbum = (album_id) => {
-  return useImmediateFetch([album_id], getAlbumReq, {});
+export const useGetAlbum = (album_id, filterFn) => {
+  return useImmediateFetch(getAlbumReq, {}, filterFn, album_id);
 };
 
-export const useGetUserAlbums = (user_id) => {
-  return useImmediateFetch([user_id], getUserAlbumsReq, []);
+export const useGetUserAlbums = (user_id, filterFn) => {
+  return useImmediateFetch(getUserAlbumsReq, [], filterFn, user_id);
 };
 
-export const useGetCollabAlbum = (album_id) => {
-  return useImmediateFetch([album_id], getCollabAlbumReq, []);
+export const useGetCollabAlbum = (album_id, filterFn) => {
+  return useImmediateFetch(getCollabAlbumReq, [], filterFn, album_id);
 };
 
-export const useGetInvitesFromUser = (user_id) => {
-  return useImmediateFetch([user_id], getInvitesFromUserReq, []);
+export const useGetInvitesFromUser = (user_id, filterFn) => {
+  return useImmediateFetch(getInvitesFromUserReq, [], filterFn, user_id);
 };
 
-export const useGetInvitesByAlbum = (album_id) => {
-  return useImmediateFetch([album_id], getInvitesByAlbumReq, []);
+export const useGetInvitesByAlbum = (album_id, filterFn) => {
+  return useImmediateFetch( getInvitesByAlbumReq, [], filterFn, album_id);
+}
+
+export const useGetInvitesToUser = (user_id, filterFn) => {
+  return useImmediateFetch(getInvitesToUserReq, [], filterFn, user_id);
 };
 
-export const useGetInvitesToUser = (user_id) => {
-  return useImmediateFetch([user_id], getInvitesToUserReq, []);
-};
-
-export const useGetAlbumMedia = (album_id) => {
-  return useImmediateFetch([album_id], getAlbumMediaReq, []);
+export const useGetAlbumMedia = (album_id, filterFn) => {
+  return useImmediateFetch(getAlbumMediaReq, [], filterFn, album_id);
 };
