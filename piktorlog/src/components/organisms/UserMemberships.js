@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { List, Image, Modal, Button } from 'semantic-ui-react';
 
-import { useGetUserAlbums } from '../../store/hooks/useImmediateFetch';
-import { useRemoveCollab } from '../../store/hooks/useFetchOnRequest';
-import { useLogOnChange } from '../../store/hooks/misc';
-
-const UserMemberships = ({ user_id }) => {
-
-  const [filterAlbumsFn] = useState(() => (data) => data.filter(e => e.user_id !== user_id));
-  const [albums, , , refreshAlbums] = useGetUserAlbums(user_id, filterAlbumsFn);
-  useLogOnChange('albums', albums);
-
-  const [removeCollab] = useRemoveCollab(refreshAlbums);
+const UserMemberships = ({ albums, removeCollab }) => {
 
   return (
     <div>

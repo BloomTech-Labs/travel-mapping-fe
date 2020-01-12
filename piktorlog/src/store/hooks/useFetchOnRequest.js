@@ -5,7 +5,8 @@ import {
 } from '../requests/collaboratorReqs';
 import { 
   createInviteReq,
-  deleteInviteReq
+  deleteInviteReq,
+  acceptInviteReq
 } from '../requests/inviteReqs';
 
 // reqFn is any of the 'request functions', found elsewhere in this folder
@@ -64,4 +65,8 @@ export const useCancelInvite = (onSuccess, onFailure) => {
 
 export const useRemoveCollab = (onSuccess, onFailure) => {
   return useFetchOnRequest(removeCollabReq, onSuccess, onFailure);
+};
+
+export const useAcceptInvite = (onSuccess, onFailure) => {
+  return useFetchOnRequest(acceptInviteReq, onSuccess, onFailure);
 };
