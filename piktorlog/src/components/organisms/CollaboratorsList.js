@@ -20,9 +20,6 @@ const CollaboratorsList = ({ album_id }) => {
         {collaborators.map(e => (
           <li key={e.collaborator_id}>
             <span>{e.display_name}</span>
-            {/* <Button onClick={() => removeCollab(album_id, e.collaborator_id)}>
-              Remove
-            </Button> */}
             <Modal 
               trigger={<Button>Remove</Button>}
               header={`Remove ${e.display_name} as a Collaborator?`}
