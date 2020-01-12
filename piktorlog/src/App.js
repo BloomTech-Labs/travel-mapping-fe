@@ -14,6 +14,7 @@ import Upload from './pages/Upload';
 import CreateAlbum from './pages/CreateAlbum';
 import EditAlbum from './pages/EditAlbum';
 import CollaboratorsOverview from './pages/CollaboratorsOverview';
+import InvitationsOverview from './pages/InvitationsOverview';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -95,6 +96,10 @@ function App({ checkLogin, logout, showButton }) {
 
           <ProtectedRoute path = "/collaborators">
             <CollaboratorsOverview />
+          </ProtectedRoute>
+
+          <ProtectedRoute path = "/invites">
+            <InvitationsOverview />
           </ProtectedRoute>
         
         </Switch>
