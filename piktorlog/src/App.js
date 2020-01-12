@@ -14,7 +14,7 @@ import Upload from './pages/Upload';
 import CreateAlbum from './pages/CreateAlbum';
 import EditAlbum from './pages/EditAlbum';
 import CollaboratorsOverview from './pages/CollaboratorsOverview';
-import InvitationsOverview from './pages/InvitationsOverview';
+import UserMembershipManagement from './pages/UserMembershipManagement';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -99,7 +99,7 @@ function App({ checkLogin, logout, showButton }) {
           </ProtectedRoute>
 
           <ProtectedRoute path = "/invites">
-            <InvitationsOverview />
+            <UserMembershipManagement />
           </ProtectedRoute>
         
         </Switch>
