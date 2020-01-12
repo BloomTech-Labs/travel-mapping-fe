@@ -27,65 +27,67 @@ const AlbumOverview = (props) => {
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
-  const   [inputState, setInputState] = useState('');
-  
-
-  const filteredPhotosHandler = filteredPhoto => {
-    console.log('filteredPhoto', filteredPhoto)
-    setInputState(filteredPhoto)
-  }
-
+  const [inputState, setInputState] = useState('');
 
   useEffect(() => {
     (async () => {
       // instead of requesting all user albums from backend, use endpoint 
       // to get single album here
-      const data = await getUserAlbumsReq(props.state.currentUser.user_id);
-      console.log('UAC', data);
-      setAvailableAlbums(data);
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].album_id === Number(props.match.params.id)) {
-          setAlbumData(data[i]);
+      const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
+      console.log('UAC', userAlbums);
+      setAvailableAlbums(userAlbums);
+      for (let i = 0; i < userAlbums.length; i++) {
+        if (userAlbums[i].album_id === Number(props.match.params.id)) {
+          setAlbumData(userAlbums[i]);
         }
       }
     })();
   }, [props.state.currentUser.user_id]);
 
-  // useEffect(() => {
-  //   // console.log('albumData: ', albumData)
-
-  // }, [albumData]);
-
   useEffect(() => {
     (async () => {
-      // console.log('albumData.album_id: ', albumData.album_id)
-      const data = await getAlbumMediaReq(albumData.album_id);
-      // console.log('AlbumMedia Data: ', data)
-      setAlbumMedia(data.data);
-      
-      let filteredPhoto = albumMedia.filter(
-        photos => {
-         if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
-          console.log('filteredphoto from Album Overview', photos);
-          //title.includes(props.searchInput)
-         //album.title.indexOf(inputState[0]) !== -1;
-         return photos
-         }   
-      })
-      setAlbumMedia(filteredPhoto)
+      const userAlbumMedia = await getAlbumMediaReq(albumData.album_id);
+      setAlbumMedia(userAlbumMedia.data);  
     })();
-  }, [albumData, inputState,albumMedia]);
+  }, [albumData]);
 
   useEffect(() => {
-    // console.log('albumMedia: ', albumMedia)
-  }, [albumMedia]);
+    (async() => {
+      if (inputState) {
+        let filteredPhotos = albumMedia.filter(photo => {
+          console.log('photo: ', photo)
+          let titleIncludesSearchInput = photo.title.includes(inputState);
+          
+          let mediaKeywords = photo.keywords;
+          let keywordsIncludingInput = [];
+          for (let i = 0; i < mediaKeywords.length; i++) {
+            if (mediaKeywords[i].includes(inputState)) {
+              keywordsIncludingInput.push(mediaKeywords[i])
+            }
+          }
+          console.log('keywordsIncludingInput: ', keywordsIncludingInput)
+          console.log('titleIncludesSearchInput: ', titleIncludesSearchInput)
+
+          if ( titleIncludesSearchInput || keywordsIncludingInput.length>0) {
+            console.log('filteredphoto', photo);
+            return photo
+          }
+        });
+        console.log('filteredPhotos: ', filteredPhotos)
+        setAlbumMedia(filteredPhotos);
+      } else {
+        const userAlbumMedia = await getAlbumMediaReq(albumData.album_id);
+        setAlbumMedia(userAlbumMedia.data);
+      } 
+    })();
+  }, [inputState, albumData])
 
   return (
     <React.Fragment>  
       <Search 
-      isLoading = 'false' 
-      results = {albumMedia}       
-      onSearchChange = {(event) => { setInputState( event.target.value)}}
+        isLoading = 'false' 
+        results = {albumMedia}       
+        onSearchChange = {(event) => {setInputState( event.target.value)}}
       ></Search>
 
       <Card.Group centered stackable doubling>
@@ -102,13 +104,13 @@ const AlbumOverview = (props) => {
       </Card.Group>
 
       <Card.Group centered stackable doubling>
-          {albumMedia.map((albumMediaItem, index) => (
-              <MediaCard key={index} mediaItem={albumMediaItem}/>
-          ))}
+        {albumMedia.map((albumMediaItem, index) => (
+            <MediaCard key={index} mediaItem={albumMediaItem}/>
+        ))}
       </Card.Group>
     </React.Fragment>
   );
-};
+}
 
 
 const mapStateToProps = state => {
