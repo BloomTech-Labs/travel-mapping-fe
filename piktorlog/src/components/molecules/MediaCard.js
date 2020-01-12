@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup} from 'semantic-ui-react';
+import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup, Divider} from 'semantic-ui-react';
 import { Redirect, Link } from 'react-router-dom';
 import {getLocalDateAndTime} from '../../store/utils.js';
 
@@ -41,10 +41,13 @@ const MediaCard = ({mediaItem}) => {
     return (
         <Card>
             <Card.Content>
-                <Modal 
+                <Modal
+                    style = {{background: 'rgba(13, 13, 13)'}}
+                    size = 'large'
+                    // the trigger for this modal is each media item card
                     trigger = {
                         <StyledCardContent>
-                            {/* Dropdown Menu */}
+                            {/* Dropdown */}
                             <StyledDropdownTransparent
                                 button
                                 icon = 'ellipsis vertical' 
@@ -58,14 +61,13 @@ const MediaCard = ({mediaItem}) => {
                             {/* Image */}
                             <Image src = {mediaItem.media_url} />
                         </StyledCardContent>
-                    }
-                    style = {{background: 'rgba(224,225,226,.4)'}}
-                    size = 'large'
+                    } 
                 >
-
+                    {/* The content of the modal */}
                     <StyledModalContent image>
+
                         <div style={{position:'relative', margin:'auto',}}>
-                            {/* Dropdown Menu */}
+                            {/* Dropdown */}
                             <StyledDropdownOpaque
                                 button
                                 icon = 'ellipsis vertical' 
@@ -82,9 +84,7 @@ const MediaCard = ({mediaItem}) => {
                             {/* Popup button */}
                             <Popup 
                                 position='bottom left'
-                                trigger={
-                                    <Button icon='info circle' style={{position:'absolute', left:0, top:0, background:'rgba(224,225,226,.6)'}}/>
-                                }
+                                trigger={<Button icon='info circle' style={{position:'absolute', left:0, top:0, background:'rgba(224,225,226,.6)'}}/>}
                             >
                                 <Popup.Content>
                                     <Card>
@@ -92,15 +92,18 @@ const MediaCard = ({mediaItem}) => {
                                             <Card.Header>{mediaItem.title}</Card.Header>
                                             <Card.Description>{mediaItem.caption}</Card.Description>
                                             <Card.Meta>Created On: {getLocalDateAndTime(mediaItem.created_at)}</Card.Meta>
-                                            <Card.Meta>Last Updated: {getLocalDateAndTime(mediaItem.updated_at)}</Card.Meta>
-                                            <Card.Meta>Keywords: {mediaItem.keywords.map((keyword,index) => (
+                                            <Card.Meta>Last Updated: {getLocalDateAndTime(mediaItem.updated_at)}</Card.Meta>                                            
+                                            <Card.Meta>
+                                                Keywords: {mediaItem.keywords.map((keyword,index) => (
                                                     <span key = {index}>{keyword},</span>                                            
-                                            ))}</Card.Meta>
+                                                ))}
+                                            </Card.Meta>
                                         </Card.Content>
                                     </Card>
                                 </Popup.Content>
                             </Popup>
-                        </div>                       
+                        </div>
+
                     </StyledModalContent>
 
                 </Modal>              

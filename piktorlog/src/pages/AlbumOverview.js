@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import styled from 'styled-components';
 
-import { Button, Card, Divider } from 'semantic-ui-react';
+import { Button, Card, Divider, Container } from 'semantic-ui-react';
 
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
@@ -68,27 +69,24 @@ const AlbumOverview = (props) => {
 
   return (
     <React.Fragment>
-      <Card.Group centered stackable doubling>
-        <Card raised fluid>
-          <Card.Content>
-            <Button floated='right' icon='ellipsis vertical' />
-            <Card.Header>{albumData.title}</Card.Header>
-            <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
-            <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
-            <Divider horizontal>Album Description</Divider>
-            <Card.Description>{albumData.description}</Card.Description>
-          </Card.Content>
-        </Card>
-
-        <Card.Group>
-          <Card.Group>
-              {albumMedia.map((albumMediaItem, index) => (
-                  <MediaCard key={index} mediaItem={albumMediaItem}/>
-              ))}
-          </Card.Group>
+        <Card.Group centered stackable doubling>
+          <Card raised fluid>
+            <Card.Content>
+              <Button floated='right' icon='ellipsis vertical' />
+              <Card.Header>{albumData.title}</Card.Header>
+              <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
+              <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
+              <Divider horizontal>Album Description</Divider>
+              <Card.Description>{albumData.description}</Card.Description>
+            </Card.Content>
+          </Card>
         </Card.Group>
-
-      </Card.Group>
+        
+        <Card.Group centered stackable doubling>
+            {albumMedia.map((albumMediaItem, index) => (
+                <MediaCard key={index} mediaItem={albumMediaItem}/>
+            ))}
+        </Card.Group>
     </React.Fragment>
   );
 };
