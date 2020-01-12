@@ -29,7 +29,6 @@ const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
         if (typeof onSuccess === 'function') {
           onSuccess();
-          console.log('success');
         }
 
       })
@@ -40,7 +39,6 @@ const useFetchOnRequest = (reqFn, onSuccess, onFailure) => {
 
         if (typeof onFailure === 'function') {
           onFailure();
-          console.log('failure');
         }
 
       })
