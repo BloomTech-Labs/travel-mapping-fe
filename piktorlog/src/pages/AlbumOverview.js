@@ -3,20 +3,12 @@ import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
-<<<<<<< HEAD
-import { Button, Card, Divider, Container } from 'semantic-ui-react';
-=======
 import { Button, Card, Divider, Search } from 'semantic-ui-react';
->>>>>>> 457da9e0f91cba3564e7672adfbb2d61daa273c2
 
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
 import {getUserAlbumsReq} from '../store/requests/albums';
 import {getLocalDateAndTime} from '../store/utils.js';
-
-
-
-
 
 /**
  * The AlbumOverview need to receive all of the album information. It can query for the images as it is loading
@@ -56,17 +48,11 @@ const AlbumOverview = (props) => {
           setAlbumData(data[i]);
         }
       }
-
-   
-
     })();
   }, [props.state.currentUser.user_id]);
 
   // useEffect(() => {
   //   // console.log('albumData: ', albumData)
-
-   
-      
 
   // }, [albumData]);
 
@@ -77,7 +63,6 @@ const AlbumOverview = (props) => {
       // console.log('AlbumMedia Data: ', data)
       setAlbumMedia(data.data);
       
-
       let filteredPhoto = albumMedia.filter(
         photos => {
          if ( photos.title.includes(inputState) || photos.keywords.includes(inputState)) {
@@ -85,12 +70,9 @@ const AlbumOverview = (props) => {
           //title.includes(props.searchInput)
          //album.title.indexOf(inputState[0]) !== -1;
          return photos
-         }
-             
-        })
-  
+         }   
+      })
       setAlbumMedia(filteredPhoto)
-
     })();
   }, [albumData, inputState,albumMedia]);
 
@@ -98,19 +80,14 @@ const AlbumOverview = (props) => {
     // console.log('albumMedia: ', albumMedia)
   }, [albumMedia]);
 
-
-
   return (
-    <React.Fragment>
-        
-        
-        
+    <React.Fragment>  
       <Search 
-      
       isLoading = 'false' 
       results = {albumMedia}       
       onSearchChange = {(event) => { setInputState( event.target.value)}}
       ></Search>
+
       <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>
