@@ -54,11 +54,11 @@ const AlbumOverview = (props) => {
   useEffect(() => {
     (async() => {
       if (inputState) {
-        let filteredPhotos = albumMedia.filter(photo => {
-          console.log('photo: ', photo)
-          let titleIncludesSearchInput = photo.title.includes(inputState);
+        let filteredMedia = albumMedia.filter(mediaItem => {
+          console.log('mediaItem: ', mediaItem)
+          let titleIncludesSearchInput = mediaItem.title.includes(inputState);
           
-          let mediaKeywords = photo.keywords;
+          let mediaKeywords = mediaItem.keywords;
           let keywordsIncludingInput = [];
           for (let i = 0; i < mediaKeywords.length; i++) {
             if (mediaKeywords[i].includes(inputState)) {
@@ -69,12 +69,12 @@ const AlbumOverview = (props) => {
           console.log('titleIncludesSearchInput: ', titleIncludesSearchInput)
 
           if ( titleIncludesSearchInput || keywordsIncludingInput.length>0) {
-            console.log('filteredphoto', photo);
-            return photo
+            console.log('filteredmediaItem', mediaItem);
+            return mediaItem
           }
         });
-        console.log('filteredPhotos: ', filteredPhotos)
-        setAlbumMedia(filteredPhotos);
+        console.log('filteredMedia: ', filteredMedia)
+        setAlbumMedia(filteredMedia);
       } else {
         const userAlbumMedia = await getAlbumMediaReq(albumData.album_id);
         setAlbumMedia(userAlbumMedia.data);
