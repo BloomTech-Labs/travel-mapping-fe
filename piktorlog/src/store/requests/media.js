@@ -100,17 +100,53 @@ export const getAlbumMediaReq = async (album_id) => {
 // changes is an object with optional string properties 'title', 'caption', 
 // optional array property 'keywords', and optional array property 'meta' 
 // with a single object inside it where the keys are the names of the metafield
-// and the values are the values associated with the metafield
-
-// NOTE: This endpoint not set up in backend yet. 
+// and the values are the values associated with the metafield 
 export const editMediaReq = async(media_id, changes) => {
   const header = createAuthHeader();
   if (!header) return false;
 
   const {data} = await axios.put(
-    `${address}/media/${media_id}/edit`, 
+    `${address}/media/data/${media_id}/edit`, 
     changes, 
     header
   );
   return data
 }
+
+
+export const deleteMediaFromAlbumReq = async(media_id, album_id) => {
+  const header = createAuthHeader();
+  console.log('header: ', header)
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+    try {
+      // request returns an array of objects; each object containing an individual media item's data 
+      const {data} = await axios.delete(`${address}/albums/${album_id}/media/${media_id}/remove`, header);
+      console.log('data: ', data);
+      return data;
+
+    } catch(err) {
+      console.log('err: ', err)
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+  }
+}
+
+export const getIndividualMediaReq = async (media_id) => {
+
+  const header = createAuthHeader();
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+
+    try {
+
+      const { data } = await axios.get(`${address}/media/data/${media_id}/view`, header);
+      return data;
+
+    } catch(err) {
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+
+  }
+
+};
