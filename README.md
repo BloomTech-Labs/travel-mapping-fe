@@ -41,7 +41,7 @@ Piktorlog also lets you invite collaborators to upload their photos to an album 
         - Captions
     - Default metadata fields as determined by user
 - Ability to tag/classify photos according a user-defined category; photos can belong to multiple categories)
-    - Categories could be things like:
+    - Categories could be things like: 
         - Event (Birthday, Holiday), location, People, year, subject (e.g. art or books)
 - Search/filter by category/categories
 - Ability to invite collaborators/have multiple authorized users for an album
