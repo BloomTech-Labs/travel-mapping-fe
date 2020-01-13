@@ -6,26 +6,14 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 ## 4️⃣ Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                       [Arthur J. Lei](https://github.com/arturolei)                                        |                                       [Adrian Adames](https://github.com/adrianadames)                                        |                                       [Morgan Peterson](https://github.com/)                                        |                                       [Eric Sarragalugo](https://github.com/ericlugo)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Arthur J. Lei](https://github.com/arturolei)                                        |                                       [Adrian Adames](https://github.com/adrianadames)                                        |                                       [Morgan Peterson](https://github.com/MorganPeterson1313)                                        |                                       [Brandon G. Elzy](https://github.com/belzy)                                        |                                       [Tim Dill](https://github.com/Brodt7258)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/arturolei)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrianadames)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/MorganPeterson1313)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ericlugo)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/arthur-lei/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianadames/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/morgan-peterson-73817559/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|                      [<img src="https://avatars1.githubusercontent.com/u/4889231?s=400&v=4" width = "200" />](https://avatars1.githubusercontent.com/u/4889231?s=400&v=4)                       |                      [<img src="https://avatars3.githubusercontent.com/u/11194836?s=400&v=4" width = "200" />](https://avatars3.githubusercontent.com/u/11194836?s=400&v=4)                       |                      [<img src="https://avatars1.githubusercontent.com/u/47166767?s=400&v=4" width = "200" />](hhttps://avatars1.githubusercontent.com/u/47166767?s=400&v=4)                       |                      [<img src="https://avatars0.githubusercontent.com/u/18194507?s=400&v=4" width = "200" />](https://avatars0.githubusercontent.com/u/18194507?s=400&v=4)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/Brodt7258)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/arturolei)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrianadames)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/MorganPeterson1313)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/belzy)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Brodt7258)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/arthur-lei/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianadames/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/morgan-peterson-73817559/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-g-elzy-292601119/) | |
 
 <br>
 <br>
-
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
@@ -35,9 +23,9 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 [UX Design files](https://www.figma.com/file/j8XG1mhNV4q9o8Y17aK9Dl/Travel-Mapping-User-Flow)
 
-Media Organizer is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
+Piktorlog is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
 
-Media organizer also lets you invite collaborators to upload their photos, so you don't have to track down photos from event participants.
+Piktorlog also lets you invite collaborators to upload their photos, so you don't have to track down photos from event participants.
 
 
 ### 4️⃣ Key Features
@@ -65,26 +53,27 @@ Media organizer also lets you invite collaborators to upload their photos, so yo
 - React 
 - Redux
 - Semantic UI
-- Reach
 
-#### React and 
+#### Front-End Considerations
 
 1. What Framework are you using for your FE? (React, React Native, Angular, Vue, etc...)
-React (consider possibly using React Native for dedicated mobile app if time-frame allows?)
+React (consider possibly using React Native for dedicated mobile app if time-frame allows). 
+
 2. What alternatives were considered?
 GatsbyJS, Vue, Next.js
-3. Why did you decide on this framework over the alternatives (what are the advantages?)
-We decided on this framework based on the knowledge base of the developers on the project. 
-4. What potential challenges can you foresee using this framework?
-State management, scalability, authentication, testing (React testing library)
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+3. Why did you decide on this framework over the alternatives (what are the advantages?)
+We decided on this framework based on the knowledge base of the developers on the project. Semantic UI was something new for most of us involved in the product. 
+
+4. What potential challenges can you foresee using this framework?
+State management, scalability, authentication, front-endtesting (React testing library)
+
 
 #### Front end deployed to `🚫insert service here`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/travel-mapping-be/) built using:
 
-#### 🚫 back end framework goes here
+#### Back-End
 
 -    point one
 -    point two
@@ -115,12 +104,17 @@ State management, scalability, authentication, testing (React testing library)
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
 ```
-
+CLOUDINARY_CLOUD_NAME=dbl8pi1ms
+CLOUDINARY_API_KEY=584833961342644
+CLOUDINARY_SECRET_KEY=NShFaw7fvrlsCAqzfEh9MObgzNE
+AUTH0_AUDIENCE=https://piktorlog.com/api
+AUTH0_DOMAIN=piktorlog.auth0.com
+JWT_SECRET=MIICXQIBAAKBgQCZSqMwjFdt1xcFWuiYbvzCXSDgvfDwDuhKZ0oWu6zcDTnx4inU5XQ8c4hDwV5WBRFtUDSum1GcwbY+lSqamy87mhvPCxYEnSWVLwnqOXb5Vowb0++S60/hB8T8u+Dbjw4MlsMqcxk4RCYQAxid+2kubZXjg0JO2nb0nePuk1mRbQIDAQABAoGAM+XdEhaxkvJ7TMjWbqVE1dkJxI0KAXxKkMYfg0rO30FrGMVlPDri+4Rx4d6Zva3BlKzO6T6UhunedZmy7t0TRCVeXKbc+sFZr2u9maZj+NRbu+Mjwwyzkzs2EKnk5fiE/V2w58bXhyb7urEh1MFpy9Istk43CwbaJ+kpCgXIeAECQQD1ChamZ4Wa+7otO9OnJcGAEummeLKMGNF1aXEKsxDG+ZZyEx+OCLX0/0RlD8I8CMCsy+mFrnWy7WY/7K0YIWvtAkEAoCX1EVwwqcdz18u36nJ0tQ21EzVc4dam6kKr88HBBv7u75Z1OtI6bEkomg9AaWn3vsCOYOzb/nMApR6toHsLgQJBAIAurdiQsOB5LFQ7RqXaZ1XDDvzpiKUm2nNsHBk3wOAFckDsZgZb4ituWW3wh2/2OCxsYxVuRN27uFBaU9YaraUCQET2M2KnXTku7x5k1iy53rG8VlYQK5AAe93ymdMcgv99Neyr0I1ky82nbzlwCd+axxk4F9d7B3y5jvSLkl7BvYECQQDJSF9etssAtx48WcjikcdiDc9tlI2UrmbHncUTGsvzEnvZEKRAmVgH+2zVXBes/oJNnuHmNglthbS+Sadg39zX
+PASS_SALT=12
+OAUTH_CLIENT_ID=108804626162-qij29l0bg0osbvgvemfuk7gkkbchp2h7.apps.googleusercontent.com
 ```
 
 # 5️⃣ Content Licenses
-
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
@@ -129,20 +123,12 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Testing
 
-🚫Document what you used for testing and why
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
@@ -182,4 +168,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation]() for details on the backend of our project.
