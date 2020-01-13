@@ -43,6 +43,13 @@ function App({ checkLogin, logout, showButton }) {
   const handleButtonClick = () => setActionToggle(!actionToggle);
 
   const [checkingLogin, setCheckingLogin] = useState(true);
+
+  const [redirectRoute, setRedirectRoute] = useState('/createAlbum');
+
+  const handleRedirectToUploadMedia = () => {setRedirectRoute('/upload')};
+  const handleRedirectToCreateAlbum = () => {setRedirectRoute('/createAlbum')};
+
+  // console.log('props: ', props)
   
   useEffect(() => {
     checkLogin();
@@ -84,11 +91,28 @@ function App({ checkLogin, logout, showButton }) {
           
           <ProtectedRoute 
             path='/albums/:id'
-            component = {AlbumOverview} 
+            // component = {AlbumOverview} 
+            render = {(props) => <AlbumOverview 
+              {...props} 
+              handleRedirectToUploadMedia = {handleRedirectToUploadMedia} 
+              handleRedirectToCreateAlbum= {handleRedirectToCreateAlbum}
+              />}
           />
+
+          {/* <ProtectedRoute path = '/albums/:id'>
+            <AlbumOverview 
+              handleRedirectToUploadMedia = {handleRedirectToUploadMedia}
+            />
+          </ProtectedRoute> */}
+
           <ProtectedRoute 
-            path = '/media/:media_id/edit'
-            component = {EditMedia}
+            path = '/media/:id/edit'
+            // component = {EditMedia}
+            render = {(props) => <EditMedia 
+              {...props} 
+              handleRedirectToUploadMedia = {handleRedirectToUploadMedia} 
+              handleRedirectToCreateAlbum= {handleRedirectToCreateAlbum}
+              />}
           />
           <ProtectedRoute path="/upload">
             <Upload />
@@ -117,7 +141,7 @@ function App({ checkLogin, logout, showButton }) {
         <RequestDebug />
       </div>
       {
-        showButton && (<Link to={`/createAlbum`}>
+        showButton && (<Link to={redirectRoute}>
         <ActionButton active={actionToggle} handleClick={handleButtonClick} disabled ={showButton ? true:false} />
       </Link>)
       }

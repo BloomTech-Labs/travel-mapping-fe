@@ -8,16 +8,17 @@ import UploadMeta from '../components/molecules/UploadMeta';
 import { useGetMediaOnRequest, useEditMedia } from '../store/hooks/useFetchOnRequest';
 import { useLogOnChange } from '../store/hooks/misc';
 
-const EditMedia = ({ location, match }) => {
+// const EditMedia = ({ location, match }) => {
+const EditMedia = (props) => {
 
   // figure out if media is provided from link props;
   const [mediaProps] = useState(
-    location && location.state && location.state.mediaItem 
+    props.location && props.location.state && props.location.state.mediaItem 
     ? { 
-      ...location.state.mediaItem,
+      ...props.location.state.mediaItem,
       // I hate this so much, but the api and the link props deliver meta in different shapes
       // and this really is the lesser evil until it can be standardized.
-      meta: Object.entries(location.state.mediaItem.meta).map(e => ({ name: e[0], value: e[1] }))
+      meta: Object.entries(props.location.state.mediaItem.meta).map(e => ({ name: e[0], value: e[1] }))
     } 
     : null
   );
@@ -31,13 +32,22 @@ const EditMedia = ({ location, match }) => {
   // if media was not provided through link props, go get it from the server
   useEffect(() => {
     if (!mediaProps) {
-      getMedia(match.params.media_id);
+      getMedia(props.match.params.media_id);
     }
-  }, [mediaProps, match.params.media_id, getMedia]);
+  }, [mediaProps, props.match.params.media_id, getMedia]);
 
   const handleChange = (e, { name, value }) => {
     setChanges(prev => ({ ...prev, [name]: value }));
   };
+  console.log('props: ', props)
+  // useEffect(()=> {
+  //   props.handleRedirectToUploadMedia();
+
+  //   return () => {
+  //     console.log('unmounting')
+  //     props.handleRedirectToCreateAlbum();
+  //   }
+  // }, [])
 
   const handleAddMeta = (name, value) => {
     // if there haven't yet been any changes to meta, initialize it
@@ -67,7 +77,7 @@ const EditMedia = ({ location, match }) => {
   }
 
   // figure out if linked from an album
-  const [albumProps] = useState(location && location.state && location.state.albumData ? location.state.albumData : null);
+  const [albumProps] = useState(props.location && props.location.state && props.location.state.albumData ? props.location.state.albumData : null);
   useLogOnChange('albumProps', albumProps);
 
   // redirect after the edit request returns. Either to the home page, or the album the user came from
