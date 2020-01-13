@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Button, Card, Divider, Search, Dropdown, Modal, Link } from 'semantic-ui-react';
+import { Button, Card, Divider, Search, Dropdown, Modal } from 'semantic-ui-react';
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
 import {getUserAlbumsReq, deleteAlbumReq} from '../store/requests/albums';
@@ -152,9 +152,10 @@ const AlbumOverview = (props) => {
               icon = 'ellipsis vertical' 
             >                                
               <Dropdown.Menu>
-                {/* <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                     */}
+                {/* <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}> */}
+                <Link to= {{pathname:`/albums/${albumData.album_id}/edit`}} style = {{'textDecoration': 'none', color:'black'}}>
                     <Dropdown.Item text = 'edit'/>
-                {/* </Link> */}
+                </Link>
 
                 <Modal
                   style = {{background: 'rgba(13, 13, 13)'}}
