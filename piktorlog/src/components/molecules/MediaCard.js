@@ -106,8 +106,29 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                 icon = 'ellipsis vertical' 
                             >
                                 <Dropdown.Menu>
-                                    <Dropdown.Item text = 'edit' /> 
-                                    <Dropdown.Item text = 'delete' />
+                                    <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                    
+                                        <Dropdown.Item text = 'edit'/>
+                                    </Link> 
+                                    <Modal
+                                        style = {{background: 'rgba(13, 13, 13)'}}
+                                        size = 'tiny'
+                                        trigger = {
+                                            <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                                        }
+                                        open = {modalOpen}
+                                        onClose = {() =>handleClose()}
+                                    >
+                                        {/* Content of the delete modal */}
+                                        <Modal.Content >
+                                            <h3>Are you sure you want to delete this item from your album?</h3>
+                                                <Button onClick= {() =>deleteMediaFromAlbum()} color='green'>
+                                                    Delete
+                                                </Button>
+                                                <Button color='red' onClick= {() =>handleClose()}>
+                                                    Cancel
+                                                </Button>
+                                        </Modal.Content>
+                                    </Modal>
                                 </Dropdown.Menu>
                             </StyledDropdownOpaque>
                             
