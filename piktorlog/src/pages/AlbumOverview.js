@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import {withRouter} from 'react-router-dom';
-// import styled from 'styled-components';
+import {Redirect} from 'react-router-dom';
+import styled from 'styled-components';
 
-import { Button, Card, Divider, Search } from 'semantic-ui-react';
+import { Button, Card, Divider, Search, Dropdown, Modal, Link } from 'semantic-ui-react';
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
-import {getUserAlbumsReq} from '../store/requests/albums';
+import {getUserAlbumsReq, deleteAlbumReq} from '../store/requests/albums';
 import {getLocalDateAndTime} from '../store/utils.js';
 
 import { useGetAlbum, useGetAlbumMedia } from '../store/hooks/useImmediateFetch';
@@ -23,8 +23,15 @@ import { useGetAlbum, useGetAlbumMedia } from '../store/hooks/useImmediateFetch'
  * }
  */
 
+const StyledDropdownTransparent = styled(Dropdown)({
+  position: 'absolute!important',
+  top:'0',
+  right:'0',
+  'z-index':'1!important',
+  background:'rgba(224,225,226,.4)!important'
+});
+
 const AlbumOverview = (props) => {
-  
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
@@ -32,6 +39,18 @@ const AlbumOverview = (props) => {
 
   // const [albumData] = useGetAlbum(props.match.params.id);
   // const [albumMedia] = useGetAlbumMedia(props.match.params.id);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpen = () => {setModalOpen(true)};
+  const handleClose = () => {setModalOpen(false)};
+
+  const [toHomePage, setToHomePage] = useState(false);
+
+  const deleteAlbum = () => {
+    deleteAlbumReq(albumData.album_id); //API request to delete media from album;
+    handleClose();
+    setToHomePage(true);
+  }
 
   const updateAlbumAfterMediaDelete = async() => {
     const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
@@ -63,9 +82,9 @@ const AlbumOverview = (props) => {
     })();
   }, [props.state.currentUser.user_id]);
 
-  useEffect(()=> {
-    console.log('albumData: ', albumData)
-  }, [albumData])
+  // useEffect(()=> {
+  //   console.log('albumData: ', albumData)
+  // }, [albumData])
 
   useEffect(() => {
     (async () => {
@@ -77,9 +96,9 @@ const AlbumOverview = (props) => {
     })();
   }, [albumData]);
 
-  useEffect(()=> {
-    console.log('albumMedia: ', albumMedia)
-  }, [albumMedia])
+  // useEffect(()=> {
+  //   console.log('albumMedia: ', albumMedia)
+  // }, [albumMedia])
 
 
   useEffect(() => {
@@ -114,7 +133,10 @@ const AlbumOverview = (props) => {
   }, [inputState, albumData])
 
   return (
-    <React.Fragment>  
+    <React.Fragment>
+
+      {toHomePage ? <Redirect to ='/'/>: null}
+
       <Search  
         loading = {false}
         results = {albumMedia}       
@@ -124,7 +146,38 @@ const AlbumOverview = (props) => {
       <Card.Group centered stackable doubling>
         <Card raised fluid>
           <Card.Content>
-            <Button floated='right' icon='ellipsis vertical' />
+            {/* <Button floated='right' icon='ellipsis vertical' /> */}
+            <StyledDropdownTransparent
+              button
+              icon = 'ellipsis vertical' 
+            >                                
+              <Dropdown.Menu>
+                {/* <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                     */}
+                    <Dropdown.Item text = 'edit'/>
+                {/* </Link> */}
+
+                <Modal
+                  style = {{background: 'rgba(13, 13, 13)'}}
+                  size = 'tiny'
+                  trigger = {
+                      <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                  }
+                  open = {modalOpen}
+                  onClose = {() =>handleClose()}
+                >
+                  {/* Content of the delete modal */}
+                  <Modal.Content >
+                    <h3>Are you sure you want to delete this album?</h3>
+                    <Button onClick= {() =>deleteAlbum()} color='green'>
+                        Delete
+                    </Button>
+                    <Button color='red' onClick= {() =>handleClose()}>
+                        Cancel
+                    </Button>
+                  </Modal.Content>
+                </Modal>
+              </Dropdown.Menu>
+            </StyledDropdownTransparent>
             <Card.Header>{albumData.title}</Card.Header>
             <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
             <Card.Meta>Last Updated: {getLocalDateAndTime(albumData.updated_at)}</Card.Meta>
