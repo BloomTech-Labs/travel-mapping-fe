@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Segment, Button, Header, Grid, GridColumn, Icon } from 'semantic-ui-react';
-
+import {Redirect} from 'react-router-dom';
 import MetaList from './MetaList';
 
 const CreateAlbumForm = (props) => {
@@ -21,6 +21,8 @@ const CreateAlbumForm = (props) => {
         }
     }, [props]);
 
+    
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [access, setAccess] = useState('public');
@@ -38,14 +40,28 @@ const CreateAlbumForm = (props) => {
     
     const createAlbum = () => {
         props.createAlbum(props.user_id, title, description, access, metadata);
+        returnToAppOverview();
     };
 
     const removeMeta = (name) => {
         setMetaData(prev => prev.filter(e => e.name !== name));
     };
 
+    const redirectToAppOverview = () => {
+        console.log(props)
+    };
+
+    const [toAppOverview, setToAppOverview] = useState(false);
+    const returnToAppOverview = () => {
+        setToAppOverview(true)
+    };
+    useEffect(() => {
+        setToAppOverview(false)
+    }, []);
+
     return (
         <Form size = 'large'>
+            {toAppOverview ? <Redirect to = '/'/>: null}
             <Header as = 'h2' color = 'teal' textAlign = 'center'>
                 {props.editing ? 'Edit Album' : 'Create Album'}
             </Header>
@@ -123,7 +139,7 @@ const CreateAlbumForm = (props) => {
                 <Button color = 'teal' onClick  = {createAlbum}>
                     {props.editing ? 'Submit Edit' : 'Create'}
                 </Button>
-                <Button>
+                <Button onClick = {() => returnToAppOverview()}>
                     Cancel
                 </Button>
             </Segment>

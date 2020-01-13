@@ -45,16 +45,33 @@ export const editAlbumReq = async (album_id, changes) => {
   return data;
 };
 
-export const deleteAlbumReq = async (album_id) => {
-  const header = createAuthHeader();
-  if (!header) return false;
+// export const deleteAlbumReq = async (album_id) => {
+//   const header = createAuthHeader();
+//   if (!header) return false;
 
-  const { data } = axios.delete(
-    `${address}/albums/${album_id}/remove`,
-    header
-  );
-  return data;
-};
+//   const { data } = axios.delete(
+//     `${address}/albums/${album_id}/remove`,
+//     header
+//   );
+//   return data;
+// };
+
+export const deleteAlbumReq = async(album_id) => {
+  const header = createAuthHeader(); 
+  if (!header) throw new Error(errors.authHeaderError);
+  else {
+    try {
+      // request returns an array of objects; each object containing an individual media item's data 
+      const {data} = await axios.delete(`${address}/albums/${album_id}/remove`, header);
+      console.log('data: ', data);
+      return data;
+
+    } catch(err) {
+      console.log('err: ', err)
+      throw new Error(Object.values(err.response.data)[0]);
+    }
+  }
+}
 
 // album_id is an integer
 // metaData is an array of objects in the form { name: <String>, value: <String> }
