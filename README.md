@@ -1,9 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 [![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
 
 # Piktorlog
@@ -73,9 +67,7 @@ Media organizer also lets you invite collaborators to upload their photos, so yo
 - Semantic UI
 - Reach
 
-#### _Front end framework goes here_
-
-🚫 Why did you choose this framework?
+#### React and 
 
 1. What Framework are you using for your FE? (React, React Native, Angular, Vue, etc...)
 React (consider possibly using React Native for dedicated mobile app if time-frame allows?)
@@ -106,43 +98,25 @@ State management, scalability, authentication, testing (React testing library)
 
 🚫Replace text below with a description of the API
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+## 3️⃣ Misc API here
 
+🚫Replace text below with a description of the API
 
 ## 3️⃣ Misc API here
 
 🚫Replace text below with a description of the API
 
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldnt shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
 ## 3️⃣ Misc API here
 
 🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+```
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+```
 
 # 5️⃣ Content Licenses
 
