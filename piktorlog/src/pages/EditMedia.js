@@ -22,6 +22,14 @@ const EditMedia = (props) => {
 
     // maybe add a confirmation/error message for the user, or redirect to main page from here
   };
+  useEffect(()=> {
+    props.handleRedirectToUploadMedia();
+
+    return () => {
+      console.log('unmounting')
+      props.handleRedirectToCreateAlbum();
+    }
+  }, [])
 
 //   useEffect(() => {
 //     (async () => {

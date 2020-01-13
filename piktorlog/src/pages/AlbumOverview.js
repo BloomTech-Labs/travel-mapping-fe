@@ -41,6 +41,7 @@ const StyledDropdownMenu = styled(Dropdown.Menu)({
 // });
 
 const AlbumOverview = (props) => {
+  console.log('props: ', props)
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
   const [albumMedia, setAlbumMedia] = useState([]);
@@ -73,6 +74,16 @@ const AlbumOverview = (props) => {
         }
       }
   }
+
+  //makes it so that the URL associated with the add button (i.e. the + button) directs user to upload photo page
+  useEffect(()=> {
+    props.handleRedirectToUploadMedia();
+
+    return () => {
+      console.log('unmounting')
+      props.handleRedirectToCreateAlbum();
+    }
+  }, [])
 
   useEffect(() => {
     (async () => {

@@ -95,11 +95,11 @@ const AppOverview = (props) => {
       <br/>
       <br/>
       <br/>
- <Search onSearchInput= {filteredAlbumsHandler} isLoading = 'false' results = {availableAlbums}       onSearchChange = {(event) => { setInputState( event.target.value)}}
+ {/* <Search onSearchInput= {filteredAlbumsHandler} isLoading = 'false' results = {availableAlbums}       onSearchChange = {(event) => { setInputState( event.target.value)}}
   
   >
 
- </Search>
+ </Search> */}
       <Card.Group>
             {availableAlbums.map((albumData, index) => (
                 <AlbumCard key={index} albumData={albumData} />
