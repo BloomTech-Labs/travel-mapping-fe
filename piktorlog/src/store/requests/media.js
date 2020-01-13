@@ -118,15 +118,17 @@ export const editMediaReq = async(media_id, changes) => {
 
 export const deleteMediaFromAlbumReq = async(media_id, album_id) => {
   const header = createAuthHeader();
+  console.log('header: ', header)
   if (!header) throw new Error(errors.authHeaderError);
   else {
     try {
-
       // request returns an array of objects; each object containing an individual media item's data 
-      const {data} = await axios.delete(`${address}/media/${media_id}/remove`);
+      const {data} = await axios.delete(`${address}/albums/${album_id}/media/${media_id}/remove`, header);
+      console.log('data: ', data);
       return data;
 
     } catch(err) {
+      console.log('err: ', err)
       throw new Error(Object.values(err.response.data)[0]);
     }
   }
