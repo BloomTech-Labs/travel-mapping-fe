@@ -17,3 +17,13 @@ export const createAuthHeader = () => {
 
   return token ? { headers: { Authorization: `Bearer ${token}` }} : null;
 };
+
+
+// format of DateTimeString is same format as the knex created_at date-time format
+// example of DateTimeString: '2020-01-11T00:19:29.571Z'
+// example of associated output: '1/10/2020, 7:19:29 PM'
+export const getLocalDateAndTime = (dateTimeString) => {
+  const dateTimeObj = new Date(dateTimeString);
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  return dateTimeObj.toLocaleString({timezone:String(userTimezone)});
+};

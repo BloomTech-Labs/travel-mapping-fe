@@ -75,3 +75,31 @@ export const getAlbumMediaReq = async(album_id) => {
   return data
 }
 
+// form of Media object
+// {
+//   "title": "A Photo Title",
+//   "caption": "A short caption for a photo",
+//   "keywords": ["keyword-one", "keyword-two", "keyword-three"],
+//   "meta": [{
+//      "name": "Location",
+//      "value": "Mexico"
+//   }]
+// }
+
+// changes is an object with optional string properties 'title', 'caption', 
+// optional array property 'keywords', and optional array property 'meta' 
+// with a single object inside it where the keys are the names of the metafield
+// and the values are the values associated with the metafield
+
+// NOTE: This endpoint not set up in backend yet. 
+export const editMediaReq = async(media_id, changes) => {
+  const header = createAuthHeader();
+  if (!header) return false;
+
+  const {data} = await axios.put(
+    `${address}/media/${media_id}/edit`, 
+    changes, 
+    header
+  );
+  return data
+}
