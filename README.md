@@ -76,25 +76,31 @@ State management, scalability, authentication, front-endtesting (React testing l
 #### Front end deployed to `netlify.com`
 
 #### [Back end](https://github.com/Lambda-School-Labs/travel-mapping-be/) built using:
+- Node.js
 
 #### Back-End
 
--    point one
--    point two
--    point three
+1. What Framework are you using for your BE? 
+We went with Node.JS given the technical skillset of the developers involved.
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+2. What alternatives were considered?
+GraphQL
+
+3. Why did you decide on this framework over the alternatives (what are the advantages?)
+We decided on this framework based on the knowledge base of the developers on the project. GraphQL although promising is too new and too untested.
+
+4. What potential challenges can you foresee using this framework?
+Scalability (what happens if we have multiple or millions of requests); error handling; offline functionality
 
 # APIs
 
 ## 2️⃣ Authentication API here
 
-🚫Replace text below with a description of the API
+We went with JWT. 
 
 ## 3️⃣ Misc API here
 
-🚫Replace text below with a description of the API
-
+We also decided to use Cloudinary for image hosting. 
 
 # 3️⃣ Environment Variables
 
@@ -113,18 +119,43 @@ OAUTH_CLIENT_ID=108804626162-qij29l0bg0osbvgvemfuk7gkkbchp2h7.apps.googleusercon
 
 # 5️⃣ Content Licenses
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+None noted. 
 
 # 4️⃣ Testing
-
+In progress. 
 
 # 4️⃣ Installation Instructions
 
+### Front-end
+1. Git clone or download from Github repo: [https://github.com/Lambda-School-Labs/travel-mapping-fe](https://github.com/Lambda-School-Labs/travel-mapping-be)
+2. Run `yarn install`
+
+### Back-End:
+To get the server running locally:
+
+Clone this repository and move into the project directory
+```
+git clone "https://github.com/Lambda-School-Labs/travel-mapping-be.git"
+cd travel-mapping-be
+```
+ Install dependencies
+```
+npm install
+```
+Set up the database
+```
+npm run migrate
+npm run seed
+```
+Start the development server
+```
+npm run dev
+```
 
 ## Other Scripts
+
+
+### Back-end deployed to [piktorlog.herokuapp.com](piktorlog.herokuapp.com)
 
 
 # Contributing
@@ -167,14 +198,20 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 See [Backend Documentation]() for details on the backend of our project.
 
+
+## Open Questions: 
+- What do we do in light of recent privacy concerns, e.g. "Right to be Forgotten" and California's recent actions on privacy? See [Release Canvas 1.2 Features]() for more information.
+- What do we offer in terms of unique value propositon with regard to Google/Apple? How much can we really sell people on collaboration and custom organization?
+- We did some rudimentary front-end testing by building special front-end components to feed mock data, but we could have actually deployed a real testing suite.
+
 ## Contact Info: 
-- Adrian Adames 
+- Adrian Adames, Team Lead and Developer
   - Email:
-- Tim Dill:
+- Tim Dill, Developer
   - Email: 
-- Brandon G. Elzy
+- Brandon G. Elzy, Developer
   - Email:
-- Arthur J. Lei
+- Arthur J. Lei, Developer
   - Email: artie.lei@gmail.com
-- Morgan Peterson 
+- Morgan Peterson, Developer
   - Email:  
