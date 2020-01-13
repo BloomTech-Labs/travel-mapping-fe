@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 
 const StyledCardContent = styled(Card.Content)({
-    border: '1px solid red',
+    // border: '1px solid red',
     position:'relative',
     'z-index':'0!important',
 });
@@ -33,7 +33,7 @@ const StyledModalContent = styled(Modal.Content)({
     position:'relative',
     'z-index':'0',
     background:'rgba(38,38,38,0.15)!important',
-    border: '2px solid green',
+    // border: '2px solid green',
 });
 
 
@@ -99,7 +99,7 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                     {/* The content of the modal */}
                     <StyledModalContent image>
 
-                        <div style={{position:'relative', margin:'auto',border: '1px solid red'}}>
+                        <div style={{position:'relative', margin:'auto',/*border: '1px solid red'*/}}>
                             {/* Dropdown */}
                             <StyledDropdownOpaque
                                 button
