@@ -45,10 +45,6 @@ Piktorlog also lets you invite collaborators to upload their photos to an album 
         - Event (Birthday, Holiday), location, People, year, subject (e.g. art or books)
 - Search/filter by category/categories
 - Ability to invite collaborators/have multiple authorized users for an album
-    - Ability to assign permissions to collaborators
-- Access control/view permissions can be set for some photos
-- Publishing photos as an front-facing album while maintaining an archive (user-facing as opposed to public-facing)
-- Ability to sign up and connect via OAuth
 
 
 ## 1️⃣ Tech Stack
