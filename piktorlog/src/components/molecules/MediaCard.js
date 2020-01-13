@@ -3,7 +3,7 @@ import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup, Divider} from
 import { Redirect, Link } from 'react-router-dom';
 import {getLocalDateAndTime} from '../../store/utils.js';
 
-import styled from 'styled-components';
+import styled from 'styled-components'; 
 
 
 const StyledCardContent = styled(Card.Content)({
