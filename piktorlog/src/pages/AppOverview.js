@@ -27,9 +27,7 @@ const AppOverview = (props) => {
       console.log('filteredAlbums', filteredAlbums);
       setInputState(filteredAlbums)
     }
-  //  availableAlbums.filter(album => {
-  //    return album.title.includes(this.state.searchInput).toLowerCase();
-  //  });
+
   useEffect(() => {
     (async () => {
       const data = await getUserAlbumsReq(props.currentUser.user_id)
@@ -47,6 +45,15 @@ const AppOverview = (props) => {
       setAvailableAlbums(filteredAlbums)  
     })();
   }, [props.currentUser.user_id, inputState ]);
+
+
+  useEffect(() => {
+    (async () => {
+      console.log('testing')
+      const data = await getUserAlbumsReq(props.currentUser.user_id)
+      setAvailableAlbums(data)  
+    })();
+  }, []);
 
 
 
