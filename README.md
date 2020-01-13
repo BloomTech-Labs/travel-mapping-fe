@@ -23,6 +23,10 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 [UX Design files](https://www.figma.com/file/j8XG1mhNV4q9o8Y17aK9Dl/Travel-Mapping-User-Flow)
 
+[Front-End Github Repo](https://github.com/Lambda-School-Labs/travel-mapping-fe/branches)
+
+[Back-end Github Repo](https://github.com/Lambda-School-Labs/travel-mapping-be/branches)
+
 Piktorlog is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
 
 Piktorlog also lets you invite collaborators to upload their photos to an album of your choosing, so you don't have to track down photos from event participants.
@@ -69,7 +73,7 @@ We decided on this framework based on the knowledge base of the developers on th
 State management, scalability, authentication, front-endtesting (React testing library)
 
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `netlify.com`
 
 #### [Back end](https://github.com/Lambda-School-Labs/travel-mapping-be/) built using:
 
@@ -162,3 +166,10 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [Backend Documentation]() for details on the backend of our project.
+
+## Contact Info: 
+- Adrian Adames 
+- Brandon G. Elzy
+- Arthur J. Lei
+- Morgan Peterson 
+- 
