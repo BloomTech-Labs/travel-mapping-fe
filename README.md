@@ -25,7 +25,7 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 Piktorlog is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
 
-Piktorlog also lets you invite collaborators to upload their photos, so you don't have to track down photos from event participants.
+Piktorlog also lets you invite collaborators to upload their photos to an album of your choosing, so you don't have to track down photos from event participants.
 
 
 ### 4️⃣ Key Features
@@ -91,13 +91,6 @@ State management, scalability, authentication, front-endtesting (React testing l
 
 🚫Replace text below with a description of the API
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
 
 # 3️⃣ Environment Variables
 
