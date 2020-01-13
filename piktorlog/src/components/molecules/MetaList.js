@@ -22,14 +22,14 @@ const MetaLabelContainer = styled.div`
 const AlbumMetaList = ({ meta, remove }) => {
   return (
     <MetaLabelContainer>
-      {meta.map(e => (
+      {meta && meta.map(e => (
         <Label key={e.name}>
           {`${e.name}: ${e.value}`}
           <Icon 
             name="delete"
             color="red"
             size="large"
-            onClick={() => remove(e.name)}
+            onClick={() => remove(e.name, e.value)}
           />
         </Label>
       ))}

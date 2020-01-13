@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup, Divider, Container} from 'semantic-ui-react';
-import { Redirect, Link } from 'react-router-dom';
+import {Button, Card, Image, Dropdown, Modal, Popup} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import {getLocalDateAndTime} from '../../store/utils.js';
 import {deleteMediaFromAlbumReq} from '../../store/requests/media'
 
