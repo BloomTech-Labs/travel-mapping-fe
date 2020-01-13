@@ -169,7 +169,12 @@ See [Backend Documentation]() for details on the backend of our project.
 
 ## Contact Info: 
 - Adrian Adames 
+  - Email:
+- Tim Dill:
+  - Email: 
 - Brandon G. Elzy
+  - Email:
 - Arthur J. Lei
+  - Email: artie.lei@gmail.com
 - Morgan Peterson 
-- 
+  - Email:  
