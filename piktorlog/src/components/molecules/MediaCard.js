@@ -104,7 +104,7 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                         {/* Content of the delete modal */}
                                         <Modal.Content >
                                             <h3>Are you sure you want to delete this item from your album?</h3>
-                                                <Button onClick= {() =>deleteMediaFromAlbum()} color='green'>
+                                                <Button onClick= {deleteMediaFromAlbum()} color='green'>
                                                     Delete
                                                 </Button>
                                                 <Button color='red' onClick= {() =>handleClose()}>

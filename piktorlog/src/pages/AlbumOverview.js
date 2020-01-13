@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Button, Card, Divider, Search, Dropdown, Modal } from 'semantic-ui-react';
 import MediaCard from '../components/molecules/MediaCard';
 import {getAlbumMediaReq} from '../store/requests/media';
-import {getUserAlbumsReq, deleteAlbumReq} from '../store/requests/albums';
+import {getUserAlbumsReq, deleteAlbumReq, getAlbumReq} from '../store/requests/albums';
 import {getLocalDateAndTime} from '../store/utils.js';
 
 import { useGetAlbum, useGetAlbumMedia } from '../store/hooks/useImmediateFetch';
@@ -63,16 +63,19 @@ const AlbumOverview = (props) => {
   }
 
   const updateAlbumAfterMediaDelete = async() => {
-    const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
-      console.log('userAlbums', userAlbums);
-      setAvailableAlbums(userAlbums);
-      for (let i = 0; i < userAlbums.length; i++) {
-        if (userAlbums[i].album_id === Number(props.match.params.id)) {
-          console.log('props.match.params.id: ', props.match.params.id)
-          console.log('userAlbums[i].album_id: ', userAlbums[i].album_id)
-          setAlbumData(userAlbums[i]);
-        }
-      }
+    // const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
+    // console.log('userAlbums', userAlbums);
+    // setAvailableAlbums(userAlbums);
+    console.log('updateAlbumAfterMediaDelete')
+    const userAlbum = await getAlbumReq(props.match.params.id);
+    setAlbumData(userAlbum);
+    // for (let i = 0; i < userAlbums.length; i++) {
+    //   if (userAlbums[i].album_id === Number(props.match.params.id)) {
+    //     console.log('props.match.params.id: ', props.match.params.id)
+    //     console.log('userAlbums[i].album_id: ', userAlbums[i].album_id)
+    //     setAlbumData(userAlbums[i]);
+    //   }
+    // }
   }
 
   //makes it so that the URL associated with the add button (i.e. the + button) directs user to upload photo page
@@ -89,16 +92,20 @@ const AlbumOverview = (props) => {
     (async () => {
       // instead of requesting all user albums from backend, use endpoint 
       // to get single album here
-      const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
-      console.log('userAlbums', userAlbums);
-      setAvailableAlbums(userAlbums);
-      for (let i = 0; i < userAlbums.length; i++) {
-        if (userAlbums[i].album_id === Number(props.match.params.id)) {
-          console.log('props.match.params.id: ', props.match.params.id)
-          console.log('userAlbums[i].album_id: ', userAlbums[i].album_id)
-          setAlbumData(userAlbums[i]);
-        }
-      }
+      // const userAlbums = await getUserAlbumsReq(props.state.currentUser.user_id);
+      // console.log('userAlbums', userAlbums);
+      // setAvailableAlbums(userAlbums);
+      // for (let i = 0; i < userAlbums.length; i++) {
+      //   if (userAlbums[i].album_id === Number(props.match.params.id)) {
+      //     console.log('props.match.params.id: ', props.match.params.id)
+      //     console.log('userAlbums[i].album_id: ', userAlbums[i].album_id)
+      //     setAlbumData(userAlbums[i]);
+      //   }
+      // }
+      console.log('albumData.album_id: ', albumData.album_id)
+      const userAlbum = await getAlbumReq(props.match.params.id);
+      // console.log('userAlbum: ', userAlbum)
+      setAlbumData(userAlbum);
     })();
   }, [props.state.currentUser.user_id]);
 
