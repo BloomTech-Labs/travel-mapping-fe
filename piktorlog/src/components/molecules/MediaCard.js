@@ -36,6 +36,24 @@ const StyledModalContent = styled(Modal.Content)({
     // border: '2px solid green',
 });
 
+// const StyledDropdownItem = styled(Dropdown.Item)({
+//     // border: '1px solid red',
+//     // margin:'auto!important',
+//     // position:'relative',
+//     // left:'50%'
+//     // 'z-index':'0!important',
+// });
+
+const StyledDropdownMenu = styled(Dropdown.Menu)({
+    background:'rgba(0,0,0,0)!important'
+});
+
+// const StyledButton = styled(Button)({
+//     // border:'3px solid red!important',
+//     background:'rgba(224,225,226,0.8)!important'
+// });
+
+
 
 const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -63,23 +81,29 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                 button
                                 icon = 'ellipsis vertical' 
                             >                                
-                                <Dropdown.Menu>
-                                    <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                    
-                                        <Dropdown.Item text = 'edit'/>
+                                <StyledDropdownMenu>
+                                    
+                                    <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black', position:'relative'}}>                                    
+                                        <Button fluid>
+                                            <Dropdown.Item text = 'edit'/>
+                                        </Button>
                                     </Link>
+                                    
 
                                     <Modal
                                         style = {{background: 'rgba(13, 13, 13)'}}
                                         size = 'tiny'
                                         trigger = {
-                                            <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                                            <Button fluid>
+                                                <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                                            </Button>
                                         }
                                         open = {modalOpen}
                                         onClose = {() =>handleClose()}
                                     >
                                         {/* Content of the delete modal */}
                                         <Modal.Content >
-                                            <h3>Are you sure you want to delete this media item?</h3>
+                                            <h3>Are you sure you want to delete this item from your album?</h3>
                                                 <Button onClick= {() =>deleteMediaFromAlbum()} color='green'>
                                                     Delete
                                                 </Button>
@@ -88,7 +112,7 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                                 </Button>
                                         </Modal.Content>
                                     </Modal>
-                                </Dropdown.Menu>
+                                </StyledDropdownMenu>
                             </StyledDropdownTransparent>
 
                             {/* Image */}
@@ -105,15 +129,19 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                 button
                                 icon = 'ellipsis vertical' 
                             >
-                                <Dropdown.Menu>
+                                <StyledDropdownMenu>
                                     <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                    
-                                        <Dropdown.Item text = 'edit'/>
+                                        <Button fluid>
+                                            <Dropdown.Item text = 'edit'/>
+                                        </Button>
                                     </Link> 
                                     <Modal
                                         style = {{background: 'rgba(13, 13, 13)'}}
                                         size = 'tiny'
                                         trigger = {
-                                            <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                                            <Button fluid>
+                                                <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                                            </Button>
                                         }
                                         open = {modalOpen}
                                         onClose = {() =>handleClose()}
@@ -129,7 +157,7 @@ const MediaCard = ({mediaItem, albumData, updateAlbumAfterMediaDelete}) => {
                                                 </Button>
                                         </Modal.Content>
                                     </Modal>
-                                </Dropdown.Menu>
+                                </StyledDropdownMenu>
                             </StyledDropdownOpaque>
                             
                             {/* Image */}

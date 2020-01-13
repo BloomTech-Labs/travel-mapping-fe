@@ -31,6 +31,15 @@ const StyledDropdownTransparent = styled(Dropdown)({
   background:'rgba(224,225,226,.4)!important'
 });
 
+const StyledDropdownMenu = styled(Dropdown.Menu)({
+  background:'rgba(0,0,0,0)!important', 
+});
+
+// const StyledButton = styled(Button)({
+//   // border:'3px solid red!important',
+//   background:'rgba(224,225,226,0.8)!important'
+// });
+
 const AlbumOverview = (props) => {
   const [availableAlbums, setAvailableAlbums] = useState([]);
   const [albumData, setAlbumData] = useState({});
@@ -151,17 +160,21 @@ const AlbumOverview = (props) => {
               button
               icon = 'ellipsis vertical' 
             >                                
-              <Dropdown.Menu>
+              <StyledDropdownMenu>
                 {/* <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}> */}
                 <Link to= {{pathname:`/albums/${albumData.album_id}/edit`}} style = {{'textDecoration': 'none', color:'black'}}>
+                  <Button fluid>
                     <Dropdown.Item text = 'edit'/>
+                  </Button>
                 </Link>
 
                 <Modal
                   style = {{background: 'rgba(13, 13, 13)'}}
                   size = 'tiny'
                   trigger = {
+                    <Button fluid>
                       <Dropdown.Item text = 'delete' onClick ={()=>handleOpen()} />
+                    </Button>
                   }
                   open = {modalOpen}
                   onClose = {() =>handleClose()}
@@ -177,7 +190,7 @@ const AlbumOverview = (props) => {
                     </Button>
                   </Modal.Content>
                 </Modal>
-              </Dropdown.Menu>
+              </StyledDropdownMenu>
             </StyledDropdownTransparent>
             <Card.Header>{albumData.title}</Card.Header>
             <Card.Meta>Date Created: {getLocalDateAndTime(albumData.created_at)}</Card.Meta>
