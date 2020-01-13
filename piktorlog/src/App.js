@@ -13,6 +13,8 @@ import LoginPage from './pages/LoginPage';
 import Upload from './pages/Upload';
 import CreateAlbum from './pages/CreateAlbum';
 import EditAlbum from './pages/EditAlbum';
+import CollaboratorsOverview from './pages/CollaboratorsOverview';
+import UserMembershipManagement from './pages/UserMembershipManagement';
 import EditMedia from './pages/EditMedia';
 
 import ProtectedRoute from './components/ProtectedRoute';
@@ -66,16 +68,20 @@ function App({ checkLogin, logout, showButton }) {
 
       <PageContent>
         <Switch>
+          
           <ProtectedRoute exact path='/'>
             <AppOverview />
           </ProtectedRoute>
+          
           <Route path="/login">
             <LoginPage />
           </Route>
+          
           <ProtectedRoute
             path='/albums/:id/edit'
             component={EditAlbum}
           />
+          
           <ProtectedRoute 
             path='/albums/:id'
             component = {AlbumOverview} 
@@ -87,9 +93,19 @@ function App({ checkLogin, logout, showButton }) {
           <ProtectedRoute path="/upload">
             <Upload />
           </ProtectedRoute>
+
           <ProtectedRoute path="/createAlbum">
             <CreateAlbum />
           </ProtectedRoute>
+
+          <ProtectedRoute path = "/collaborators">
+            <CollaboratorsOverview />
+          </ProtectedRoute>
+
+          <ProtectedRoute path = "/invites">
+            <UserMembershipManagement />
+          </ProtectedRoute>
+        
         </Switch>
       </PageContent>
 

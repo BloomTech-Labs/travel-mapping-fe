@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Card, Search} from 'semantic-ui-react';
 import AlbumCard from '../components/molecules/AlbumCard';
 import {getUserAlbumsReq} from '../store/requests/albums';
-import SearchBar from '../components/molecules/SearchBar'
+// import SearchBar from '../components/molecules/SearchBar'
 const AppOverview = (props) => {
   const [availableAlbums, setAvailableAlbums] = useState([]);
  const   [inputState, setInputState] = useState('');
@@ -41,7 +41,7 @@ const AppOverview = (props) => {
          //album.title.indexOf(inputState[0]) !== -1;
          return album
          }
-          
+         return false;
         })
       console.log('filteredAlbums', filteredAlbums);
       setAvailableAlbums(filteredAlbums)  
@@ -58,7 +58,7 @@ const AppOverview = (props) => {
       //    text: prevStateInput.text}))
 
 
-      const data = await getUserAlbumsReq(props.currentUser.user_id)
+      // const data = await getUserAlbumsReq(props.currentUser.user_id)
 
 
       // .filter(album => {

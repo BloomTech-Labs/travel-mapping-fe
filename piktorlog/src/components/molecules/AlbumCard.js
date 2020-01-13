@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React/*, {useEffect, useState}*/ from 'react';
 import {Button, Card, Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import {getAlbumMediaReq} from '../../store/requests/media';
+// import {getAlbumMediaReq} from '../../store/requests/media';
 
 const AlbumCard = (props) => {
-    const [albumMedia, setAlbumMedia] = useState([]);
+    // const [albumMedia, setAlbumMedia] = useState([]);
 
-    useEffect(() => {
-      (async () => {
-        const data = await getAlbumMediaReq(props.albumData.album_id);
-        console.log('props: ', props)
-        console.log('Album Media Data: ', data);
-        setAlbumMedia(data);
-      })();
-    }, [props.albumData.album_id]);
+    // useEffect(() => {
+    //   (async () => {
+    //     const data = await getAlbumMediaReq(props.albumData.album_id);
+    //     console.log('props: ', props)
+    //     console.log('Album Media Data: ', data);
+    //     setAlbumMedia(data);
+    //   })();
+    // }, [props.albumData.album_id]);
     
     return (
         <Card>
