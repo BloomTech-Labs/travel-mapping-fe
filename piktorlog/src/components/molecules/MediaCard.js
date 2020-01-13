@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, Card, Image, Dropdown, DropdownItem, Modal, Popup, Divider} from 'semantic-ui-react';
-import { Redirect, Link } from 'react-router-dom';
+import {Button, Card, Image, Dropdown, /*DropdownItem,*/ Modal, Popup, /*Divider*/} from 'semantic-ui-react';
+import { /*Redirect,*/ Link } from 'react-router-dom';
 import {getLocalDateAndTime} from '../../store/utils.js';
 
 import styled from 'styled-components';

@@ -1,76 +1,161 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { Container, Grid, Segment, Button } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+import { Container, Grid, Segment, Button, Form, Image } from 'semantic-ui-react';
 
-import UploadForm from '../components/molecules/UploadForm';
-import { editMediaReq } from '../store/requests/media';
+import UploadMeta from '../components/molecules/UploadMeta';
 
+import { useGetMediaOnRequest, useEditMedia } from '../store/hooks/useFetchOnRequest';
+import { useLogOnChange } from '../store/hooks/misc';
 
-const EditMedia = (props) => {
-  const [redirect, setRedirect] = useState(false);
-  const [mediaItem, setMediaItem] = useState(props.location.state.mediaItem); //state passed in in props from the edit button link on each image; see MediaCard component
-  console.log(mediaItem);
+const EditMedia = ({ location, match }) => {
 
-  // NOTE: Everything below is very rough. Keep what makes sense to you and move on from there. 
-  const submit = async () => {
-    const data = await editMediaReq(Object.values(mediaItem), mediaItem, props.currentUser.user_id);
-    console.log(data);
+  // figure out if media is provided from link props;
+  const [mediaProps] = useState(
+    location && location.state && location.state.mediaItem 
+    ? { 
+      ...location.state.mediaItem,
+      // I hate this so much, but the api and the link props deliver meta in different shapes
+      // and this really is the lesser evil until it can be standardized.
+      meta: Object.entries(location.state.mediaItem.meta).map(e => ({ name: e[0], value: e[1] }))
+    } 
+    : null
+  );
+  
+  const [getMedia, mediaItem] = useGetMediaOnRequest(null, null, mediaProps);
+  useLogOnChange('mediaItem', mediaItem);
 
-    // dispatch({ type: 'CLEAR_MEDIA' });
-    // setSelectedAlbums([]);
+  const [changes, setChanges] = useState({});
+  useLogOnChange('changes', changes);
 
-    // maybe add a confirmation/error message for the user, or redirect to main page from here
+  // if media was not provided through link props, go get it from the server
+  useEffect(() => {
+    if (!mediaProps) {
+      getMedia(match.params.media_id);
+    }
+  }, [mediaProps, match.params.media_id, getMedia]);
+
+  const handleChange = (e, { name, value }) => {
+    setChanges(prev => ({ ...prev, [name]: value }));
   };
 
-//   useEffect(() => {
-//     (async () => {
-//       // this really isn't ideal. We should have a way of passing in the album data as a prop,
-//       // or creating a route on the server to request data on a single, specific album.
-//       const data = await getMediaReq(currentUser.user_id);
-//       const neededAlbum = data.filter(e => e.album_id === Number(match.params.id))[0];
-//       setAlbum(neededAlbum);
-//     })();
-//   }, [currentUser.user_id, match]);
+  const handleAddMeta = (name, value) => {
+    // if there haven't yet been any changes to meta, initialize it
+    if (!changes.meta) setChanges(prev => ({ ...prev, meta: [...mediaItem.meta] }));
 
-  // useEffect(()=> {
-  //   console.log(props.location.state)
-  // }, [props.currentUser.user_id])
+    setChanges(prev => ({
+      ...prev, 
+      meta: [
+        ...prev.meta, 
+        { name, value }
+      ] 
+    }));
+  };
 
-  // if (redirect) {
-  //   return <Redirect to="/" />
-  // }
-  
+  const handleRemoveMeta = (delName, delValue) => {
+    // if there haven't yet been any changes to meta, initialize it
+    if (!changes.meta) setChanges(prev => ({ ...prev, meta: [...mediaItem.meta] }));
+
+    setChanges(prev => ({
+      ...prev, 
+      meta: prev.meta.filter(e => !(e.name === delName && e.value === delValue)) 
+    }));
+  };
+
+  const handleClearChanges = () => {
+    setChanges({});
+  }
+
+  // figure out if linked from an album
+  const [albumProps] = useState(location && location.state && location.state.albumData ? location.state.albumData : null);
+  useLogOnChange('albumProps', albumProps);
+
+  // redirect after the edit request returns. Either to the home page, or the album the user came from
+  const history = useHistory();
+  const [editMedia] = useEditMedia(() => history.push(albumProps ? `/albums/${albumProps.album_id}` : '/'));
+
+  const handleSubmit = () => {
+    // keywords needs to be turned into an array for the api
+    let formattedChanges = { ...changes };
+    if (formattedChanges.keywords) {
+
+      formattedChanges.keywords = formattedChanges.keywords.split(',').reduce((acc, e) => {
+        e.trim();
+        console.log(e)
+        if (e.length) acc.push(e);
+        return acc;
+      }, []);
+
+    }
+    editMedia(mediaItem.media_id, formattedChanges);
+  };
   
   return (
+    
     <Container>
+      {mediaItem &&
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         <Grid.Column>
-        {/* {Object.values(mediaItem).map(e => (
-            // <UploadForm
-            //   key={e.id}
-            //   mediaItem={e}
-            //   // setMedia={(id, changes) => dispatch({
-            //   //   type: 'EDIT_MEDIA',
-            //   //   payload: { id, changes }}
-            //   // )}
-            //   // removeMedia={id => dispatch({
-            //   //   type: 'REMOVE_MEDIA',
-            //   //   payload: id
-            //   // })}
-            //   media = {{file:'beep'}}
-            // />
-            e
-          ))} */}
-
-          {Object.values(mediaItem).length > 3 && 
           <Segment>
-            <Button color="teal" size="large" onClick={submit}>
-              Submit
-            </Button>
-          </Segment>}
+            <Grid>
+
+              <Grid.Column width="6">
+                <Image src={mediaItem.media_url} rounded />
+              </Grid.Column>
+
+              <Grid.Column width="10">
+                <Form>
+
+                  {/* title cannot be changed right now, therefore no need for an input here */}
+                  <h2>{mediaItem.title}</h2>
+
+                  <Form.Input
+                    fluid
+                    name="caption"
+                    placeholder="caption"
+                    value={changes.caption || mediaItem.caption}
+                    onChange={handleChange}
+                  />
+
+                  <Form.Input
+                    fluid
+                    name="keywords"
+                    placeholder="keywords (comma-separated, e.g. one, two, three)"
+                    value={changes.keywords || mediaItem.keywords.join(', ')}
+                    onChange={handleChange}
+                  />
+
+                  <UploadMeta 
+                    meta={changes.meta || mediaItem.meta}
+                    addMeta={handleAddMeta}
+                    removeMeta={handleRemoveMeta}
+                  />
+
+                </Form>
+
+                <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '1rem' }}>
+
+                  <Button 
+                    onClick={handleClearChanges}
+                    negative
+                  >
+                    Revert
+                  </Button>
+
+                  <Button
+                    onClick={handleSubmit}
+                    positive
+                  >
+                    Submit
+                  </Button>
+
+                </div>
+              </Grid.Column>
+
+            </Grid>
+          </Segment>
         </Grid.Column>
-      </Grid>
+      </Grid>}
     </Container>
   );
 };
