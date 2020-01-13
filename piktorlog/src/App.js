@@ -87,7 +87,7 @@ function App({ checkLogin, logout, showButton }) {
             component = {AlbumOverview} 
           />
           <ProtectedRoute 
-            path = '/media/:id/edit'
+            path = '/media/:media_id/edit'
             component = {EditMedia}
           />
           <ProtectedRoute path="/upload">
