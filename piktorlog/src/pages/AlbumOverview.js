@@ -105,7 +105,7 @@ const AlbumOverview = (props) => {
 
       <Card.Group centered stackable doubling>
         {albumMedia.map((albumMediaItem, index) => (
-            <MediaCard key={index} mediaItem={albumMediaItem}/>
+            <MediaCard key={index} mediaItem={albumMediaItem} albumData = {albumData}/>
         ))}
       </Card.Group>
     </React.Fragment>

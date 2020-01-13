@@ -34,7 +34,7 @@ const StyledModalContent = styled(Modal.Content)({
     background:'rgba(38,38,38,0.15)!important',
 });
 
-const MediaCard = ({mediaItem}) => {
+const MediaCard = ({mediaItem, albumData}) => {
     return (
         <Card>
             <Card.Content>
@@ -49,10 +49,11 @@ const MediaCard = ({mediaItem}) => {
                                 button
                                 icon = 'ellipsis vertical' 
                             >                                
-                                <Dropdown.Menu>                                    
-                                    <Dropdown.Item text = 'edit'>
-                                        <Link to= {'/editMedia'} style = {{'text-decoration': 'none', color:'black'}}>edit</Link>
-                                    </Dropdown.Item> 
+                                <Dropdown.Menu>
+                                    <Link to= {{pathname:`/media/${mediaItem.media_id}/edit`, state: {'mediaItem':mediaItem, albumData:albumData}}} style = {{'textDecoration': 'none', color:'black'}}>                                    
+                                        <Dropdown.Item text = 'edit'/>
+                                    </Link>
+                                    
                                     
                                     <Dropdown.Item text = 'delete' />
                                 </Dropdown.Menu>
