@@ -1,9 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 [![Build Status](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe.svg?branch=master)](https://travis-ci.org/Lambda-School-Labs/travel-mapping-fe) [![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783770296-efd8327fee3ec1b3038ac6df)](https://stats.uptimerobot.com/X7z6jHXVJ2)
 
 # Piktorlog
@@ -12,26 +6,14 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 ## 4️⃣ Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                       [Arthur J. Lei](https://github.com/arturolei)                                        |                                       [Adrian Adames](https://github.com/adrianadames)                                        |                                       [Morgan Peterson](https://github.com/)                                        |                                       [Eric Sarragalugo](https://github.com/ericlugo)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Arthur J. Lei](https://github.com/arturolei)                                        |                                       [Adrian Adames](https://github.com/adrianadames)                                        |                                       [Morgan Peterson](https://github.com/MorganPeterson1313)                                        |                                       [Brandon G. Elzy](https://github.com/belzy)                                        |                                       [Tim Dill](https://github.com/Brodt7258)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/arturolei)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrianadames)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/MorganPeterson1313)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ericlugo)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/arthur-lei/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianadames/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/morgan-peterson-73817559/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|                      [<img src="https://avatars1.githubusercontent.com/u/4889231?s=400&v=4" width = "200" />](https://avatars1.githubusercontent.com/u/4889231?s=400&v=4)                       |                      [<img src="https://avatars3.githubusercontent.com/u/11194836?s=400&v=4" width = "200" />](https://avatars3.githubusercontent.com/u/11194836?s=400&v=4)                       |                      [<img src="https://avatars1.githubusercontent.com/u/47166767?s=400&v=4" width = "200" />](hhttps://avatars1.githubusercontent.com/u/47166767?s=400&v=4)                       |                      [<img src="https://avatars0.githubusercontent.com/u/18194507?s=400&v=4" width = "200" />](https://avatars0.githubusercontent.com/u/18194507?s=400&v=4)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/Brodt7258)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/arturolei)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrianadames)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/MorganPeterson1313)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/belzy)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Brodt7258)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/arthur-lei/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianadames/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/morgan-peterson-73817559/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-g-elzy-292601119/) | |
 
 <br>
 <br>
-
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
@@ -41,9 +23,13 @@ Application deployed at [piktorlog.com](https://piktorlog.com/).
 
 [UX Design files](https://www.figma.com/file/j8XG1mhNV4q9o8Y17aK9Dl/Travel-Mapping-User-Flow)
 
-Media Organizer is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
+[Front-End Github Repo](https://github.com/Lambda-School-Labs/travel-mapping-fe/branches)
 
-Media organizer also lets you invite collaborators to upload their photos, so you don't have to track down photos from event participants.
+[Back-end Github Repo](https://github.com/Lambda-School-Labs/travel-mapping-be/branches)
+
+Piktorlog is an app that allows you to organize your photos in any way that you choose. Whether it is by date, subject, or theme, you can organize your photos in the way that works best for you. 
+
+Piktorlog also lets you invite collaborators to upload their photos to an album of your choosing, so you don't have to track down photos from event participants.
 
 
 ### 4️⃣ Key Features
@@ -55,14 +41,10 @@ Media organizer also lets you invite collaborators to upload their photos, so yo
         - Captions
     - Default metadata fields as determined by user
 - Ability to tag/classify photos according a user-defined category; photos can belong to multiple categories)
-    - Categories could be things like:
+    - Categories could be things like: 
         - Event (Birthday, Holiday), location, People, year, subject (e.g. art or books)
 - Search/filter by category/categories
 - Ability to invite collaborators/have multiple authorized users for an album
-    - Ability to assign permissions to collaborators
-- Access control/view permissions can be set for some photos
-- Publishing photos as an front-facing album while maintaining an archive (user-facing as opposed to public-facing)
-- Ability to sign up and connect via OAuth
 
 
 ## 1️⃣ Tech Stack
@@ -71,104 +53,106 @@ Media organizer also lets you invite collaborators to upload their photos, so yo
 - React 
 - Redux
 - Semantic UI
-- Reach
 
-#### _Front end framework goes here_
-
-🚫 Why did you choose this framework?
+#### Front-End Considerations
 
 1. What Framework are you using for your FE? (React, React Native, Angular, Vue, etc...)
-React (consider possibly using React Native for dedicated mobile app if time-frame allows?)
+React (consider possibly using React Native for dedicated mobile app if time-frame allows). 
+
 2. What alternatives were considered?
 GatsbyJS, Vue, Next.js
+
 3. Why did you decide on this framework over the alternatives (what are the advantages?)
-We decided on this framework based on the knowledge base of the developers on the project. 
+We decided on this framework based on the knowledge base of the developers on the project. Semantic UI was something new for most of us involved in the product. 
+
 4. What potential challenges can you foresee using this framework?
-State management, scalability, authentication, testing (React testing library)
+State management, scalability, authentication, front-endtesting (React testing library)
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `netlify.com`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/travel-mapping-be/) built using:
+- Node.js
 
-#### 🚫 back end framework goes here
+#### Back-End
 
--    point one
--    point two
--    point three
+1. What Framework are you using for your BE? 
+We went with Node.JS given the technical skillset of the developers involved.
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+2. What alternatives were considered?
+GraphQL
+
+3. Why did you decide on this framework over the alternatives (what are the advantages?)
+We decided on this framework based on the knowledge base of the developers on the project. GraphQL although promising is too new and too untested.
+
+4. What potential challenges can you foresee using this framework?
+Scalability (what happens if we have multiple or millions of requests); error handling; offline functionality
 
 # APIs
 
 ## 2️⃣ Authentication API here
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
-
+We went with JWT. 
 
 ## 3️⃣ Misc API here
 
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldnt shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
+We also decided to use Cloudinary for image hosting. 
 
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+```
+CLOUDINARY_CLOUD_NAME=dbl8pi1ms
+CLOUDINARY_API_KEY=584833961342644
+CLOUDINARY_SECRET_KEY=NShFaw7fvrlsCAqzfEh9MObgzNE
+AUTH0_AUDIENCE=https://piktorlog.com/api
+AUTH0_DOMAIN=piktorlog.auth0.com
+JWT_SECRET=MIICXQIBAAKBgQCZSqMwjFdt1xcFWuiYbvzCXSDgvfDwDuhKZ0oWu6zcDTnx4inU5XQ8c4hDwV5WBRFtUDSum1GcwbY+lSqamy87mhvPCxYEnSWVLwnqOXb5Vowb0++S60/hB8T8u+Dbjw4MlsMqcxk4RCYQAxid+2kubZXjg0JO2nb0nePuk1mRbQIDAQABAoGAM+XdEhaxkvJ7TMjWbqVE1dkJxI0KAXxKkMYfg0rO30FrGMVlPDri+4Rx4d6Zva3BlKzO6T6UhunedZmy7t0TRCVeXKbc+sFZr2u9maZj+NRbu+Mjwwyzkzs2EKnk5fiE/V2w58bXhyb7urEh1MFpy9Istk43CwbaJ+kpCgXIeAECQQD1ChamZ4Wa+7otO9OnJcGAEummeLKMGNF1aXEKsxDG+ZZyEx+OCLX0/0RlD8I8CMCsy+mFrnWy7WY/7K0YIWvtAkEAoCX1EVwwqcdz18u36nJ0tQ21EzVc4dam6kKr88HBBv7u75Z1OtI6bEkomg9AaWn3vsCOYOzb/nMApR6toHsLgQJBAIAurdiQsOB5LFQ7RqXaZ1XDDvzpiKUm2nNsHBk3wOAFckDsZgZb4ituWW3wh2/2OCxsYxVuRN27uFBaU9YaraUCQET2M2KnXTku7x5k1iy53rG8VlYQK5AAe93ymdMcgv99Neyr0I1ky82nbzlwCd+axxk4F9d7B3y5jvSLkl7BvYECQQDJSF9etssAtx48WcjikcdiDc9tlI2UrmbHncUTGsvzEnvZEKRAmVgH+2zVXBes/oJNnuHmNglthbS+Sadg39zX
+PASS_SALT=12
+OAUTH_CLIENT_ID=108804626162-qij29l0bg0osbvgvemfuk7gkkbchp2h7.apps.googleusercontent.com
+```
 
 # 5️⃣ Content Licenses
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
-
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+None noted. 
 
 # 4️⃣ Testing
-
-🚫Document what you used for testing and why
+In progress. 
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+### Front-end
+1. Git clone or download from Github repo: [https://github.com/Lambda-School-Labs/travel-mapping-fe](https://github.com/Lambda-School-Labs/travel-mapping-be)
+2. Run `yarn install`
+
+### Back-End:
+To get the server running locally:
+
+Clone this repository and move into the project directory
+```
+git clone "https://github.com/Lambda-School-Labs/travel-mapping-be.git"
+cd travel-mapping-be
+```
+ Install dependencies
+```
+npm install
+```
+Set up the database
+```
+npm run migrate
+npm run seed
+```
+Start the development server
+```
+npm run dev
+```
 
 ## Other Scripts
 
-🚫replace these examples with your own
 
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+### Back-end deployed to [piktorlog.herokuapp.com](piktorlog.herokuapp.com)
+
 
 # Contributing
 
@@ -208,4 +192,22 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation]() for details on the backend of our project.
+
+
+## Open Questions: 
+- What do we do in light of recent privacy concerns, e.g. "Right to be Forgotten" and California's recent actions on privacy? See [Release Canvas 1.2 Features]() for more information.
+- What do we offer in terms of unique value propositon with regard to Google/Apple? How much can we really sell people on collaboration and custom organization?
+- We did some rudimentary front-end testing by building special front-end components to feed mock data, but we could have actually deployed a real testing suite.
+
+## Contact Info: 
+- Adrian Adames, Team Lead and Developer
+  - Email:
+- Tim Dill, Developer
+  - Email: 
+- Brandon G. Elzy, Developer
+  - Email:
+- Arthur J. Lei, Developer
+  - Email: artie.lei@gmail.com
+- Morgan Peterson, Developer
+  - Email:  
